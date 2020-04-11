@@ -26,6 +26,10 @@ public class SendSms {
         request.setSysAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", "15873008829");
+        request.putQueryParameter("SignName", "小米有品");
+        request.putQueryParameter("TemplateCode", "SMS_187755835");
+        request.putQueryParameter("TemplateParam", "{\"code\":\"0426\"}");
+
         try {
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());
