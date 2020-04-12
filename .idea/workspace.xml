@@ -273,7 +273,6 @@
       <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/layui/images/warmtip_08.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/layui/images/wuliu.gif" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/layui/js/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_cloud_spring_cloud_alibaba_nacos_discovery_2_2_0_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_cloud_spring_cloud_alibaba_nacos_discovery_2_2_0_RELEASE.xml" afterDir="false" />
@@ -392,7 +391,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_4_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_25.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/imitation-xmyp-1011.iml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/imitation-xmyp-1011.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/ImitationXmyp1011Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/ImitationXmyp1011Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/UserService.java" afterDir="false" />
@@ -542,7 +540,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -562,7 +560,7 @@
       <option name="presentableId" value="Default" />
       <updated>1586596404404</updated>
       <workItem from="1586596406236" duration="4903000" />
-      <workItem from="1586673450375" duration="9285000" />
+      <workItem from="1586673450375" duration="9602000" />
     </task>
     <task id="LOCAL-00001" summary="GitHub">
       <created>1586600920843</created>
@@ -594,9 +592,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586679658390" />
-    <state x="882" y="117" key="CommitChangelistDialog2" timestamp="1586600916127">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="247" y="12" key="CommitChangelistDialog2" timestamp="1586683069969">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="247" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586683069969" />
     <state x="882" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600916127" />
     <state x="962" y="220" key="FileChooserDialogImpl" timestamp="1586675164184">
       <screen x="0" y="0" width="1536" height="824" />
@@ -656,9 +655,10 @@
     </state>
     <state x="387" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586673484931" />
     <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586600753791" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1586600922622">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="435" y="182" key="Vcs.Push.Dialog.v2" timestamp="1586683168410">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586683168410" />
     <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600922622" />
     <state x="669" y="224" key="new project wizard" timestamp="1586598650663">
       <screen x="0" y="0" width="1920" height="1040" />
