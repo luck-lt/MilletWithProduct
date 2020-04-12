@@ -2,8 +2,9 @@ package com.xm.dao;
 
 import com.xm.SuperMapper;
 import com.xm.pojo.user;
-import com.xm.pojo.user;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @description
@@ -12,5 +13,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserMapper extends SuperMapper<user> {
-
+   public List<user> findAll(user user);
 }
