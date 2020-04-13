@@ -78,19 +78,19 @@
                 <ul id="nav">
                     <li>
                         <a href="javascript:;">
-                            <i class="iconfont left-nav-li" lay-tips="会员管理">&#xe6b8;</i>
-                            <cite>会员管理</cite>
+                            <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe6b8;</i>
+                            <cite>用户管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('会员列表(动态表格)','member-list1.html',true)">
+                                <a onclick="xadmin.add_tab('显示用户','UserManage.html',true)">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员列表(动态表格)</cite></a>
+                                    <cite>显示用户</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('会员删除','member-del.html')">
+                                <a onclick="xadmin.add_tab('添加用户','addUser.html')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite></a>
+                                    <cite>添加用户</cite></a>
                             </li>
                         </ul>
                     </li>
@@ -154,11 +154,6 @@
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>错误页面</cite></a>
                             </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('示例页面','demo.html')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>示例页面</cite></a>
-                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -171,7 +166,7 @@
             <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
                 <ul class="layui-tab-title">
                     <li class="home">
-                        <i class="layui-icon">&#xe68e;</i>我的桌面</li></ul>
+                        <i class="layui-icon">&#xe68e;</i></li></ul>
                 <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
                     <dl>
                         <dd data-type="this">关闭当前</dd>
@@ -180,7 +175,6 @@
                 </div>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
-                        <iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
                     </div>
                 </div>
                 <div id="tab_show"></div>

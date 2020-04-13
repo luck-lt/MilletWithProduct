@@ -1,7 +1,7 @@
 package com.xm.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xm.pojo.user;
+import com.xm.pojo.User;
 
 import java.util.List;
 
@@ -10,6 +10,6 @@ import java.util.List;
  * @author: Specime
  * @date:2020/4/7
  */
-public interface UserService extends IService<user> {
-    public List<user> findAll(user user);
+public interface UserService extends IService<User> {
+    public List<User> findAll(User user);
 }
