@@ -39,11 +39,6 @@
             <artifactId>aliyun-java-sdk-ecs</artifactId>
             <version>4.17.6</version>
         </dependency>
-<!--        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-core</artifactId>
-            <version>4.0.6</version> &lt;!&ndash; 注：如提示报错，先升级基础包版，无法解决可联系技术支持 &ndash;&gt;
-        </dependency>-->
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
