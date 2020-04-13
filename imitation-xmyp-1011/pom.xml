@@ -21,6 +21,13 @@
     </properties>
 
     <dependencies>
+        <!--使用分页插件只需要导这个包 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.12</version>
+        </dependency>
+
         <!--阿里云短信息-->
         <dependency>
             <groupId>com.aliyun</groupId>

@@ -19,9 +19,8 @@ public class JDController {
     private UserService userService;
 
     @GetMapping("/xmyp")
-    public List<user> hello(String title, int yzm) {
-        System.out.println(title + "\t\t" + yzm);
+    public List<user> hello() {
         System.out.println("你好，龙某");
-        return userService.list();
+       return userService.list();
     }
 }
