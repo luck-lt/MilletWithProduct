@@ -1,5 +1,7 @@
 package com.xm.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xm.pojo.User;
 import com.xm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,25 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping("/SelectUser")
-    public List<User> SelectUser() {
+    @GetMapping("/SelectUser")
+    public List<User> SelectUser(Integer page) {
+        PageHelper.startPage(0, 2);
         List<User> users = userService.findAll(null);
+        PageInfo<User> p1 = new PageInfo<User>(users, 3);
         return users;
     }
+
+   /* @RequestMapping(value="/ShowAllUser.action",method = RequestMethod.GET)
+    @ResponseBody
+    public PageResult<List<User>> ShowAllUser(@RequestParam(value = "page") int page , int limit) {
+        List<User> users = userService.selectAllUser(page,limit);
+        //返回的总记录数
+        int count=userService.findUserPageCount();
+        PageResult<List<User>> listPageResult=new PageResult<List<User>>("",users,0,count);
+        return listPageResult;
+
+    }*/
+
 
     @ResponseBody
     @PostMapping("/addUser")
@@ -41,7 +57,7 @@ public class UserController {
             if (!users.get(0).getLogin_name().equals(null)) {
                 return 2;
             } else if (!users.get(0).getTelephone().equals(null)) {
-                return 0;
+                return 3;
             }
         }
         if (userService.save(user)) {

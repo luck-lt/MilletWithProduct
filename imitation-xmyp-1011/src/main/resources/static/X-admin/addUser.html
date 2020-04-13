@@ -9,7 +9,6 @@
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
     <link rel="stylesheet" href="lib/layui/css/layui.css" media="all">
     <script src="lib/layui/layui.js" charset="utf-8"></script>
-    <script src="js/jquery.js"></script>
     <script src="lib/layui/lay/modules/laydate.js"></script>
     <link href="lib/layui/css/modules/laydate/default/laydate.css" rel="stylesheet"/>
     <script>
@@ -96,6 +95,7 @@
 <script>
         layui.use('form', function () {
             var form = layui.form;
+            const $ = layui.jquery;
             //监听提交
             form.on('submit(formDemo)', function (data) {
                 $.post("/addUser", data.field, function (res) {
