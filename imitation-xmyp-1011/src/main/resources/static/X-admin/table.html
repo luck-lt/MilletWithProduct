@@ -3,24 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>table模块快速使用</title>
-    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="lib/layui/css/layui.css" media="all">
     <script src="lib/layui/layui.js"></script>
-    <script src="lib/layui/lay/modules/laydate.js"></script>
-    <link rel="stylesheet" href="lib/layui/css/modules/laydate/default/laydate.css" />
-    <script>
-        layui.use('laydate', function () {
-            var laydate = layui.laydate;
-            //执行一个laydate实例
-            laydate.render({
-                elem: '#test5' //指定元素
-                , type: 'datetime'
-            });
-        });
-    </script>
-    <script type="text/html" id="switchTpl">
-        <input type="checkbox" name="sex" value="" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.id== 10003
-               ? 'checked': ''}} >
-    </script>
+    <script src="js/jquery.js"></script>
 </head>
 <body>
 <div class="demoTable" style="padding: 15px">
@@ -33,6 +18,7 @@
         <i class="layui-icon">&#xe608;</i> 添加
     </button>
 </div>
+
 <table id="demo" lay-filter="test"></table>
 
 <script type="text/html" id="toolbarDemo">
@@ -40,6 +26,10 @@
         <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
         <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
     </div>
+</script>
+<script type="text/html" id="sex">
+    <input type="checkbox" name="sex" value="{{d.sex}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.sex==
+           1 ? 'checked': ''}} >
 </script>
 <!-- 同上效果 -->
 <div id="barDemo" style="display: none">
@@ -73,13 +63,7 @@
                 , {field: 'login_name', title: '用户名', width: 80}
                 , {field: 'login_password', title: '密码', width: 120, sort: true}
                 , {
-                    field: 'sex', title: '性别', width: 80, sort: true, templet: function (d) {
-                        if (d.sex == 1) {
-                            return '男';
-                        } else {
-                            return '女';
-                        }
-                    }
+                    field: 'sex', title: '性别', width: 80, sort: true, templet: '#sex'
                 }
                 , {field: 'real_name', title: '名字', width: 120, sort: true}
                 , {field: 'telephone', title: '手机号', width: 120, edit: 'text'}
@@ -189,15 +173,8 @@
                     "login_name": obj.data.login_name,
                     "login_password": obj.data.login_password,
                     "real_name": obj.data.real_name,
-                    "sex": obj.data.sex, templet: function (d) {
-                        if (d.sex == 1) {
-                            return '男'
-                        } else {
-                            return '女'
-                        }
-                    },
+                    "sex": obj.data.sex, if
                     "telephone": obj.data.telephone
-
                 });
 
                 form.render();
@@ -235,8 +212,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">单选框</label>
             <div class="layui-input-inline">
-                <input type="radio" name="sex" value="1" title="男" checked/>
-                <input type="radio" name="sex" value="2" title="女"/>
+                <input type="radio" name="sex" title="男" {{ d.sex== 1 ? 'checked': ''}}/>
+                <input type="radio" name="sex" title="女" {{ d.sex== 2 ? 'checked': ''}}/>
             </div>
         </div>
         <div class="layui-form-item">
@@ -317,8 +294,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">单选框</label>
             <div class="layui-input-inline">
-                <input type="radio" name="sex" value="1" title="男" checked/>
-                <input type="radio" name="sex" value="2" title="女"/>
+                <input type="radio" name="sex" value="{{d.sex}}" title="男" {{ d.sex== 1 ? 'checked': ''}}/>
+                <input type="radio" name="sex" value="{{d.sex}}" title="女" {{ d.sex== 2 ? 'checked': ''}}/>
             </div>
         </div>
         <div class="layui-form-item">
