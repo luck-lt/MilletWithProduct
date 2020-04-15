@@ -1,14 +1,13 @@
 package com.xm.controller;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.xm.pojo.PageResult;
 import com.xm.pojo.User;
 import com.xm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,11 +28,12 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/SelectUser")
-    public List<User> SelectUser(User user,Integer page, Integer limit) {
+    public PageResult<List<User>> SelectUser(User user, Integer page, Integer limit) {
+        int count = userService.findAll(null).size();
         PageHelper.startPage(page, limit);
         List<User> users = userService.findAll(user);
-        PageInfo<User> p1 = new PageInfo<User>(users, limit);
-        return users;
+        PageResult<List<User>> listPageResult = new PageResult<List<User>>("", users, 0, count);
+        return listPageResult;
     }
 
     @ResponseBody
@@ -51,12 +51,21 @@ public class UserController {
         // 2:用户名重复 ，3：电话号码已注册
         if (users1.size() != 0) {
             return 2;
-        } else if (users2.size()!= 0) {
+        } else if (users2.size() != 0) {
             return 3;
         }
         if (userService.save(user)) {
             return 1;
         }
+        return 0;
+    }
+
+    @ResponseBody
+    @PostMapping("/UpdateUser")
+    public int UpdateUser(User user) {
+        int ro = userService.UpdateUser(user);
+        if (ro > 0)
+            return 1;
         return 0;
     }
 }

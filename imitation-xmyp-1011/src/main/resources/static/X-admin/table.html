@@ -32,7 +32,6 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </div>
-
 <script>
     layui.use(['table', 'layer', 'jquery', 'form'], function () {
         var table = layui.table;
@@ -45,29 +44,45 @@
             , height: 468
             , url: '/SelectUser' //s数据接口
             , page: true //开启分页
-            , parseData: function (res) {
+            /*, parseData: function (res) {
                 console.log(res);
                 return {
                     "code": 0
                     , "msg": ""
-                    , "count": 1000
+                    , "count": 11
                     , "data": res
                 }
-            }
+            }*/
             , cols: [[ //表头
                 {field: 'user_id', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'login_name', title: '用户名', width: 80}
                 , {field: 'login_password', title: '密码', width: 120, sort: true}
-                , {
-                    field: 'sex', title: '性别', width: 80, sort: true,
-                }
+                , {field: 'sex', title: '性别', width: 80, sort: true,}
                 , {field: 'real_name', title: '名字', width: 120, sort: true}
                 , {field: 'telephone', title: '手机号', width: 120, edit: 'text'}
-                , {field: 'regeist_time', title: '注册时间', width: 140,}
+                , {
+                    field: 'regeist_time', title: '注册时间', width: 140, sort: true, templet: function (d) {
+                        var date = new Date(d.regeist_time)
+                        var year = date.getFullYear() + '年';
+                        var month = date.getMonth() + 1 + '月';
+                        var date = date.getDate() + '日';
+                        var date1 = [year, month, date].join('')
+                        return date1;
+                    }
+                }
                 , {type: 'checkbox'}
                 , {toolbar: '#barDemo', title: '操作'}
 
             ]],
+            done: function (res, curr, count) {
+                $("[data-field='sex']").children().each(function () {
+                    if ($(this).text() == '1') {
+                        $(this).text("男")
+                    } else if ($(this).text() == '2') {
+                        $(this).text("女")
+                    }
+                });
+            }
         });
 
         //自定义验证
@@ -115,28 +130,6 @@
             })
         });
 
-        //删除
-        $('#btnDel').click(function () {
-            var data = table.checkStatus('demo').data;
-            layer.alert(data.length);
-            var ids = [];
-            if (data.length == 0) {
-                layer.msg('请选择要删除的记录');
-            } else {
-                for (var a in data) {
-                    ids.push(data[a].id);
-                }
-                $.post('del', {"ids": ids}, function (flag) {
-                    if (flag) {
-                        layer.msg('删除成功', {icon: 6});
-                    } else {
-                        layer.msg('删除失败', {icon: 5});
-                    }
-                });
-            }
-
-            table.reload('demo');
-        });
 
         //查询
         $('#queryRole').click(function () {
@@ -153,7 +146,6 @@
         table.on('tool(test)', function (obj) {
             console.info(obj);
             var method = obj.event;
-            layer.msg(obj.data.id);
             if (method == 'edit') {
                 //打开
                 layer.open({
@@ -168,13 +160,50 @@
                     "login_name": obj.data.login_name,
                     "login_password": obj.data.login_password,
                     "real_name": obj.data.real_name,
-                    "sex": obj.data.sex,
+                    "sex": obj.data.sex == '1' ? '1' : '2',
                     "telephone": obj.data.telephone
                 });
 
+                form.on('submit(fd2)', function (data) {
+                    layer.closeAll('page');//关闭页面
+                    table.reload('demo');//重新加载
+                    $.post("/UpdateUser", data.field, function (res) {
+                        if (res == 1) {
+                            layer.msg("修改成功", {icon: 5});
+                            setTimeout(function () {
+                                layer.closeAll();//关闭所有的弹出层
+                            }, 1000);
+                        } else {
+                            layer.msg("修改失败");
+                            $("#re2").trigger("click");
+                            return false;
+                        }
+                    }, 'json');
+                    return false;
+                })
+
                 form.render();
             } else {
-                layer.msg('删除请求');
+                //删除
+                var data = table.checkStatus('demo').data;
+                layer.alert(data.length);
+                var ids = [];
+                if (data.length == 0) {
+                    layer.msg('请选择要删除的记录');
+                } else {
+                    for (var a in data) {
+                        ids.push(data[a].id);
+                    }
+                    $.post('del', {"ids": ids}, function (flag) {
+                        if (flag) {
+                            layer.msg('删除成功', {icon: 6});
+                        } else {
+                            layer.msg('删除失败', {icon: 5});
+                        }
+                    });
+                }
+
+                table.reload('demo');
             }
         });
 
@@ -269,7 +298,7 @@
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline">
                 <input type="text" name="login_name" required lay-verify="required" placeholder="请输入用户名"
-                       class="layui-input">
+                       class="layui-input layui-btn-disabled">
             </div>
         </div>
         <div class="layui-form-item">
@@ -289,8 +318,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">单选框</label>
             <div class="layui-input-inline">
-                <input type="radio" name="sex" value="1" title="男"/>
-                <input type="radio" name="sex" value="2" title="女" checked="checked"/>
+                <input type="radio" name="sex" title="男" value="1" checked="checked"/>
+                <input type="radio" name="sex" title="女" value="2"/>
             </div>
         </div>
         <div class="layui-form-item">
@@ -312,7 +341,7 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="fd">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="fd2">立即提交</button>
                 <button type="reset" id="re2" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>

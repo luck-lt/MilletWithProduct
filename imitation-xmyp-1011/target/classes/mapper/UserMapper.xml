@@ -18,6 +18,13 @@
     </sql>
     <select id="findAll" resultType="User">
         select * from user
-        <include refid="condition" />
+        <include refid="condition"/>
     </select>
+
+    <update id="UpdateUser" parameterType="User">
+		UPDATE User SET
+		login_password=#{login_password},real_name=#{real_name},sex=#{sex}
+		,telephone=#{telephone}
+		WHERE login_name=#{login_name}
+	</update>
 </mapper>

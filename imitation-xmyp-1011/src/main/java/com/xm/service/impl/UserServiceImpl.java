@@ -30,4 +30,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.findAll(user);
     }
 
+    @Override
+    public int UpdateUser(User user) {
+        return userMapper.UpdateUser(user);
+    }
+
 }
