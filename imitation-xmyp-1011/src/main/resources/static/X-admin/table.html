@@ -6,11 +6,25 @@
     <link rel="stylesheet" href="lib/layui/css/layui.css">
     <script src="lib/layui/layui.js"></script>
     <script src="lib/layui/lay/modules/laydate.js"></script>
-    <link href="lib/layui/css/modules/laydate/default/laydate.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="lib/layui/css/modules/laydate/default/laydate.css" />
+    <script>
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#test5' //指定元素
+                , type: 'datetime'
+            });
+        });
+    </script>
+    <script type="text/html" id="switchTpl">
+        <input type="checkbox" name="sex" value="" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.id== 10003
+               ? 'checked': ''}} >
+    </script>
 </head>
 <body>
 <div class="demoTable" style="padding: 15px">
-    搜索手机号：
+    搜索用户名：
     <div class="layui-inline">
         <input class="layui-input" id="find" autocomplete="off">
     </div>
@@ -34,18 +48,11 @@
 </div>
 
 <script>
-    layui.use(['table', 'layer', 'jquery', 'form', 'laydate'], function () {
+    layui.use(['table', 'layer', 'jquery', 'form'], function () {
         var table = layui.table;
         var form = layui.form;
         const $ = layui.jquery;
         const layer = layui.layer;
-        var laydate = layui.laydate;
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#test5' //指定元素
-            , type: 'datetime'
-        });
-
         //第一个实例
         table.render({
             elem: '#demo'
@@ -65,23 +72,22 @@
                 {field: 'user_id', title: 'ID', width: 80, sort: true, fixed: 'left'}
                 , {field: 'login_name', title: '用户名', width: 80}
                 , {field: 'login_password', title: '密码', width: 120, sort: true}
-                , {field: 'sex', title: '性别', width: 80, sort: true}
+                , {
+                    field: 'sex', title: '性别', width: 80, sort: true, templet: function (d) {
+                        if (d.sex == 1) {
+                            return '男';
+                        } else {
+                            return '女';
+                        }
+                    }
+                }
                 , {field: 'real_name', title: '名字', width: 120, sort: true}
                 , {field: 'telephone', title: '手机号', width: 120, edit: 'text'}
-                , {field: 'regeist_time', title: '加入时间', width: 140,}
-                /* , {
-                     field: 'regeist_time', title: '加入时间', width: 140, templet: function (d) {
-                         var date = new Date(d.rtime)
-                         var year = date.getFullYear() + '年';
-                         var month = date.getMonth() + 1 + '月';
-                         var date = date.getDate() + '日';
-                         var date1 = [year, month, date].join('')
-                         return date1;
-                     }
-                 }*/
+                , {field: 'regeist_time', title: '注册时间', width: 140,}
                 , {type: 'checkbox'}
                 , {toolbar: '#barDemo', title: '操作'}
-            ]]
+
+            ]],
         });
 
         //自定义验证
@@ -94,7 +100,6 @@
 
         //新增
         $('#btnAdd').click(function () {
-            layer.msg('hello');
             layer.open({
                 type: 1,
                 content: $('#fm').html(), //'index.html',
@@ -104,20 +109,25 @@
             form.render();//渲染页面，不加，表单可能出不来
 
             form.on('submit(fd)', function (data) {
-                layer.alert(JSON.stringify(data.field), {icon: 1});
                 layer.closeAll('page');//关闭页面
                 table.reload('demo');//重新加载
                 $.post("/addUser", data.field, function (res) {
                     if (res == 1) {
-                        var url = "index.html";
-                        setTimeout(window.location.href = url, 2000);
-                    } else if (res = 2) {
+                        layer.msg("新增成功", {icon: 5});
+                        setTimeout(function () {
+                            layer.closeAll();//关闭所有的弹出层
+                        }, 1000);
+                    } else if (res == 2) {
                         layer.msg("用户名重复", {icon: 5});
+                        $("#re").trigger("click");
+                        return false;
                     } else if (res == 3) {
                         layer.msg("电话号码已注册", {icon: 5});
+                        $("#re").trigger("click");
+                        return false;
                     } else {
                         layer.msg("新增失败");
-                        layer.msg(res.info, {time: 2000});
+                        $("#re").trigger("click");
                         return false;
                     }
                 }, 'json');
@@ -149,15 +159,15 @@
         });
 
         //查询
-        $('#btnSearch').click(function () {
+        $('#queryRole').click(function () {
+            var find = document.getElementById("find").value;
             table.reload('demo', {
-                url: '../layui/data.json',
+                url: '/SelectUser',
                 where: {
-                    username: 'user-0'
+                    'login_name': find
                 }
             });
         });
-
 
         //监听行工具事件
         table.on('tool(test)', function (obj) {
@@ -175,8 +185,19 @@
                 });
                 //填充表单
                 form.val('myfm', {
-                    "id": obj.data.id,
-                    "username": obj.data.username
+                    "user_id": obj.data.user_id,
+                    "login_name": obj.data.login_name,
+                    "login_password": obj.data.login_password,
+                    "real_name": obj.data.real_name,
+                    "sex": obj.data.sex, templet: function (d) {
+                        if (d.sex == 1) {
+                            return '男'
+                        } else {
+                            return '女'
+                        }
+                    },
+                    "telephone": obj.data.telephone
+
                 });
 
                 form.render();
@@ -214,42 +235,42 @@
         <div class="layui-form-item">
             <label class="layui-form-label">单选框</label>
             <div class="layui-input-inline">
-                <input type="radio" name="sex" value="1" title="男" checked>
-                <input type="radio" name="sex" value="2" title="女">
+                <input type="radio" name="sex" value="1" title="男" checked/>
+                <input type="radio" name="sex" value="2" title="女"/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">电话号码</label>
             <div class="layui-input-inline">
                 <input type="text" name="telephone" required lay-verify="required|phone" placeholder="请输入号码"
-                       class="layui-input">
+                       class="layui-input"/>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">注册日期</label>
-            <div class="layui-input-inline">
-                <input type="text" id="test5" required lay-verify="required"
-                       name="regeist_time"
-                       placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
+        <!--  <div class="layui-form-item">
+              <label class="layui-form-label">注册日期</label>
+              <div class="layui-input-inline">
+                  <input type="text" id="test" required lay-verify="date"
+                         name="date"
+                         placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off"
+                         class="layui-input"/>
+              </div>
+          </div>-->
 
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="fd">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button type="reset" id="re" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
 </script>
 
-<script type="text/html" id="fm2">
+<!--<script type="text/html" id="fm2">
     <form class="layui-form" action="" lay-filter="myfm">
         <div class="layui-form-item">
             <label class="layui-form-label">ID</label>
             <div class="layui-input-inline">
-                <input type="text" name="id" required lay-verify="required" placeholder="请输入ID" class="layui-input">
+                <input type="text" name="user_id" required lay-verify="required" placeholder="请输入ID" class="layui-input">
             </div>
         </div>
 
@@ -266,6 +287,61 @@
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="fd">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</script>-->
+<script type="text/html" id="fm2">
+    <form class="layui-form" lay-filter="myfm">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="login_name" required lay-verify="required" placeholder="请输入用户名"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码框</label>
+            <div class="layui-input-inline">
+                <input type="password" name="login_password" required lay-verify="required" placeholder="请输入密码"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">真实姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="real_name" required lay-verify="required|tt" placeholder="请输入姓名"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-inline">
+                <input type="radio" name="sex" value="1" title="男" checked/>
+                <input type="radio" name="sex" value="2" title="女"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话号码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="telephone" required lay-verify="required|phone" placeholder="请输入号码"
+                       class="layui-input"/>
+            </div>
+        </div>
+        <!--  <div class="layui-form-item">
+              <label class="layui-form-label">注册日期</label>
+              <div class="layui-input-inline">
+                  <input type="text" id="test" required lay-verify="date"
+                         name="date"
+                         placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off"
+                         class="layui-input"/>
+              </div>
+          </div>-->
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="fd">立即提交</button>
+                <button type="reset" id="re2" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>

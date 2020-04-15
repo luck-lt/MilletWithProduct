@@ -17,7 +17,7 @@
         </where>
     </sql>
     <select id="findAll" resultType="User">
-        select * from os_user
+        select * from user
         <include refid="condition" />
     </select>
 </mapper>
