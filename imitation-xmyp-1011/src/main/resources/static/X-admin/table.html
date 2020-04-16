@@ -17,6 +17,9 @@
     <button type="button" class="layui-btn layui-btn-warm" id="btnAdd">
         <i class="layui-icon">&#xe608;</i> 添加
     </button>
+    <button type="button" class="layui-btn layui-btn-danger" id="btnDel">
+        <i class="layui-icon">&#x1007;</i> 删除
+    </button>
 </div>
 
 <table id="demo" lay-filter="test"></table>
@@ -142,6 +145,29 @@
             });
         });
 
+        //删除
+        $('#btnDel').click(function () {
+            var data = table.checkStatus('demo').data;
+            var ids = [];
+            if (data.length == 0) {
+                layer.msg('请选择要删除的记录');
+            } else {
+                for (var a in data) {
+                    ids.push(data[a].user_id);
+                }
+                $.post('/DeleteUser',"user_id="+ids, function (flag) {
+                    if (flag) {
+                        layer.msg('删除成功', {icon: 6});
+                    } else {
+                        layer.msg('删除失败', {icon: 5});
+                    }
+                });
+            }
+
+            table.reload('demo');
+        });
+
+
         //监听行工具事件
         table.on('tool(test)', function (obj) {
             console.info(obj);
@@ -184,26 +210,7 @@
 
                 form.render();
             } else {
-                //删除
-                var data = table.checkStatus('demo').data;
-                layer.alert(data.length);
-                var ids = [];
-                if (data.length == 0) {
-                    layer.msg('请选择要删除的记录');
-                } else {
-                    for (var a in data) {
-                        ids.push(data[a].id);
-                    }
-                    $.post('del', {"ids": ids}, function (flag) {
-                        if (flag) {
-                            layer.msg('删除成功', {icon: 6});
-                        } else {
-                            layer.msg('删除失败', {icon: 5});
-                        }
-                    });
-                }
 
-                table.reload('demo');
             }
         });
 

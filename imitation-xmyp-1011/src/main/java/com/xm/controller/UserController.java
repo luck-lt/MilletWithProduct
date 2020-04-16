@@ -61,11 +61,22 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping("/UpdateUser")
-    public int UpdateUser(User user) {
-        int ro = userService.UpdateUser(user);
-        if (ro > 0)
-            return 1;
-        return 0;
+    @PostMapping("/DeleteUser")
+    public boolean DeleteUser(Integer[] user_id, Integer id) {
+        System.out.println("龙某+======================================================");
+        if (("null").equals(id)) {
+            for (int i = 0; i < user_id.length; i++) {
+                boolean ro = userService.removeById(user_id);
+            }
+            return true;
+
+        } else if (user_id.length == 0) {
+            boolean ro = userService.removeById(id);
+            if (ro)
+                return true;
+        }
+
+        return false;
+
     }
 }
