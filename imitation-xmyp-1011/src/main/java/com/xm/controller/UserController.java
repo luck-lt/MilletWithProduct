@@ -1,6 +1,7 @@
 package com.xm.controller;
 
 import com.github.pagehelper.PageHelper;
+import com.xm.dao.UserMapper;
 import com.xm.pojo.PageResult;
 import com.xm.pojo.User;
 import com.xm.service.UserService;
@@ -15,6 +16,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @ResponseBody
     @PostMapping("/login")
@@ -37,7 +39,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping("/addUser")
+    @GetMapping("/addUser")
     public int addUser(User user) {
         Date currentDate = new Date(System.currentTimeMillis());
         user.setRegeist_time(currentDate);
@@ -61,22 +63,32 @@ public class UserController {
     }
 
     @ResponseBody
-    @PostMapping("/DeleteUser")
-    public boolean DeleteUser(Integer[] user_id, Integer id) {
+    @GetMapping("/DeleteUser")
+    public int DeleteUser(Integer[] user_id, Integer id) {
         System.out.println("龙某+======================================================");
-        if (("null").equals(id)) {
+        if (id == null) {
+            System.out.println("某及");
             for (int i = 0; i < user_id.length; i++) {
-                boolean ro = userService.removeById(user_id);
+                int ro = userService.DeleteUser(user_id[i]);
             }
-            return true;
+            return 1;
 
-        } else if (user_id.length == 0) {
-            boolean ro = userService.removeById(id);
-            if (ro)
-                return true;
+        } else {
+            int ro = userService.DeleteUser(id);
+            if (ro > 0)
+                return 1;
         }
 
-        return false;
+        return 0;
 
+    }
+
+    @ResponseBody
+    @PostMapping("/UpdateUser")
+    public int UpdateUser(User user) {
+        int ro = userService.UpdateUser(user);
+        if (ro > 0)
+            return 1;
+        return 0;
     }
 }

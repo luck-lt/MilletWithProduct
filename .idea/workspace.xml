@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/ProductManage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PublicEntityClass/target/classes/com/xm/pojo/user.class" beforeDir="false" afterPath="$PROJECT_DIR$/PublicEntityClass/target/classes/com/xm/pojo/user.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/dao/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,19 +98,19 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin" />
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib" />
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin2" />
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\layui" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin" />
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui\lay\modules" />
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui" />
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\layui" />
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui\css\modules" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin2" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static" />
+      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\layui" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -175,7 +186,7 @@
       <workItem from="1586910501719" duration="7503000" />
       <workItem from="1586918889317" duration="29690000" />
       <workItem from="1586996867604" duration="5053000" />
-      <workItem from="1587002361474" duration="106000" />
+      <workItem from="1587002361474" duration="9712000" />
     </task>
     <task id="LOCAL-00001" summary="GitHub">
       <created>1586600920843</created>
@@ -254,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586955877823</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="GitHub">
+      <created>1587002612901</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1587002612901</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,10 +287,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="413" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586940607321" />
-    <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser" timestamp="1586955027735">
+    <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser" timestamp="1587004524627">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586955027735" />
+    <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587004524627" />
     <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1586599732340">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -281,15 +299,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586690703063" />
-    <state x="69" y="12" key="CommitChangelistDialog2" timestamp="1586955873470">
+    <state x="69" y="12" key="CommitChangelistDialog2" timestamp="1587002608693">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586955873470" />
+    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587002608693" />
     <state x="882" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600916127" />
-    <state width="478" height="438" key="DebuggerActiveHint" timestamp="1586999903207">
+    <state width="478" height="438" key="DebuggerActiveHint" timestamp="1587003363563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="478" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1586999903207" />
+    <state width="478" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1587003363563" />
     <state x="962" y="220" key="FileChooserDialogImpl" timestamp="1586922662580">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -303,62 +321,62 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1043" y="227" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586600779900" />
-    <state width="1071" height="462" key="GridCell.Tab.0.bottom" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.0.bottom" timestamp="1587024171004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
     <state width="987" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="462" key="GridCell.Tab.0.center" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.0.center" timestamp="1587024171003">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587024171003" />
     <state width="987" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="462" key="GridCell.Tab.0.left" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.0.left" timestamp="1587024171003">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587024171003" />
     <state width="987" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="462" key="GridCell.Tab.0.right" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.0.right" timestamp="1587024171003">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587024171003" />
     <state width="987" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="462" key="GridCell.Tab.1.bottom" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.1.bottom" timestamp="1587024171004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
     <state width="670" height="279" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110732" />
-    <state width="1071" height="462" key="GridCell.Tab.1.center" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.1.center" timestamp="1587024171004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
     <state width="670" height="279" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110731" />
-    <state width="1071" height="462" key="GridCell.Tab.1.left" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.1.left" timestamp="1587024171004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
     <state width="670" height="279" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110731" />
-    <state width="1071" height="462" key="GridCell.Tab.1.right" timestamp="1587002595935">
+    <state width="1071" height="208" key="GridCell.Tab.1.right" timestamp="1587024171004">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="462" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587002595935" />
+    <state width="1071" height="208" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
     <state width="670" height="279" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110732" />
-    <state width="1071" height="210" key="GridCell.Tab.2.bottom" timestamp="1587001271318">
+    <state width="1071" height="237" key="GridCell.Tab.2.bottom" timestamp="1587006264062">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="210" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587001271318" />
-    <state width="1071" height="210" key="GridCell.Tab.2.center" timestamp="1587001271318">
+    <state width="1071" height="237" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
+    <state width="1071" height="237" key="GridCell.Tab.2.center" timestamp="1587006264062">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="210" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1587001271318" />
-    <state width="1071" height="210" key="GridCell.Tab.2.left" timestamp="1587001271317">
+    <state width="1071" height="237" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
+    <state width="1071" height="237" key="GridCell.Tab.2.left" timestamp="1587006264062">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="210" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1587001271317" />
-    <state width="1071" height="210" key="GridCell.Tab.2.right" timestamp="1587001271318">
+    <state width="1071" height="237" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
+    <state width="1071" height="237" key="GridCell.Tab.2.right" timestamp="1587006264062">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="210" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1587001271318" />
+    <state width="1071" height="237" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
     <state x="465" y="129" key="MultipleFileMergeDialog" timestamp="1586916187404">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -393,16 +411,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586999680203" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/UserController.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

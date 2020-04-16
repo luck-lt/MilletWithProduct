@@ -27,4 +27,8 @@
 		,telephone=#{telephone}
 		WHERE login_name=#{login_name}
 	</update>
+
+    <delete id="DeleteUser" parameterType="int">
+          delete from User where user_id=#{user_id}
+    </delete>
 </mapper>
