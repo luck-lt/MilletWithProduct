@@ -18,6 +18,9 @@
     </sql>
     <select id="findAll" resultType="User">
         select * from os_user
-        <include refid="condition" />
+        <include refid="condition"/>
+    </select>
+    <select id="findLogin" resultType="int">
+        SELECT COUNT(1) FROM `user` WHERE  login_password=#{login_password} AND user_id=#{user_id} OR telephone=#{telephone};
     </select>
 </mapper>

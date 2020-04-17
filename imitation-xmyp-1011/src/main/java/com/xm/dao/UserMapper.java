@@ -14,5 +14,7 @@ import java.util.List;
  */
 @Mapper
 public interface UserMapper extends SuperMapper<User> {
-   public List<User> findAll(User user);
+    public List<User> findAll(User user);
+
+    public int findLogin(User user);
 }

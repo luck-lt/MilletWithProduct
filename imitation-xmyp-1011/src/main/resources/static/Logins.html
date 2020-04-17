@@ -2,170 +2,184 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>小米账号-注册</title>
+    <title>小米账号-登录</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="layui/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="xmyp/logins.css">
-    <!--  <link rel="stylesheet" href="huakuai/layui/css/layui.css">-->
+    <link rel="stylesheet" href="xmyp/logins.css">
     <script type="text/javascript" src="layui/jquery.min.js"></script>
     <script type="text/javascript" src="layui/layui.js"></script>
     <script type="text/javascript" charset="utf-8">
         layui.config({
             base: 'layui/'
-        }).use(['sliderVerify', 'jquery', 'form'], function () {
-            var sliderVerify = layui.sliderVerify,
+        }).use(['jquery', 'form', 'layer'], function () {
+
+            /*数据的映入设置*/
+            var $ = layui.$ //重点处
+                , layer = layui.layer,
                 $ = layui.jquery,
                 form = layui.form;
-            var slider = sliderVerify.render({
-                elem: '#slider1',
-                isAutoVerify: false,//关闭自动验证
-                bg: 'layui-bg-red',//自定义背景样式名 红
-                // text: '滑动',
-                onOk: function () {//当验证通过回调
-                    if ($('#sjh').val() == "") {
-                        layer.msg("请输入你的手机号码！");
-                        slider.reset(); //滑块的重置
-                    } else {
-                        //layer.msg("滑块验证通过");
-                        /* $.ajax({
-                             url: './getSsm',
-                             method: 'post',
-                             data: {'number': $('#sjh').val()},
-                             dataType: 'JSON',
-                             success: function (data) {
-                                 alert('123');
-                                 layer.msg('验证码发送成功，请注意查看');
-                             }
-                         });*/
-                        $.post("./getSsm", {'number': $('#sjh').val()}, function (data) {
-                            layer.msg('验证码发送成功，请注意查看！');
+            form.verify({
+                required: function (value) {
+                    if (value == "") {
+                        return "请输入账号";
+                    }
+                }
+            });
+            form.verify({
+                //password是 lay-verify值
+                password: function (value) {
+                    if (value == "") {
+                        return "密码不为空";
+                    }
+                }
+            });
+            form.on('submit(submit)', function (data) {
+                $.post('./dl', data.field, function (data) {
+                    if (data.zj == "true") {
+                        layer.msg('登录成功', {
+                            offset: ['50%'],
+                            time: 1000 //1秒关闭（如果不配置，默认是3秒）
+                        }, function () {
+                            window.location.href = 'index.html';
                         });
-                        $('#slider1').parent().parent().hide();
-                        $("input[name='code']").parent().parent().show();
+                        /* layer.msg("登录成功", {time: 2000});
+                         window.location.href = 'index.html';*/
+                    } else {
+                        layer.msg("登录失败")
                     }
-                }
-            })
-            var mobile = /^1[3|4|5|7|8]\d{9}$/;
-            form.verify({
-                phone: function (value) {
-                    var flag = mobile.test(value);
-                    if (!flag) {
-                        return '请输入正确手机号';
-                    }
-                }
-            });
-            var yzm = /^\d{6}$/;
-            form.verify({
-                number: function (value) {
-                    var flag = yzm.test(value);
-                    if (!flag) {
-                        return '请输入6位验证码';
-                    }
-                }
-            });
-            //监听提交
-            form.on('submit(formDemo)', function (data) {
-
-                if (slider.isOk()) {
-                    //layer.msg(JSON.stringify(data.field));
-                    $.post("./yz", data.field, function (data) {
-                        layer.msg(data.zj);
-                        if (data.zj == "true") {
-                            layer.msg('手机号码验证成功');
-
-                        } else {
-                            layer.msg('验证码错误！');
-                        }
-                    }, 'json');
-                } else {
-                    layer.msg("请先通过滑块验证");
-                }
-
+                }, 'json');
                 return false;
             });
-            $('.layui-btn-primary').click(function () {
-                $('#slider1').parent().parent().show();
-                $("input[name='code']").parent().parent().hide();
-                slider.reset(); //滑块的重置
-            });
-            $("#sjh").blur(function () {
-                var gr_tel = $(this).val();
-                var re = /^1\d{10}$/;
-                if (!re.test(gr_tel)) {
-                    alert("请输入正确手机号码！");
-                    $(".i-status").hide();
-                } else {
-                    $(".i-status").show();
-                }
-            })
-            //图标的显示
-            $(".i-status ").css({
-                    "position": "absolute",
-                    "display": "none",
-                    "width": "16px",
-                    "height": "16px",
-                    "top": "12px",
-                    "right": "12px",
-                    "background": "url('xmyp/img/icon.png') no-repeat",
-                    "background-position": "0 -117px",
-                }
-            );
         });
     </script>
 </head>
 <body class="zh_CN">
-<div class="wrapper">
+<div class="wrapper">              <!-- loading -->
     <div class="wrap">
-        <div class="layout">
-            <div class="n-frame device-frame reg_frame" id="main_container">
-                <div class="external_logo_area"><a class="milogo" href="javascript:void(0)"></a></div>
-                <div class="title-item t_c">
-                    <h4 class="title_big30">注册小米帐号</h4>
-                </div>
-                <div>
-                    <div class="regbox">
-                        <form class="layui-form" action="">
-                            <div class="form-item form-item-phone">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">手机号码</label>
-                                    <div class="layui-input-block">
-                                        <input id="sjh" type="text" name="phone" required lay-verify="phone"
-                                               placeholder="建议使用常用手机号"
-                                               autocomplete="off" class="layui-input">
-                                        <i class="i-status"></i>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">滑动验证</label>
-                                    <div class="layui-input-block">
-                                        <div id="slider1"></div>
-                                    </div>
-                                </div>
-                                <div class="layui-form-item" hidden>
-                                    <label class="layui-form-label">验证码</label>
-                                    <div class="layui-input-inline">
-                                        <input type="text" lay-verify="number" name="code" required
-                                               placeholder="请输入验证码" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即注册</button>
-                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        <div class="layout_panel">
+            <div class="layout" id="layout">
+                <div id="main-content">                      <!--表单输入登录-->
+                    <div class="mainbox form-panel" id="login-main" style="display: block;">
+                        <div id="custom_display_2"><a class="ercode" id="qrcode-trigger"></a>
+                        </div>                        <!-- header s -->
+                        <div class="lgnheader">
+                            <div class="header_tit t_c"><em id="custom_display_1" class="milogo">
+                                <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="48" height="48" rx="3" ry="3" style="fill:#ff6700"></rect>
+                                    <rect x="10" y="15" width="4.2" height="18" style="fill:#FFFFFF"></rect>
+                                    <rect x="33.75" y="15" width="4.2" height="18" style="fill:#FFFFFF"></rect>
+                                    <rect x="11.25" y="15" width="15" height="4.1" style="fill:#FFFFFF"></rect>
+                                    <rect x="26.2" y="20.55" width="4.2" height="12.5" style="fill:#FFFFFF"></rect>
+                                    <rect x="20.6" y="15" width="9.8" height="9.8" rx="4.4" ry="4.4"
+                                          style="fill:#FFFFFF"></rect>
+                                    <rect x="20.2" y="19" width="6" height="6" rx="2" ry="2"
+                                          style="fill:#ff6700"></rect>
+                                    <rect x="18" y="19.1" width="4" height="2.2" style="fill:#ff6700"></rect>
+                                    <rect x="24.2" y="23" width="1.94" height="10" style="fill:#ff6700"></rect>
+                                    <rect x="18.1" y="22.8" width="4.2" height="10.2" style="fill:#FFFFFF"></rect>
+                                </svg>
+                            </em>                            <h4 class="header_tit_txt" id="login-title">小米帐号登录</h4>
+                                <div class="site_info"></div>
+                            </div>
+                        </div>                       <!-- header e -->                        <!-- tab s -->
+                        <div class="nav_tabs_panel">
+                            <div id="nav-tabs" class="nav_tabs"><a class="navtab-link now" href="javascript:void(0);"
+                                                                   data-tab="pwd">帐号登录</a><span class="line"></span> <a
+                                    class="navtab-link" href="javascript:void(0);" data-tab="qr">扫码登录</a></div>
+                        </div>                        <!-- tab e -->                        <!-- tab con s -->
+                        <div class="tabs-con tabs_con now" data-con="pwd">
+                            <div>
+                                <div class="login_area" id="login-main-form">
+                                    <div class="loginbox c_b">                                  <!-- 输入框 -->
+                                        <form class="layui-form" action="">
+                                            <div class="layui-form-item">
+                                                <input type="text" name="username" required lay-verify="required"
+                                                       placeholder="手机号码/小米ID" autocomplete="off"
+                                                       class="layui-input">
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <input type="password" name="password" required
+                                                       lay-verify="password"
+                                                       placeholder="密码" autocomplete="off" class="layui-input">
+                                            </div>
+
+                                            <div class="security_Controller" style="display: none;"><label
+                                                    class="checkbox_area"> <input type="checkbox"
+                                                                                  id="trustSecurityController"
+                                                                                  class="checkbox">使用安全控件</label></div>
+                                            <!-- 错误信息 -->
+                                            <div id="captcha"></div>
+                                            <div class="err_tip">
+                                                <div><em class="icon_error"></em><span class="error-con"></span></div>
+                                            </div>
+                                            <div class="layui-input-block"
+                                                 style="margin: 0px 0px 10px 0px;min-height: 0px;">
+                                                <button class="layui-btn layui-bg-red" style="width: 360px" lay-submit
+                                                        lay-filter="submit">登录
+                                                </button>
+                                            </div>
+                                        </form>
+                                        <div class="other_panel clearfix"><span id="custom_display_256"
+                                                                                class="sms_link">                                      <a
+                                                href="javascript:;" class="btnadpt btn_gray login_type_link"
+                                                id="ChangeLoginType">手机短信登录/注册</a>                                    </span>
+                                            <div class="reverse" id="extra-links">
+                                                <div class="n_links_area reg_forget_links reg-forget-links"
+                                                     id="custom_display_64"><a class="outer-link"
+                                                                               href="https://account.xiaomi.com/pass/register?sid=miotstore&amp;_bannerBiz=miotstore&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F">立即注册</a><span>|</span>
+                                                    <a class="outer-link"
+                                                       href="https://account.xiaomi.com/pass/forgetPassword?sid=miotstore&amp;_bannerBiz=miotstore&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F">忘记密码？</a>
+                                                </div>
+                                                <div class="n_links_area sms_unavaliable_links sms-unavaliable-links"><a
+                                                        target="_blank"
+                                                        href="https://static.account.xiaomi.com/html/faq/faqSMSerror.html">收不到验证码？</a>
+                                                </div>
+                                            </div>                                    <!-- 其他登录方式 s -->
+                                            <div style="display: block;" class="other_login_type sns-login-container"
+                                                 id="custom_display_16">
+                                                <fieldset class="oth_type_tit">
+                                                    <legend align="center" class="oth_type_txt">其他方式登录</legend>
+                                                </fieldset>
+                                                <div id="sns-login-links" class="oth_type_links"><a
+                                                        class="icon_type btn_qq sns-login-link" data-type="qq"
+                                                        href="/pass/sns/login/auth?appid=100284651&amp;&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F&amp;sid=miotstore"
+                                                        title="QQ登录" target="_blank"><i
+                                                        class="btn_sns_icontype icon_default_qq"></i></a><a
+                                                        class="icon_type btn_weibo sns-login-link" data-type="weibo"
+                                                        href="/pass/sns/login/auth?appid=2996826273&amp;&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F&amp;sid=miotstore"
+                                                        title="微博登录" target="_blank"><i
+                                                        class="btn_sns_icontype icon_default_weibo"></i></a><a
+                                                        class="icon_type btn_alipay sns-login-link" data-type="alipay"
+                                                        href="/pass/sns/login/auth?appid=2088011127562160&amp;&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F&amp;sid=miotstore"
+                                                        title="支付宝登录" target="_blank"><i
+                                                        class="btn_sns_icontype icon_default_alipay"></i></a><a
+                                                        class="icon_type btn_weixin sns-login-link" data-type="weixin"
+                                                        href="/pass/sns/login/auth?appid=wxxmzh&amp;scope=snsapi_login&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F&amp;sid=miotstore"
+                                                        title="微信登录" target="_blank"><i
+                                                        class="btn_sns_icontype icon_default_weixin"></i></a></div>
+                                            </div>                                    <!-- 其他登录方式 e --> <p
+                                                    class="acq_tips" style="display: none;"></p></div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="tabs-con tabs_con" data-con="qr"></div>                        <!-- tab con e -->
                     </div>
-                    <div class="privacy_box">
-                        <div class="msg">
-                            <label class="n_checked select-privacy">
-                                <!--<i class="icon_select"></i>-->已阅读并同意：小米 <a href="/about/protocol/agreement"
-                                                                               class="inspect_link agreement_link"
-                                                                               title="用户协议" target="_blank">用户协议</a>和<a
-                                    href="/about/protocol/privacy" class="inspect_link privacy_link" title=" 隐私政策 "
-                                    target="_blank"> 隐私政策 </a>
-                            </label>
+                    <div class="ercode_area" id="login-qrcode" style="height: 480px; width: 854px; display: none;">
+                        <div class="ercode_pannel"><a class="code_close" href="javascript:void(0)" title="关闭"
+                                                      id="qrcode-close"><span class="icon_code_close"></span></a>
+                            <div class="ercode_box">
+                                <div class="code_hd"><h3 class="code_tit">小米帐号扫码登录</h3>
+                                    <p>请打开「设置 &gt; 小米帐号 &gt; 右上角扫一扫」扫码登录</p></div>
+                                <div class="code_iframe">
+                                    <iframe style="background:#fff;" src="about:blank" id="qriframe" frameborder="0"
+                                            scrolling="no"
+                                            sandbox="allow-scripts allow-same-origin allow-top-navigation allow-modals"
+                                            height="270" width="270"></iframe>
+                                </div>
+                                <div class="custom_sub_txt"><p id="custom-qr-name"></p>
+                                    <p>小米手机可打开「设置」&gt;「小米帐号」扫码登录</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,23 +187,71 @@
         </div>
     </div>
 </div>
-<div class="n-footer">
+<div id="custom_display_4" class="n-footer">
     <div class="nf-link-area clearfix">
         <ul class="lang-select-list">
-            <li><a class="lang-select-li current" href="javascript:void(0)" data-lang="zh_CN">简体</a>|</li>
-            <li><a class="lang-select-li" href="javascript:void(0)" data-lang="zh_TW">繁体</a>|</li>
-            <li><a class="lang-select-li" href="javascript:void(0)" data-lang="en">English</a></li>
-
-            |
-            <li><a class="a_critical" href="https://static.account.xiaomi.com/html/faq/faqList.html"
-                   target="_blank"><em></em>常见问题</a></li>
-
+            <li><a href="javascript:void(0)" data-lang="zh_CN" class="lang-select-li current">简体</a>|</li>
+            <li>
+                <a href="?sid=miotstore&amp;_bannerBiz=miotstore&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F&amp;_locale=zh_TW"
+                   data-lang="zh_TW" class="lang-select-li">繁体</a>|
+            </li>
+            <li>
+                <a href="?sid=miotstore&amp;_bannerBiz=miotstore&amp;callback=https%3A%2F%2Fshopapi.io.mi.com%2Fapp%2Fshop%2Fauth%3Flogid%3D1586997724.246425636%26sign%3Db5353420a9974156016281cb5793f8f8%26followup%3Dhttps%253A%252F%252Fwww.xiaomiyoupin.com%252F&amp;_locale=en"
+                   data-lang="en" class="lang-select-li">English</a>|
+            </li>
+            <li><a href="https://static.account.xiaomi.com/html/faq/faqList.html" target="_blank">常见问题</a>|</li>
+            <li><a id="msg-privacy" href="/about/protocol/privacy" target="_blank">隐私政策</a></li>
         </ul>
     </div>
-    <p class="nf-intro"><span>小米公司版权所有-京ICP备10046444-<a class="beianlink beian-record-link" target="_blank"
-                                                        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"><span><img
-            src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png"></span>京公网安备11010802020134号</a>-京ICP证110507号</span>
-    </p>
+    <p class="nf-intro">小米公司版权所有-京ICP备10046444-<a class="beian-record-link" target="_blank"
+                                                  href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"><span><img
+            src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png"></span>京公网安备11010802020134号</a>-京ICP证110507号
+    </p></div>
+<div class="modal_container" style="display: none;">
+    <div class="modal_msk"></div>
+    <div class="modal_tip mod_acc_tip security-controller-modal" id="modal-id-0" style="display: none;">
+        <div class="modal_tip_flex">
+            <div class="modal_tip_hd modal-header">
+                <div class="external_logo_area"><a class="milogo" href="javascript:void(0)"></a></div>
+                <div class="modal-header-text modal_tip_title">提示</div>
+                <a href="javascript:void(0)" title="" class="modal-header-close btn_mod_close"><span>关闭</span></a></div>
+            <div class="modal_tip_bd modal-body">
+                <div id="sect-controller-panel" class="security_controller_panel"><h4>您需要安装安全控件，才可使用安全登录。</h4>
+                    <p>控件可对您的密码进行加密保护，提升账户安全性。</p>
+                    <p>请点击“立即安装控件”按钮，并根据提示进行安装。</p>
+                    <div class="tip_msg">完成安装后，请重新启动浏览器</div>
+                </div>
+                <div class="tip_btns"><a title="立即安装控件"
+                                         href="https://account.xiaomi.com/static/res/0369340/account-static/static/mipay/XiaomiCtrl.exe"
+                                         class="btn_tip btn_commom btn-action-controller">立即安装控件</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="miverify_wind" style="display: none;">
+    <div class="miverify_panel_ghost"></div>
+    <div class="miverify_panel_box loading">
+        <div class="miverify_panel_loading">
+            <div class="miverify_panel_loading_icon"></div>
+            <span class="miverify_panel_loading_content">环境安全检测中...</span>
+        </div>
+        <div class="miverify_panel_error">
+            <p class="miverify_panel_error_title">提示</p>
+            <div class="miverify_panel_error_content"></div>
+            <div class="miverify_error_footer_panel" style="display:none;">
+                <button class="miverify_cancel_btn">取消</button>
+                <button class="miverify_ok_btn miverify_refresh_btn">重试</button>
+            </div>
+        </div>
+        <div class="miverify_panel_next">
+            <div class="miverify_wrap">
+                <div class="miverify_widget">
+                    <div class="miverify_window">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

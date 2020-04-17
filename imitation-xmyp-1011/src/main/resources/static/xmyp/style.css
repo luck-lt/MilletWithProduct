@@ -1565,7 +1565,7 @@ body {
 }
 
 .m-site-top {
-    height: 48px;
+    /* height: 48px;*/
     background: #333;
     font-size: 14px;
     position: relative;
@@ -1681,7 +1681,7 @@ body {
     right: 0
 }
 
-.m-site-top .h-app-icon {
+.h-app-icon {
     left: 0;
     top: 16px
 }
@@ -2373,8 +2373,8 @@ button.m-close {
 }
 
 .m-overlay {
- /*   -webkit-perspective: 600;
-    perspective: 600;*/
+    /*   -webkit-perspective: 600;
+       perspective: 600;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -3605,7 +3605,7 @@ button.swiper-pagination-bullet {
     height: 132px;
     margin: 0 auto;
     background-repeat: no-repeat;
-    background-origin: center center;
+    /*    background-origin: center center;*/
     background-size: 100%
 }
 
@@ -6672,8 +6672,8 @@ div.p-hero-wrap .p-hreo-nav .m-info {
 }
 
 .address-list .toAddAddress:hover .addIcon {
-/*    margin-left: 0 auto;
-    margin-right: 0 auto;*/
+    /*    margin-left: 0 auto;
+        margin-right: 0 auto;*/
     margin-top: 68px;
     text-align: center
 }
@@ -13978,9 +13978,9 @@ body {
     padding: 10px 20px
 }
 
-.personal-comment-write-container .comment-list .personal-comment-write-item .item-comment .text .textarea::palceholder {
+/*.personal-comment-write-container .comment-list .personal-comment-write-item .item-comment .text .textarea::palceholder {
     color: #ccc
-}
+}*/
 
 .personal-comment-write-container .comment-list .personal-comment-write-item .item-comment .text .textarea::-moz-placeholder {
     color: #ccc
@@ -14508,3 +14508,9 @@ body {
     font-size: 20px;
     color: #6d6d6d
 }
+
+/*自增*/
+.layui-bg-black {
+    z-index: 105
+}
+
