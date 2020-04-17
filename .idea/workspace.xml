@@ -2,21 +2,118 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/ProductManage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/ProductMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product/9.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PublicEntityClass/target/classes/com/xm/pojo/user.class" beforeDir="false" afterPath="$PROJECT_DIR$/PublicEntityClass/target/classes/com/xm/pojo/user.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/ProductManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/ProductManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/aiwrap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/18.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/19.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/20.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/22.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/23.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/24.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/26.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/27.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/28.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/29.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/30.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/34.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/35.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/36.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/37.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/38.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/39.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/40.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/42.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/44.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/46.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/47.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/48.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/49.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/50.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/52.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/60.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/66.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/67.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/68.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/69.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/70.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/images/face/9.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/dao/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/dao/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/com/xm/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/target/classes/mapper/UserMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +128,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -85,7 +183,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/image/product" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -99,11 +197,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\image\product" />
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\mapper" />
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui\lay\modules" />
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui" />
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\layui" />
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui\css\modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin" />
@@ -151,7 +249,7 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.2691606" />
+          <option name="contentProportion" value="0.18553889" />
           <treeState>
             <expand>
               <path>
@@ -186,7 +284,7 @@
       <workItem from="1586910501719" duration="7503000" />
       <workItem from="1586918889317" duration="29690000" />
       <workItem from="1586996867604" duration="5053000" />
-      <workItem from="1587002361474" duration="9712000" />
+      <workItem from="1587002361474" duration="16339000" />
     </task>
     <task id="LOCAL-00001" summary="GitHub">
       <created>1586600920843</created>
@@ -272,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587002612901</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="GitHub">
+      <created>1587039981003</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1587039981003</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,10 +404,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586690703063" />
-    <state x="69" y="12" key="CommitChangelistDialog2" timestamp="1587002608693">
+    <state x="69" y="12" key="CommitChangelistDialog2" timestamp="1587039976000">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587002608693" />
+    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587039976000" />
     <state x="882" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600916127" />
     <state width="478" height="438" key="DebuggerActiveHint" timestamp="1587003363563">
       <screen x="0" y="0" width="1536" height="824" />
@@ -321,45 +426,45 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1043" y="227" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586600779900" />
-    <state width="1071" height="208" key="GridCell.Tab.0.bottom" timestamp="1587024171004">
+    <state width="1495" height="372" key="GridCell.Tab.0.bottom" timestamp="1587093326402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
+    <state width="1495" height="372" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
     <state width="987" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="208" key="GridCell.Tab.0.center" timestamp="1587024171003">
+    <state width="1495" height="372" key="GridCell.Tab.0.center" timestamp="1587093326402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587024171003" />
+    <state width="1495" height="372" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
     <state width="987" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="208" key="GridCell.Tab.0.left" timestamp="1587024171003">
+    <state width="1495" height="372" key="GridCell.Tab.0.left" timestamp="1587093326401">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587024171003" />
+    <state width="1495" height="372" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587093326401" />
     <state width="987" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="208" key="GridCell.Tab.0.right" timestamp="1587024171003">
+    <state width="1495" height="372" key="GridCell.Tab.0.right" timestamp="1587093326402">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587024171003" />
+    <state width="1495" height="372" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
     <state width="987" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
-    <state width="1071" height="208" key="GridCell.Tab.1.bottom" timestamp="1587024171004">
+    <state width="1193" height="235" key="GridCell.Tab.1.bottom" timestamp="1587093290104">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
+    <state width="1193" height="235" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
     <state width="670" height="279" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110732" />
-    <state width="1071" height="208" key="GridCell.Tab.1.center" timestamp="1587024171004">
+    <state width="1193" height="235" key="GridCell.Tab.1.center" timestamp="1587093290104">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
+    <state width="1193" height="235" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
     <state width="670" height="279" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110731" />
-    <state width="1071" height="208" key="GridCell.Tab.1.left" timestamp="1587024171004">
+    <state width="1193" height="235" key="GridCell.Tab.1.left" timestamp="1587093290104">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
+    <state width="1193" height="235" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
     <state width="670" height="279" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110731" />
-    <state width="1071" height="208" key="GridCell.Tab.1.right" timestamp="1587024171004">
+    <state width="1193" height="235" key="GridCell.Tab.1.right" timestamp="1587093290104">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="208" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587024171004" />
+    <state width="1193" height="235" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
     <state width="670" height="279" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110732" />
     <state width="1071" height="237" key="GridCell.Tab.2.bottom" timestamp="1587006264062">
       <screen x="0" y="0" width="1536" height="824" />

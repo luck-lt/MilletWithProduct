@@ -1,7 +1,6 @@
 package com.xm.controller;
 
 import com.github.pagehelper.PageHelper;
-import com.xm.dao.UserMapper;
 import com.xm.pojo.PageResult;
 import com.xm.pojo.User;
 import com.xm.service.UserService;
