@@ -17,9 +17,20 @@
         </where>
     </sql>
     <select id="findAll" resultType="User">
-        select * from os_user
+        select * from user
         <include refid="condition"/>
     </select>
+
+    <update id="UpdateUser" parameterType="User">
+		UPDATE User SET
+		login_password=#{login_password},real_name=#{real_name},sex=#{sex}
+		,telephone=#{telephone}
+		WHERE login_name=#{login_name}
+	</update>
+
+    <delete id="DeleteUser" parameterType="int">
+          delete from User where user_id=#{user_id}
+    </delete>
     <select id="findLogin" resultType="int">
         SELECT COUNT(1) FROM `user` WHERE  login_password=#{login_password} AND user_id=#{user_id} OR telephone=#{telephone};
     </select>

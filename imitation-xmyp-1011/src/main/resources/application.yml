@@ -8,21 +8,21 @@ spring:
     nacos:
       discovery:
         server-addr:  127.0.0.1:8848
-#ccl:
-#  sms:
-#    accessKeyId: LTAI4FumTFVrUjgqyLZ5AMcV         # accessKeyId
-#    accessKeySecret: q6IfjQGLLfROaPqzgYWpzJOjGnbuwW  # AccessKeySecret
-#    signName: 小米有品                  # 签名名称
-#    verifyCodeTemplate: SMS_187755835  # 模板编号
-#logging.level.org.springframework.boot.autoconfigure: ERROR
+  #ccl:
+  #  sms:
+  #    accessKeyId: LTAI4FumTFVrUjgqyLZ5AMcV         # accessKeyId
+  #    accessKeySecret: q6IfjQGLLfROaPqzgYWpzJOjGnbuwW  # AccessKeySecret
+  #    signName: 小米有品                  # 签名名称
+  #    verifyCodeTemplate: SMS_187755835  # 模板编号
+  #logging.level.org.springframework.boot.autoconfigure: ERROR
 
   datasource:
     #    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql:///xmyp?serverTimezone=UTC
     username: root
-#    password: longtao
-    password: 123456
+    password: longtao
+    #    password: 123456
     dbcp2:
       min-idle: 5
       initial-size: 5

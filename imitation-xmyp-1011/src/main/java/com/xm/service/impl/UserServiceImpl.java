@@ -31,6 +31,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
+    public int UpdateUser(User user) {
+        return userMapper.UpdateUser(user);
+    }
+
+    @Override
+    public int DeleteUser(Integer id) {
+        return userMapper.DeleteUser(id);
+    }
+
+    @Override
     public int findLogin(User user) {
         return userMapper.findLogin(user);
     }

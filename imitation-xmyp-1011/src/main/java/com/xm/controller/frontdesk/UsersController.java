@@ -45,8 +45,8 @@ public class UsersController {
     public String zc(User user) {
         Map<String, Object> map = new HashMap<String, Object>();
         user.setStatus(1);
-        String timeStr1 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        user.setRegeist_time(timeStr1);
+       /* String timeStr1 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));*/
+        user.setRegeist_time(new Date());
         user.setTelephone(user.getTelephone());
         user.setLogin_name(user.getTelephone());
         int i = userMapper.insert(user);
