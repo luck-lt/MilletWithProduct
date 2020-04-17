@@ -8,16 +8,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="imitation-xmyp-1011" />
+        <module name="consumer-xmyp-1022" />
         <module name="PublicEntityClass" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="consumer-xmyp-1022" target="1.8" />
       <module name="imitation-xmyp-1011" target="1.8" />
       <module name="PublicEntityClass" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="consumer-xmyp-1022" options="-parameters" />
       <module name="imitation-xmyp-1011" options="-parameters" />
     </option>
   </component>

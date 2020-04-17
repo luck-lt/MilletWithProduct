@@ -16,7 +16,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @ResponseBody
     @PostMapping("/login")
     public int Login(User user) {

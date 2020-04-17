@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MilletWithProduct.iml" filepath="$PROJECT_DIR$/.idea/MilletWithProduct.iml" />
       <module fileurl="file://$PROJECT_DIR$/PublicEntityClass/PublicEntityClass.iml" filepath="$PROJECT_DIR$/PublicEntityClass/PublicEntityClass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/consumer-xmyp-1022/consumer-xmyp-1022.iml" filepath="$PROJECT_DIR$/consumer-xmyp-1022/consumer-xmyp-1022.iml" />
       <module fileurl="file://$PROJECT_DIR$/imitation-xmyp-1011/imitation-xmyp-1011.iml" filepath="$PROJECT_DIR$/imitation-xmyp-1011/imitation-xmyp-1011.iml" />
     </modules>
   </component>

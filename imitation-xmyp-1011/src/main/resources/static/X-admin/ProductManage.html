@@ -16,15 +16,19 @@
         <title>商品管理</title>
 
         <style type="text/css">
-            .layui-table-cell {
-                height: 60px;
-                line-height: 60px;
+            td div.layui-table-cell {
+                height: 90px;
+                line-height: 80px;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 box-sizing: border-box;
                 padding: 0px 15px;
                 overflow: hidden;
+            }
+
+            .layui-table img {
+                max-width: 100px
             }
         </style>
     </head>
@@ -35,7 +39,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">产品名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="name" id="name" required lay-verify="required" autocomplete="off"
+                    <input type="text" name="pname" id="name" required lay-verify="required" autocomplete="off"
                            placeholder="请输入产品名称" class="layui-input">
                 </div>
             </div>
@@ -44,23 +48,6 @@
             <input type="hidden" name="userid" id="userid">
             <input type="hidden" name="image" id="image" value="">
 
-
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">产品类型</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="typeid" id="typeid" required lay-verify="required" autocomplete="off"
-                               placeholder="请输入回报金额" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">产品种类</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="kindid" id="kindid" required lay-verify="required" autocomplete="off"
-                               placeholder="请输入回报内容" class="layui-input">
-                    </div>
-                </div>
-            </div>
 
             <div class="layui-form-item" hidden>
                 <label class="layui-form-label">产品类型</label>
@@ -252,8 +239,7 @@
                 , {
                     field: 'pic_img',
                     title: '产品图片',
-                    width: '15%',
-                    height:240,
+                    width: '12%',
                     sort: true,
                     templet: '#imgTpl'
                 }
@@ -264,16 +250,16 @@
         });
 
 
-        /* //根据phone关键字查询
-         $('#queryRole').on('click', function () {
-             var find = document.getElementById("find").value;
-             table.reload('Products', {
-                 page: {curr: 1},
-                 url: '${pageContext.request.contextPath}/selectProductByName.action',
-                 where: {'name': find}
+        //根据phone关键字查询
+        $('#queryRole').on('click', function () {
+            var find = document.getElementById("find").value;
+            table.reload('Products', {
+                page: {curr: 1},
+                url: '${pageContext.request.contextPath}/selectProductByName.action',
+                where: {'name': find}
 
-             })
-         });*/
+            })
+        });
 
 
         //工具栏事件
@@ -298,41 +284,15 @@
 //监听工具条
         table.on('tool(test)', function (obj) {
             var data = obj.data;
-            //查看
-            if (obj.event === 'detail') {
-                $("#name").val(data.name);
-                $("#typeid").val(data.typename);
-                $("#kindid").val(data.kidename);
-                $("#introduce").val(data.introduce);
-                $("#detail").val(data.detail);
-                $("#rule").val(data.rule);
-                $("#supmoney").val(data.supmoney);
-                $("#backcontent").val(data.backcontent);
-                $("#needmoney").val(data.needmoney);
-                $("#backmoney").val(data.backmoney);
-                $("#teambrief").val(data.teambrief);
-                $("#teamdetail").val(data.teamdetail);
-                $("#teamtel").val(data.teamtel);
-                $("#numsup").val(data.numsup);
-                $("#numcol").val(data.numcol);
-                $('#imgshow').attr('src', "/file/" + data.image);
-                //遍历回报图片数组
-                $('#showImg1').empty();
-                $(data.imageUrls).each(function (index) {
-                    var image = data.imageUrls[index];
-                    var str = ' <div class="layui-inline">' +
-                        '<img class="layui-upload-img" src="/file/' + image + '" style="width:120px;height:200px;" ></div>';
-                    $('#showImg1').append(str);
-                })
-                layer.open({
-                    type: 1,
-                    offset: '10px',
-                    title: "查看产品信息",
-                    area: ['1080px', '620px'],
-                    content: $("#EditProduct")
-                });
-                // layer.msg('ID：'+ data.id + ' 的查看操作');
-            } else if (obj.event === 'del') {
+            layer.open({
+                type: 1,
+                offset: '10px',
+                title: "查看产品信息",
+                area: ['1080px', '620px'],
+                content: $("#EditProduct")
+            });
+            // layer.msg('ID：'+ data.id + ' 的查看操作');
+            if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     $.ajax({
                         url: '${pageContext.request.contextPath}/deleteProject.action',
@@ -355,15 +315,15 @@
                     obj.del();
                     layer.close(index);
                 });
-                // } else if(obj.event === 'edit'){
-                //
-                //     layer.open({
-                //         type:1,
-                //         offset: '10px',
-                //         title:"修改产品信息",
-                //         area: ['1080px', '620px'],
-                //         content: $("#EditProduct")
-                //     });
+            } else if (obj.event === 'edit') {
+
+                layer.open({
+                    type: 1,
+                    offset: '10px',
+                    title: "修改产品信息",
+                    area: ['1080px', '620px'],
+                    content: $("#EditProduct")
+                });
             }
         });
 
@@ -372,5 +332,6 @@
 
 
 </script>
+
 </body>
 </html>
