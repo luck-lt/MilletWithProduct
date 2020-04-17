@@ -22,7 +22,9 @@ public class UserController {
     public int Login(User user) {
         List<User> users = userService.findAll(user);
         if (users.size() != 0) {
-            return 1;
+            if (users.get(0).getStatus() == 0) {
+                return 1;
+            }
         }
         return 0;
     }
