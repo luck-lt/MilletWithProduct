@@ -16,7 +16,7 @@
         <title>商品管理</title>
 
         <style type="text/css">
-            td div.layui-table-cell {
+            .layui-table-cell {
                 height: 90px;
                 line-height: 80px;
                 position: relative;
@@ -33,164 +33,7 @@
         </style>
     </head>
 <body>
-<div class="layui-row" id="EditProduct" style="display:none;">
-    <div class="layui-col-md10">
-        <form class="layui-form layui-from-pane" id="updateUser" style="margin-top:20px">
-            <div class="layui-form-item">
-                <label class="layui-form-label">产品名称</label>
-                <div class="layui-input-block">
-                    <input type="text" name="pname" id="name" required lay-verify="required" autocomplete="off"
-                           placeholder="请输入产品名称" class="layui-input">
-                </div>
-            </div>
 
-            <input type="hidden" name="id" id="id">
-            <input type="hidden" name="userid" id="userid">
-            <input type="hidden" name="image" id="image" value="">
-
-
-            <div class="layui-form-item" hidden>
-                <label class="layui-form-label">产品类型</label>
-                <div class="layui-input-block">
-                    <select name="typeid" id="typeid1" lay-filter="aihao">
-                        <option value="0">公益众筹</option>
-                        <option value="1">普通众筹</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="layui-form-item" hidden>
-                <label class="layui-form-label">产品种类</label>
-                <div class="layui-input-block">
-                    <select name="kindid" id="kindid1" lay-filter="aihao">
-                        <option value="1">影音</option>
-                        <option value="2">公益</option>
-                        <option value="3">书籍</option>
-                        <option value="4">娱乐</option>
-                        <option value="5">科技</option>
-                        <option value="6">设计</option>
-                        <option value="7">农业</option>
-                        <option value="8">动漫</option>
-                        <option value="9">游戏</option>
-                        <option value="10">其他</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="layui-form-item" id="showImg">
-                <label class="layui-form-label">产品图片</label>
-                <div class="layui-input-block">
-                    <img class="layui-upload-img" id="imgshow" src="" style="width:100px;height:100px;">
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">产品系列图</label>
-                <div id="showImg1">
-
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">产品简介</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="请输入产品细节" class="layui-textarea" id="introduce" name="introduce"></textarea>
-                </div>
-            </div>
-
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">产品细节</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="请输入产品细节" class="layui-textarea" id="detail" name="detail"></textarea>
-                </div>
-            </div>
-
-
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">筹集金额</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="needmoney" id="needmoney" required lay-verify="required"
-                               autocomplete="off" placeholder="请输入筹集金额" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">支持金额</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="supmoney" id="supmoney" required lay-verify="required"
-                               autocomplete="off" placeholder="请输入支持金额" class="layui-input">
-                    </div>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">支持人数</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="numsup" id="numsup" required lay-verify="required" autocomplete="off"
-                               placeholder="请输入支持人数" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">收藏人数</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="numcol" id="numcol" required lay-verify="required" autocomplete="off"
-                               placeholder="请输入收藏人数" class="layui-input">
-                    </div>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">回报金额</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="backmoney" id="backmoney" required lay-verify="required"
-                               autocomplete="off" placeholder="请输入回报金额" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">回报内容</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="backcontent" id="backcontent" required lay-verify="required"
-                               autocomplete="off" placeholder="请输入回报内容" class="layui-input">
-                    </div>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">团队简介</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="teambrief" id="teambrief" required lay-verify="required"
-                               autocomplete="off" placeholder="请输入团队简介" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">团队电话</label>
-                    <div class="layui-input-inline">
-                        <input type="tel" name="teamtel" id="teamtel" lay-verify="required|phone" autocomplete="off"
-                               class="layui-input">
-                    </div>
-                </div>
-            </div>
-
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">团队细节</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="请输入团队细节" class="layui-textarea" id="teamdetail" name="teamdetail"></textarea>
-                </div>
-            </div>
-
-
-            <div class="layui-form-item" style="margin-top:40px" id="check" hidden>
-                <div class="layui-input-block">
-                    <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="formDemo">确认修改</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
 
 <div class="demoTable" style="padding: 15px">
@@ -283,15 +126,6 @@
 
 //监听工具条
         table.on('tool(test)', function (obj) {
-            var data = obj.data;
-            layer.open({
-                type: 1,
-                offset: '10px',
-                title: "查看产品信息",
-                area: ['1080px', '620px'],
-                content: $("#EditProduct")
-            });
-            // layer.msg('ID：'+ data.id + ' 的查看操作');
             if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     $.ajax({
@@ -306,7 +140,6 @@
                                 setTimeout(function () {
                                     layer.closeAll();//关闭所有的弹出层
                                 }, 1000);
-                                加载层 - 风格
                             } else {
                                 layer.msg("删除失败", {icon: 5});
                             }
@@ -316,13 +149,19 @@
                     layer.close(index);
                 });
             } else if (obj.event === 'edit') {
-
                 layer.open({
                     type: 1,
-                    offset: '10px',
                     title: "修改产品信息",
-                    area: ['1080px', '620px'],
-                    content: $("#EditProduct")
+                    //area: ['1080px', '620px'],
+                   // content: $("#fm2")
+                });
+                //填充表单
+                form.val('myfm', {
+                    "user_id": obj.data.user_id,
+                    "login_name": obj.data.login_name,
+                    "login_password": obj.data.login_password,
+                    "real_name": obj.data.real_name,
+                    "telephone": obj.data.telephone
                 });
             }
         });

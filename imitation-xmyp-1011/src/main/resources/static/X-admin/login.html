@@ -37,7 +37,7 @@
             const layer = layui.layer;
             //监听提交
             form.on('submit(login)', function (data) {
-                $.post("/login", data.field, function (res) {
+                /* $.post("http://127.0.0.1:1022/consumer/login", data.field, function (res) {
                     if (res == 1) {
                         location.href = 'index.html';
                     } else {
@@ -45,10 +45,28 @@
                         return false;
                     }
                 }, 'json');
+                return false;*/
+
+                $.ajax({
+                    url: 'http://127.0.0.1:1022/consumer/login',
+                    type: 'post',
+                    // data表示发送的数据
+                    data: data.field,
+                    // 定义发送请求的数据格式为JSON字符串
+                    contentType: "application/json;charset=UTF-8",
+                    //成功响应的结果
+                    success: function (res) {
+                        if (res == 1) {
+                            location.href = 'index.html';
+                        } else {
+                            layer.msg("用户名或密码错误！", {time: 2000});
+                            return false;
+                        }
+                    }
+                }, 'json')
                 return false;
             })
         })
-
     });
 </script>
 </body>
