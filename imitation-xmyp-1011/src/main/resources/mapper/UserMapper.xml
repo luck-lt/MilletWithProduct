@@ -31,4 +31,7 @@
     <delete id="DeleteUser" parameterType="int">
           delete from User where user_id=#{user_id}
     </delete>
+    <select id="findLogin" resultType="int">
+        SELECT COUNT(1) FROM `user` WHERE  login_password=#{login_password} AND user_id=#{user_id} OR telephone=#{telephone};
+    </select>
 </mapper>

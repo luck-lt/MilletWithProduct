@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米账号-注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="xmyp/register.css">
+    <!--  <link rel="stylesheet" href="huakuai/layui/css/layui.css">-->
+    <script type="text/javascript" src="layui/jquery.min.js"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        layui.config({
+            base: 'layui/'
+        }).use(['sliderVerify', 'jquery', 'form', 'layer'], function () {
+            var sliderVerify = layui.sliderVerify,
+                $ = layui.jquery,
+                form = layui.form;
+            /*数据的映入设置*/
+            var $ = layui.$ //重点处
+                , layer = layui.layer;
+
+            var InterValObj; //timer变量，控制时间
+            var count = 60; //间隔函数，1秒执行
+            var curCount;//当前剩余秒数
+
+            var slider = sliderVerify.render({
+                elem: '#slider1',
+                isAutoVerify: false,//关闭自动验证
+                bg: 'layui-bg-red',//自定义背景样式名 红
+                // text: '滑动',
+                onOk: function () {//当验证通过回调
+                    if ($('#sjh').val() == "") {
+                        layer.msg("请输入你的手机号码！");
+                        slider.reset(); //滑块的重置
+                    } else {
+                        //layer.msg("滑块验证通过");
+                        /* $.ajax({
+                             url: './getSsm',
+                             method: 'post',
+                             data: {'number': $('#sjh').val()},
+                             dataType: 'JSON',
+                             success: function (data) {
+                                 alert('123');
+                                 layer.msg('验证码发送成功，请注意查看');
+                             }
+                         });*/
+                        $.post("./getSsm", {'number': $('#sjh').val()}, function (data) {
+                            layer.msg('验证码发送成功，请注意查看！');
+                        });
+                        curCount = count;
+                        $("#btnSendCode").attr("disabled", "true");
+                        $("#btnSendCode").text("倒计时" + (curCount) + "秒");
+                        InterValObj = window.setInterval(SetRemainTime, 1000);//开始计时
+                        $('#slider1').parent().parent().hide();
+                        $("input[name='code']").parent().parent().show();
+                    }
+                }
+            });
+            var mobile = /^1[3|4|5|7|8]\d{9}$/;
+            form.verify({
+                phone: function (value) {
+                    var flag = mobile.test(value);
+                    if (!flag) {
+                        return '请输入正确手机号';
+                    }
+                }
+            });
+            var yzm = /^\d{6}$/;
+            form.verify({
+                number: function (value) {
+                    var flag = yzm.test(value);
+                    if (!flag) {
+                        return '请输入6位验证码';
+                    }
+                }
+            });
+            var yzpassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+            form.verify({
+                password: function (value) {
+                    var flag = yzpassword.test(value);
+                    if (value == "") {
+                        return "密码不能为空"
+                    }
+                    if (!flag) {
+                        return '请输入的正确密码';
+                    }
+                },
+                passwords: function (value) {
+                    var flag = yzpassword.test(value);
+                    if (value == "") {
+                        return "密码不能为空"
+                    }
+                    if (!flag) {
+                        return '请输入的正确密码';
+                    }
+                    if (value != $('input[name=\'login_password\']').val()) {
+                        return '输入密码不一致';
+                    }
+                }
+            });
+
+            //监听注册码提交
+            form.on('submit(formDemo)', function (data) {
+                if (slider.isOk()) {
+                    //layer.msg(JSON.stringify(data.field));
+                    $.post("./yz", data.field, function (data1) {
+                        layer.msg(data1.zj);
+                        if (data1.zj != "false") {
+                            /*  layer.msg('手机号码验证成功');*/
+                            /*注册的div模块隐藏*/
+                            $('#from1').hide();
+                            $('#from2').show();
+                            $('#h4').text(data1.zj)
+                        } else {
+                            layer.msg('验证码错误！');
+                        }
+                    }, 'json');
+                } else {
+                    layer.msg("请先通过滑块验证");
+                }
+                return false;
+            });
+            //监听注册码提交
+            form.on('submit(submit)', function (data) {
+                $.post('./zc', {
+                    'telephone': data.field.telephone = $('#h4').text(),
+                    'login_password': data.field.login_password
+                }, function (data) {
+                    if (data == "true") {
+                        layer.msg('注册成功', {
+                            offset: ['50%'],
+                            time: 1000 //1秒关闭（如果不配置，默认是3秒）
+                        }, function () {
+                            window.location.href = 'Logins.html';
+                        });
+                        //
+                    } else {
+                        layer.msg("注册失败")
+                    }
+                });
+                return false;
+            });
+
+            /* $('.layui-btn-primary').click(function () {
+                 $('#slider1').parent().parent().show();
+                 $("input[name='code']").parent().parent().hide();
+                 slider.reset(); //滑块的重置
+             });*/
+
+            $("#sjh").blur(function () {
+                var gr_tel = $(this).val();
+                var re = /^1\d{10}$/;
+                if (!re.test(gr_tel)) {
+                    layer.msg("请输入正确手机号码！");
+                    $(".i-status").hide();
+                } else {
+                    $(".i-status").show();
+                }
+            })
+            $("input[name='login_password']").blur(function () {
+                var gr_tel = $(this).val();
+                var re = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+                if (!re.test(gr_tel)) {
+                    $('.dis_box').show();
+                    $('.dis_box em').show();
+                    $('.dis_box span').text("密码长度8~16位，数字、字母、字符至少包含两种的正则").css('color', 'red');
+                } else {
+                    $('.dis_box span').text("密码长度8~16位，数字、字母、字符至少包含两种的正则").css('color', '#000');
+                    $('.dis_box').show();
+                    $('.dis_box em').hide();
+                }
+            })
+            $("input[name='passwords']").blur(function () {
+                var gr_tel = $(this).val();
+                var re = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+                if (!re.test(gr_tel)) {
+                    $('.dis_box').show();
+                    $('.dis_box em').show();
+                    $('.dis_box span').text("密码长度8~16位，数字、字母、字符至少包含两种的正则").css('color', 'red');
+                } else {
+                    if (gr_tel != $('input[name=\'login_password\']').val()) {
+                        $('.dis_box em').show();
+                        $('.dis_box span').text("两次密码不一致").css('color', 'red');
+                    } else {
+                        $('.dis_box span').text("密码长度8~16位，数字、字母、字符至少包含两种的正则").css('color', '#000');
+                        $('.dis_box').show();
+                        $('.dis_box em').hide();
+                    }
+                }
+            })
+            $("*:password").keyup(function () {
+                $('.dis_box span').text("密码长度8~16位，数字、字母、字符至少包含两种的正则").css('color', '#000');
+                $('.dis_box').show();
+                $('.dis_box em').hide();
+            });
+            //图标的显示
+            $(".i-status ").css({
+                    "position": "absolute",
+                    "display": "none",
+                    "width": "16px",
+                    "height": "16px",
+                    "top": "12px",
+                    "right": "12px",
+                    "background": "url('xmyp/img/icon.png') no-repeat",
+                    "background-position": "0 -117px",
+                }
+            );
+
+            /*倒计时*/
+
+            $('#btnSendCode').click(function () {
+                curCount = count;
+                //设置button效果，开始计时
+                $("#btnSendCode").attr("disabled", "true");
+                $("#btnSendCode").text("倒计时" + (curCount) + "秒");
+                InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+                //向后台发送处理数据
+                $.ajax({
+                    type: "POST", //用POST方式传输
+                    dataType: "text", //数据格式:JSON
+                    url: './getSsm', //目标地址
+                    data: {'number': $('#sjh').val()},
+                    error: function (data) {
+                        alert(data)
+                    },
+                    success: function (msg) {
+                    }
+                });
+            });
+
+            //timer处理函数
+            function SetRemainTime() {
+                if (curCount == 0) {
+                    window.clearInterval(InterValObj);//停止计时器
+                    $("#btnSendCode").removeAttr("disabled");//启用按钮
+                    $("#btnSendCode").text("重新发送");
+                } else {
+                    curCount--;
+                    $("#btnSendCode").text("倒计时" + (curCount) + "秒");
+                }
+            }
+        });
+    </script>
+</head>
+<body class="zh_CN">
+<div class="wrapper">
+    <div class="wrap">
+        <div class="layout">
+            <div class="n-frame device-frame reg_frame" id="main_container">
+                <div class="external_logo_area"><a class="milogo" href="javascript:void(0)"></a></div>
+                <div class="title-item t_c">
+                    <h4 class="title_big30">注册小米帐号</h4>
+                </div>
+                <div>
+                    <div class="regbox">
+                        <form class="layui-form" action="" id="from1">
+                            <div class="form-item form-item-phone" style="margin: 0px -30px">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">手机号码</label>
+                                    <div class="layui-input-block">
+                                        <input id="sjh" type="text" name="phone" required lay-verify="phone"
+                                               placeholder="建议使用常用手机号"
+                                               autocomplete="off" class="layui-input">
+                                        <i class="i-status"></i>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">滑动验证</label>
+                                    <div class="layui-input-block">
+                                        <div id="slider1"></div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item" hidden style="width: 500px">
+                                    <label class="layui-form-label">验证码</label>
+                                    <div class="layui-input-inline" style="width: 165px;margin-right: 0px">
+                                        <input type="text" lay-verify="number" name="code" required
+                                               placeholder="请输入验证码" class="layui-input">
+                                    </div>
+                                    <button style="margin: 0px 10px" class="layui-btn layui-btn-danger" id="btnSendCode"
+                                            type="button">
+                                    </button>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo" style="width: 250px">
+                                            立即注册
+                                        </button>
+                                        <!-- <button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="layui-form" action="" hidden id="from2">
+                            <h4>您注册的手机号为<span class="ff6 register-ph-num" id="h4">18598981223</span></h4>
+                            <h4>请设置您的密码：</h4>
+                            <div class="layui-form-item" style="margin: 10px 0px;width: 300px;">
+                                <!--<label class="layui-form-label">密码框</label>-->
+                                <div class="layui-input-inline" style="margin: 10px 0px;width: 300px;">
+                                    <input type="password" name="login_password" required lay-verify="password"
+                                           placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-input-inline" style="margin: 10px 0px;width: 300px;">
+                                    <input type="password" name="passwords" required lay-verify="passwords"
+                                           placeholder="请输入确认密码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="dis_box" hidden><em class="icon_error"></em><span
+                                        data-origin="密码长度8~16位，数字、字母、字符至少包含两种">请输入密码</span></div>
+                                <!--<div class="layui-form-mid layui-word-aux">请输入您的密码</div>-->
+                                <div class="layui-form-item">
+                                    <!-- <div class="layui-input-block">-->
+                                    <button class="layui-btn layui-bg-red" style="width: 300px;" lay-submit
+                                            lay-filter="submit">提交
+                                    </button>
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="privacy_box">
+                        <div class="msg">
+                            <label class="n_checked select-privacy">
+                                <!--<i class="icon_select"></i>-->已阅读并同意：小米 <a href="/about/protocol/agreement"
+                                                                               class="inspect_link agreement_link"
+                                                                               title="用户协议" target="_blank">用户协议</a>和<a
+                                    href="/about/protocol/privacy" class="inspect_link privacy_link" title=" 隐私政策 "
+                                    target="_blank"> 隐私政策 </a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="n-footer">
+    <div class="nf-link-area clearfix">
+        <ul class="lang-select-list">
+            <li><a class="lang-select-li current" href="javascript:void(0)" data-lang="zh_CN">简体</a>|</li>
+            <li><a class="lang-select-li" href="javascript:void(0)" data-lang="zh_TW">繁体</a>|</li>
+            <li><a class="lang-select-li" href="javascript:void(0)" data-lang="en">English</a></li>
+
+            |
+            <li><a class="a_critical" href="https://static.account.xiaomi.com/html/faq/faqList.html"
+                   target="_blank"><em></em>常见问题</a></li>
+
+        </ul>
+    </div>
+    <p class="nf-intro"><span>小米公司版权所有-京ICP备10046444-<a class="beianlink beian-record-link" target="_blank"
+                                                        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134"><span><img
+            src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png"></span>京公网安备11010802020134号</a>-京ICP证110507号</span>
+    </p>
+</div>
+</body>
+</html>

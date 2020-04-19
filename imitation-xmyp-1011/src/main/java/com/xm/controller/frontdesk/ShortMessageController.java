@@ -13,6 +13,7 @@ import com.xm.pojo.verificationcode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 /**
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author: Specime
  * @date:2020/4/13
  */
-@Controller
+@RestController
 public class ShortMessageController {
 
     //产品名称:云通信短信API产品,开发者无需替换

@@ -25,10 +25,10 @@ public class SendSms {
         request.setSysVersion("2017-05-25");
         request.setSysAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
-        request.putQueryParameter("PhoneNumbers", "15873008829");
+        request.putQueryParameter("PhoneNumbers", "18731256709");
         request.putQueryParameter("SignName", "小米有品");
         request.putQueryParameter("TemplateCode", "SMS_187755835");
-        request.putQueryParameter("TemplateParam", "{\"code\":\"0426\"}");
+        request.putQueryParameter("TemplateParam", "{\"code\":\"1214\"}");
 
         try {
             CommonResponse response = client.getCommonResponse(request);
