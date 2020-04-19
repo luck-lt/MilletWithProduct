@@ -1,21 +1,18 @@
 package com.xm.controller.frontdesk;
 
-import com.xm.dao.UserMapper;
-import com.xm.dao.verificationCodeMapper;
 import com.xm.pojo.User;
 import com.xm.pojo.verificationcode;
+import com.xm.service.UserService;
+import com.xm.service.verificationcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * @description
@@ -25,16 +22,16 @@ import java.util.regex.Pattern;
 @RestController
 public class UsersController {
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
     @Autowired
-    private verificationCodeMapper verificationCodeMapper;
+    private verificationcodeService verificationCodeMapper;
 
     @RequestMapping("/yz")
     public String yzm(verificationcode verificationcode) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("phone", verificationcode.getPhone());
         map.put("code", verificationcode.getCode());
-        List<verificationcode> list = verificationCodeMapper.selectByMap(map);
+        List<verificationcode> list = (List<verificationcode>) verificationCodeMapper.listByMap(map);
         if (list.size() != 0) {
             return "{\"zj\":" + list.get(0).getPhone() + "}";
         }
@@ -45,12 +42,12 @@ public class UsersController {
     public String zc(User user) {
         Map<String, Object> map = new HashMap<String, Object>();
         user.setStatus(1);
-       /* String timeStr1 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));*/
+        /* String timeStr1 = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));*/
         user.setRegeist_time(new Date());
         user.setTelephone(user.getTelephone());
         user.setLogin_name(user.getTelephone());
-        int i = userMapper.insert(user);
-        if (i > 0) {
+        boolean i = userService.save(user);
+        if (i == true) {
             return "true";
         }
         return "false";
@@ -64,7 +61,7 @@ public class UsersController {
         }
         user.setTelephone(username);
         user.setLogin_password(password);
-        int i = userMapper.findLogin(user);
+        int i = userService.findLogin(user);
         if (i > 0) {
             return "{\"zj\":\"true\"}";
         }
