@@ -53,7 +53,7 @@ public class UsersController {
         return "false";
     }
 
-    @PostMapping("/dl")
+   /* @PostMapping("/dl")
     public String dl(String username, String password) {
         User user = new User();
         if (username.length() < 11) {
@@ -66,5 +66,5 @@ public class UsersController {
             return "{\"zj\":\"true\"}";
         }
         return "{\"zj\":\"false\"}";
-    }
+    }*/
 }

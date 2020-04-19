@@ -11,7 +11,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <!--<script src="lib/layui/lay/modules/treetable.js"></script>-->
     <link rel="stylesheet" href="lib/layui/css/layui.css" media="all">
-  <!--  <link rel="stylesheet" href="lib/layui/css/treetable.css" media="all">-->
+    <!--  <link rel="stylesheet" href="lib/layui/css/treetable.css" media="all">-->
     <script src="lib/layui/layui.js"></script>
     <html>
     <head>
@@ -87,27 +87,27 @@
             </div>
 
 
-           <!-- <div class="layui-form-item">
-                <label class="layui-form-label">类型</label>
-                <div class="layui-input-block">
-                    <select name="quiz">
-                        <option value="">请选择</option>
-                        <optgroup label="城市记忆">
-                            <option value="你工作的第一个城市">你工作的第一个城市？</option>
-                        </optgroup>
-                        <optgroup label="学生时代">
-                            <option value="你的工号">你的工号？</option>
-                            <option value="你最喜欢的老师">你最喜欢的老师？</option>
-                        </optgroup>
-                    </select>
-                </div>
-            </div>-->
+            <!-- <div class="layui-form-item">
+                 <label class="layui-form-label">类型</label>
+                 <div class="layui-input-block">
+                     <select name="quiz">
+                         <option value="">请选择</option>
+                         <optgroup label="城市记忆">
+                             <option value="你工作的第一个城市">你工作的第一个城市？</option>
+                         </optgroup>
+                         <optgroup label="学生时代">
+                             <option value="你的工号">你的工号？</option>
+                             <option value="你最喜欢的老师">你最喜欢的老师？</option>
+                         </optgroup>
+                     </select>
+                 </div>
+             </div>-->
 
             <div class="layui-form-item">
                 <label class="layui-form-label">一级分类</label>
                 <div class="layui-input-block">
                     <select name="pc_parent_id" lay-filter="classifyId" id="classifyId">
-                        <option value="0">父分类</option>
+                        <option value="0" name="category_name">父分类</option>
                     </select>
                 </div>
             </div>
@@ -212,6 +212,14 @@
                         sort: true,
                         templet: '#imgTpl'
                     }
+                    , {field: 'introduce', title: '产品介绍', width: 120, sort: true}
+                    , {field: 'category_name', title: '产品介绍', width: 120, sort: true,templet: function (d) {
+                            var tmp='<option value="">请选择</option>';
+                            for (var i in d){
+                                tmp +='<option value="'+d[i].type+'">'+d[i].type+'</option>';
+                            }
+                        }}
+
                     , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120}
                 ]]
                 , page: true

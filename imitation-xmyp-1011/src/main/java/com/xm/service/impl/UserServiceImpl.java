@@ -42,7 +42,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public int findLogin(User user) {
-        return userMapper.findLogin(user);
+        return 0;
     }
+
+
+  /*  public int findLogin(User user) {
+        return userMapper.findLogin(user);
+    }*/
 
 }

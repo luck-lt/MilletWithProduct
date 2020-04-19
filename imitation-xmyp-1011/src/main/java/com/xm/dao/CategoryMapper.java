@@ -4,11 +4,9 @@ import com.xm.SuperMapper;
 import com.xm.pojo.Category;
 import org.apache.ibatis.annotations.Mapper;
 
-/**
- * @description
- * @author: Specime
- * @date:2020/4/17
- */
+import java.util.List;
+
 @Mapper
 public interface CategoryMapper extends SuperMapper<Category> {
+    public List<Category> CategoryFindAll(Category category);
 }

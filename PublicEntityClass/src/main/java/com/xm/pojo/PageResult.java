@@ -1,5 +1,7 @@
 package com.xm.pojo;
 
+import java.util.List;
+
 public class PageResult<T> {
 
     private String msg;
@@ -42,7 +44,7 @@ public class PageResult<T> {
         this.count = count;
     }
 
-    public PageResult(String msg, T data, int code, int count) {
+    public PageResult(String msg, T data, int code, int count, List<Category> categoryList) {
         this.msg = msg;
         this.data = data;
         this.code = code;
