@@ -1,192 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="首页（未加数据）">
-      <change afterPath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/IndexController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/CategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/CategoryMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/Vue/v1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/Vue/vue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N01.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N02.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N03.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N05.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N06.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N09.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N10.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N13.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N14.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N16.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N17.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N19.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N20.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N21.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a10.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a13.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a14.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a17.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a21.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a22.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a24.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a5.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a6.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a9.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b10.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b6.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/b9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c20.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c21.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c22.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c23.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c24.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c6.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/c9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d13.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d6.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/d9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e14.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e4.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e6.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e7.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/e9.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f6.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f7.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/f9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g15.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g4.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/g9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h13.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h3.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h4.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h7.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h8.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/h9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j10.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j12.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j14.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j7.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j8.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/j9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/Logins.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/Logins.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/layui/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/layui/jquery.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +83,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -360,7 +176,7 @@
       <workItem from="1586996867604" duration="5053000" />
       <workItem from="1587002361474" duration="16339000" />
       <workItem from="1587115173615" duration="6954000" />
-      <workItem from="1587170016796" duration="41177000" />
+      <workItem from="1587170016796" duration="41541000" />
     </task>
     <task id="LOCAL-00001" summary="GitHub">
       <created>1586600920843</created>
@@ -460,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587121070823</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="首页（一半完成）">
+      <created>1587300233070</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1587300233070</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,7 +292,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GitHub" />
     <MESSAGE value="首页（未加数据）" />
-    <option name="LAST_COMMIT_MESSAGE" value="首页（未加数据）" />
+    <MESSAGE value="首页（一半完成）" />
+    <option name="LAST_COMMIT_MESSAGE" value="首页（一半完成）" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#Notifications" timestamp="1587121110529">
@@ -496,11 +320,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="270" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587126710221" />
-    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1587121104677">
+    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1587300226032">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587039976000" />
-    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587121104677" />
+    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587300226032" />
     <state width="478" height="438" key="DebuggerActiveHint" timestamp="1587003363563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -595,25 +419,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="233" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587120548180" />
-    <state x="484" y="128" key="SettingsEditor" timestamp="1587198127590">
+    <state x="484" y="128" key="SettingsEditor" timestamp="1587300524544">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="387" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586922664049" />
-    <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587198127590" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1587121083916">
+    <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587300524544" />
+    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1587300269682">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586928765365" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587121083916" />
+    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587300269682" />
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586739983680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1586739983680" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587300131667">
+    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587300527887">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1586916162443" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587300131667" />
+    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587300527887" />
     <state x="480" y="270" key="git4idea.merge.GitPullDialog" timestamp="1587120558164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
