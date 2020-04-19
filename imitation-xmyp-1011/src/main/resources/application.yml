@@ -28,6 +28,9 @@ spring:
       initial-size: 5
       max-total: 5
       max-wait-millis: 200
+  servlet:
+    multipart:
+      max-file-size: 10MB
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml  #mybatis指定数据库xml文件

@@ -9,14 +9,16 @@
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!--<script src="lib/layui/lay/modules/treetable.js"></script>-->
     <link rel="stylesheet" href="lib/layui/css/layui.css" media="all">
+  <!--  <link rel="stylesheet" href="lib/layui/css/treetable.css" media="all">-->
     <script src="lib/layui/layui.js"></script>
     <html>
     <head>
         <title>商品管理</title>
 
         <style type="text/css">
-            .layui-table-cell {
+            td div.layui-table-cell {
                 height: 90px;
                 line-height: 80px;
                 position: relative;
@@ -33,7 +35,129 @@
         </style>
     </head>
 <body>
+<div class="layui-row" id="EditUser" style="display:none;">
+    <div class="layui-col-md10">
+        <form class="layui-form" style="margin-top:20px" lay-filter="myfm">
+            <div class="layui-form-item">
+                <label class="layui-form-label">产品名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="pname" id="pname" required lay-verify="required" autocomplete="off"
+                           placeholder="请输入产品名称" class="layui-input">
+                </div>
+            </div>
 
+            <input type="hidden" name="product_id" id="id">
+
+            <div class="layui-form-item" hidden>
+                <label class="layui-form-label">产品类型</label>
+                <div class="layui-input-block">
+                    <select name="typeid" id="typeid1" lay-filter="aihao">
+                        <option value="0">公益众筹</option>
+                        <option value="1">普通众筹</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item" hidden>
+                <label class="layui-form-label">产品种类</label>
+                <div class="layui-input-block">
+                    <select name="kindid" id="kindid1" lay-filter="aihao">
+                        <option value="1">影音</option>
+                        <option value="2">公益</option>
+                        <option value="3">书籍</option>
+                        <option value="4">娱乐</option>
+                        <option value="5">科技</option>
+                        <option value="6">设计</option>
+                        <option value="7">农业</option>
+                        <option value="8">动漫</option>
+                        <option value="9">游戏</option>
+                        <option value="10">其他</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-upload" id="updateImg">
+                <label class="layui-form-label">图片</label>
+                <div class="layui-upload-list">
+                    <img class="layui-upload-img" name="pic_img" id="pic_img" src="" style="width:100px;height:100px;">
+                    <p id="demoText"></p>
+                </div>
+                <button type="button" class="layui-btn" id="img" style="margin-left: 110px;margin-bottom: 20px">上传图片
+                </button>
+            </div>
+
+
+           <!-- <div class="layui-form-item">
+                <label class="layui-form-label">类型</label>
+                <div class="layui-input-block">
+                    <select name="quiz">
+                        <option value="">请选择</option>
+                        <optgroup label="城市记忆">
+                            <option value="你工作的第一个城市">你工作的第一个城市？</option>
+                        </optgroup>
+                        <optgroup label="学生时代">
+                            <option value="你的工号">你的工号？</option>
+                            <option value="你最喜欢的老师">你最喜欢的老师？</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>-->
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">一级分类</label>
+                <div class="layui-input-block">
+                    <select name="pc_parent_id" lay-filter="classifyId" id="classifyId">
+                        <option value="0">父分类</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">产品简介</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入简介" class="layui-textarea" id="introduce" name="introduce"></textarea>
+                </div>
+            </div>
+
+            <input type="hidden" name="pic_img" value="">
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">库存</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="stock" id="stock" required lay-verify="required" autocomplete="off"
+                               placeholder="请输入库存" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">价格</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="show_price" id="show_price" required lay-verify="required"
+                               autocomplete="off"
+                               placeholder="请输入价格" class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">规格</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入规格" class="layui-textarea" id="attribute_list"
+                              name="attribute_list"></textarea>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item" style="margin-top:40px" id="check">
+                <div class="layui-input-block">
+                    <button class="layui-btn  layui-btn-submit " lay-submit="" lay-filter="formDemo">确认修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 <div class="demoTable" style="padding: 15px">
@@ -63,46 +187,105 @@
 </script>
 
 <script>
-    layui.use(['table', 'layer'], function () {
+    layui.use(['table', 'layer', 'upload'], function () {
         var table = layui.table,
-            layer = layui.layer
-        table.render({
-            elem: '#Products'
-            , url: '/ProductFindAll'
-            , totalRow: true
-            , toolbar: '#toolbarDemo'
-            , cols: [[
-                {type: 'checkbox', fixed: 'left'}
-                , {field: 'product_id', title: 'ID', width: 80, fixed: 'left', sort: true}
-                , {field: 'pname', title: '名字', width: 120, sort: true,}
-                , {field: 'stock', title: '库存', width: 120, sort: true,}
-                , {field: 'show_price', title: '价格', width: 120, sort: true,}
-                , {field: 'attribute_list', title: '规格', width: 230, sort: true,}
-                , {field: 'introduce', title: '产品介绍', width: 120, sort: true}
-                , {
-                    field: 'pic_img',
-                    title: '产品图片',
-                    width: '12%',
-                    sort: true,
-                    templet: '#imgTpl'
-                }
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120}
-            ]]
-            , page: true
+            layer = layui.layer,
+            form = layui.form;
+        upload = layui.upload,
+            table.render({
+                elem: '#Products'
+                , url: '/ProductFindAll'
+                , totalRow: true
+                , toolbar: '#toolbarDemo'
+                , cols: [[
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'product_id', title: 'ID', width: 80, fixed: 'left', sort: true}
+                    , {field: 'pname', title: '名字', width: 120, sort: true,}
+                    , {field: 'stock', title: '库存', width: 120, sort: true,}
+                    , {field: 'show_price', title: '价格', width: 120, sort: true,}
+                    , {field: 'attribute_list', title: '规格', width: 230, sort: true,}
+                    , {field: 'introduce', title: '产品介绍', width: 120, sort: true}
+                    , {
+                        field: 'pic_img',
+                        title: '产品图片',
+                        width: '12%',
+                        sort: true,
+                        templet: '#imgTpl'
+                    }
+                    , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120}
+                ]]
+                , page: true
 
-        });
+            });
 
 
-        //根据phone关键字查询
-        $('#queryRole').on('click', function () {
+        //查询
+        $('#queryRole').click(function () {
             var find = document.getElementById("find").value;
             table.reload('Products', {
-                page: {curr: 1},
-                url: '${pageContext.request.contextPath}/selectProductByName.action',
-                where: {'name': find}
-
-            })
+                url: '/ProductFindAll',
+                where: {
+                    'pname': find
+                }
+            });
         });
+
+
+        // 修改头像
+        upload.render({
+            elem: '#img'
+            , url: '/uploadImg'
+            , type: 'post'
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#pic_img').attr('src', result); //图片链接（base64）
+                });
+            }
+            , done: function (res) {
+                $("[name=pic_img]").val(res.data);
+                style:'display:inline-block;max-width:50%;height:auto'
+                //如果上传失败
+                if (res.code > 0) {
+                    return layer.msg('上传失败');
+                } else {
+                    layer.msg("上传成功");
+                }
+                //上传成功
+            }
+            , error: function () {
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function () {
+                    uploadInst.upload();
+                });
+            }
+        });
+
+
+        form.on('submit(formDemo)', function (data) {
+            $.ajax({
+                url: '${pageContext.request.contextPath}/updateUser.action',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify(data.field),
+                success: function (msg) {
+                    if (msg != null) {
+                        layer.closeAll('loading');
+                        layer.load(2);
+                        layer.msg("修改成功", {icon: 6});
+                        setTimeout(function () {
+                            layer.closeAll();//关闭所有的弹出层
+                            table.reload("Users");
+                        }, 1000);
+                    } else {
+                        layer.msg("修改失败", {icon: 5});
+                    }
+                }
+            })
+            return false;
+        })
 
 
         //工具栏事件
@@ -124,12 +307,14 @@
             ;
         });
 
-//监听工具条
+
+        //监听工具条
         table.on('tool(test)', function (obj) {
+            var data = obj.data;
             if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
                     $.ajax({
-                        url: '${pageContext.request.contextPath}/deleteProject.action',
+                        url: '${pageContext.request.contextPath}/deleteUser.action',
                         type: 'GET',
                         data: {
                             id: data.id
@@ -140,6 +325,7 @@
                                 setTimeout(function () {
                                     layer.closeAll();//关闭所有的弹出层
                                 }, 1000);
+
                             } else {
                                 layer.msg("删除失败", {icon: 5});
                             }
@@ -149,19 +335,20 @@
                     layer.close(index);
                 });
             } else if (obj.event === 'edit') {
+                $("#product_id").val(data.product_id);
+                $("#pname").val(data.pname);
+                $("#introduce").val(data.introduce);
+                $("#stock").val(data.stock);
+                $("#show_price").val(data.show_price);
+                $("#attribute_list").val(data.attribute_list);
+                $('#pic_img').attr('src', data.pic_img);
+                $('#demo1').attr('src', "/file/" + data.pic_img);
                 layer.open({
                     type: 1,
-                    title: "修改产品信息",
-                    //area: ['1080px', '620px'],
-                   // content: $("#fm2")
-                });
-                //填充表单
-                form.val('myfm', {
-                    "user_id": obj.data.user_id,
-                    "login_name": obj.data.login_name,
-                    "login_password": obj.data.login_password,
-                    "real_name": obj.data.real_name,
-                    "telephone": obj.data.telephone
+                    offset: '10px',
+                    title: "修改个人信息",
+                    area: ['1080px', '620px'],
+                    content: $("#EditUser")
                 });
             }
         });

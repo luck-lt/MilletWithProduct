@@ -23,7 +23,7 @@ public class ProductController {
     public PageResult<List<Product>> ProductFindAll(Product product, Integer page, Integer limit) {
         int count = productService.list(null).size();
         PageHelper.startPage(page, limit);
-        List<Product> products = productService.list();
+        List<Product> products = productService.ProductFindAll(product);
         PageResult<List<Product>> listPageResult = new PageResult<List<Product>>("", products, 0, count);
         return listPageResult;
     }
