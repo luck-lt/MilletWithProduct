@@ -11,12 +11,8 @@
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script src="lib/layui/layui.js" charset="utf-8"></script>
-    <!--[if lt IE 9]>
-    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body class="login-bg">
 
@@ -35,39 +31,33 @@
 </div>
 
 <script>
+    $(function () {
         layui.use('form', function () {
             var form = layui.form;
             const layer = layui.layer;
             //监听提交
             form.on('submit(login)', function (data) {
-                /* layer.msg(JSON.stringify(data.field), function () {
-                   //   location.href = 'index.html'
-                  });*/
-                /* return false;*/
-                $.post("/login", data.field, function (res) {
-                    if (res == 1) {
-                        location.href = 'index.html';
-                    } else {
-                        layer.msg("用户名或密码错误！" ,{time: 2000});
-
-                        return false;
+                $.ajax({
+                    url: 'http://127.0.0.1:1022/consumer/login',
+                    type: 'post',
+                    // data表示发送的数据
+                    data: data.field,
+                    // 定义发送请求的数据格式为JSON字符串
+                    contentType: "application/json;charset=UTF-8",
+                    //成功响应的结果
+                    success: function (res) {
+                        if (res == 1) {
+                            location.href = 'index.html';
+                        } else {
+                            layer.msg("用户名或密码错误！", {time: 2000});
+                            return false;
+                        }
                     }
-                }, 'json');
+                }, 'json')
                 return false;
-            });
-        });
-</script>
-
-<!-- 底部结束 -->
-<script>
-    //百度统计可去掉
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
+            })
+        })
+    });
 </script>
 </body>
 </html>

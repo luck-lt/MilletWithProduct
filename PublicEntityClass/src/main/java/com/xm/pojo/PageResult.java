@@ -1,13 +1,15 @@
 package com.xm.pojo;
 
+import java.util.List;
+
 public class PageResult<T> {
 
     private String msg;
     //返回的数据
-    private  T data;
-    private  int code;
+    private T data;
+    private int code;
     //总记录数
-    private  int count;
+    private int count;
 
 
     public String getMsg() {

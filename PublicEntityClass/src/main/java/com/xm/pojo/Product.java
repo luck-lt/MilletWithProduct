@@ -2,10 +2,10 @@ package com.xm.pojo;
 
 import lombok.Data;
 
-import java.io.Serializable;
+import java.util.List;
 
 @Data
-public class Product implements Serializable {
+public class Product {
     public Integer product_id;
     public String pname;
     public Integer stock;
@@ -14,5 +14,6 @@ public class Product implements Serializable {
     public Integer category_id;
     public String introduce;
     public String pic_img;
-
+    public String category_name;
+    public Category category;
 }
