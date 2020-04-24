@@ -1143,7 +1143,10 @@ a {
     padding: 15px 0px 15px 0px;
     float: left;
     /*  margin:130px 0px 0px 54px;!* 上 右 下 左 顺时针*!*/
-    position: relative; /*相对定位 参照物*/
+    /*  position: relative; !*相对定位 参照物*!*/
+    position: absolute;
+    z-index: 1;
+    /*opacity: 0.4;*/
 }
 
 #Tz_banner .firstLi {
@@ -1190,9 +1193,11 @@ a {
     top: 0px;
 }
 
-#Tz_banner .firstLi .info li a.title img {
+.info li a.title img {
     margin: 16.5px 15px 0px 15px;
     float: left;
+    width: 36px;
+    height: 36px;
 }
 
 #Tz_banner .firstLi .info li a.title span {
@@ -1222,4 +1227,18 @@ a {
 .layui-carousel div div img {
     width: 100%;
     height: 100%;
+}
+
+/*轮播的自定义*/
+.layui-carousel-ind {
+    margin-left: 100px;
+}
+
+.layui-carousel-arrow {
+    left: 265px;
+}
+
+.layui-carousel:hover .layui-carousel-arrow {
+    opacity: 1;
+    left: 265px;
 }

@@ -24,4 +24,6 @@ public interface UserMapper extends SuperMapper<User> {
     public List<Product> ProductFindAll(Product product);
 
     public int findLogin(User user);
+
+    public int UpdateStatus(User user);
 }

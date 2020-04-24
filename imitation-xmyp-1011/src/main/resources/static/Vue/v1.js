@@ -72,28 +72,3 @@ new Vue({
         }
     }
 });
-/*function init() {
-    /!*左侧菜单栏*!/
-    $("#Tz_banner .firstLi .info").each(function () {
-        var $li = $(this).find("li");//获取到所有info下面的li
-        var length = $li.length;//得到info下面所有li的数量
-        var width = $li.width();//获取li的宽度
-        var height = $li.height();//获取li的高度
-        var col = Math.ceil(length / 6);//向上取整
-        $(this).width(col * width);
-        $li.each(function (i) {
-            var x = Math.floor(i / 6);//向下取整
-            var y = i % 6;//取余数
-            $(this).css({
-                left: x * width + "px",
-                top: y * height + "px"
-            });
-        });
-
-    });
-    $("#Tz_banner .firstLi").hover(function () {
-        $(this).find(".info").show();
-    }, function () {
-        $(this).find(".info").hide();
-    });
-}*/

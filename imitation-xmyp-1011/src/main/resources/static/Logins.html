@@ -34,6 +34,7 @@
                 }
             });
             form.on('submit(submit)', function (data) {
+                layui.sessionData("user", {key: 'name', value: data.field.username})
                 $.post('./dl', data.field, function (data) {
                     if (data.zj == "true") {
                         layer.msg('登录成功', {
@@ -42,10 +43,10 @@
                         }, function () {
                             window.location.href = 'index.html';
                         });
-                        /* layer.msg("登录成功", {time: 2000});
-                         window.location.href = 'index.html';*/
+                    } else if (data.zj == "false") {
+                        layer.msg("登录失败");
                     } else {
-                        layer.msg("登录失败")
+                        layer.msg("用户在线！！！");
                     }
                 }, 'json');
                 return false;

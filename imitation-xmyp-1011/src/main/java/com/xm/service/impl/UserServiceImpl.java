@@ -45,4 +45,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.findLogin(user);
     }
 
+    @Override
+    public int UpdateStatus(User user) {
+        return userMapper.UpdateStatus(user);
+    }
 }

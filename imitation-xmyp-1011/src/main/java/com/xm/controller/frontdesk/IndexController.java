@@ -43,4 +43,14 @@ public class IndexController {
         List<Product> list = productService.list();
         return list;
     }
+
+    @RequestMapping("/xfcx")
+    @ResponseBody
+    public List<Product> xfcx(String sid) {
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("category_id", Integer.valueOf(sid));
+        List<Product> list = (List<Product>) productService.listByMap(map);
+        return list;
+    }
 }

@@ -18,4 +18,6 @@ public interface UserService extends IService<User> {
     public int DeleteUser(Integer id);
 
     public int findLogin(User user);
+
+    public int UpdateStatus(User user);
 }
