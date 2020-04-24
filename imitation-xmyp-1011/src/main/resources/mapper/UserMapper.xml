@@ -27,11 +27,6 @@
 		,telephone=#{telephone}
 		WHERE login_name=#{login_name}
 	</update>
-    <update id="UpdateStatus" parameterType="User">
-		UPDATE User SET
-		status=#{status}
-		WHERE user_id=#{user_id}
-	</update>
 
     <delete id="DeleteUser" parameterType="int">
           delete from User where user_id=#{user_id}
