@@ -42,13 +42,14 @@
         var form = layui.form;
         const $ = layui.jquery;
         const layer = layui.layer;
-        //第一个实例
-        table.render({
-            elem: '#demo'
-            , height: 468
-            , url: '/SelectUser' //s数据接口
-            , page: true //开启分页
-            /*, parseData: function (res) {
+        //渲染表格
+        var tableInfo = function () {
+            table.render({
+                elem: '#demo'
+                , height: 468
+                , url: '/SelectUser' //s数据接口
+                , page: true //开启分页
+                /*, parseData: function (res) {
                 console.log(res);
                 return {
                     "code": 0
@@ -57,38 +58,39 @@
                     , "data": res
                 }
             }*/
-            , cols: [[ //表头
-                {field: 'user_id', title: 'ID', width: 80, sort: true, fixed: 'left'}
-                , {field: 'login_name', title: '用户名', width: 80}
-                , {field: 'login_password', title: '密码', width: 120, sort: true}
-                , {field: 'sex', title: '性别', width: 80, sort: true,}
-                , {field: 'real_name', title: '名字', width: 120, sort: true}
-                , {field: 'telephone', title: '手机号', width: 120, edit: 'text'}
-                , {
-                    field: 'regeist_time', title: '注册时间', width: 140, sort: true, templet: function (d) {
-                        var date = new Date(d.regeist_time)
-                        var year = date.getFullYear() + '年';
-                        var month = date.getMonth() + 1 + '月';
-                        var date = date.getDate() + '日';
-                        var date1 = [year, month, date].join('')
-                        return date1;
+                , cols: [[ //表头
+                    {field: 'user_id', title: 'ID', width: 80, sort: true, fixed: 'left'}
+                    , {field: 'login_name', title: '用户名', width: 80}
+                    , {field: 'login_password', title: '密码', width: 120, sort: true}
+                    , {field: 'sex', title: '性别', width: 80, sort: true,}
+                    , {field: 'real_name', title: '名字', width: 120, sort: true}
+                    , {field: 'telephone', title: '手机号', width: 120, edit: 'text'}
+                    , {
+                        field: 'regeist_time', title: '注册时间', width: 140, sort: true, templet: function (d) {
+                            var date = new Date(d.regeist_time)
+                            var year = date.getFullYear() + '年';
+                            var month = date.getMonth() + 1 + '月';
+                            var date = date.getDate() + '日';
+                            var date1 = [year, month, date].join('')
+                            return date1;
+                        }
                     }
+                    , {type: 'checkbox'}
+                    , {toolbar: '#barDemo', title: '操作'}
+
+                ]],
+                done: function (res, curr, count) {
+                    $("[data-field='sex']").children().each(function () {
+                        if ($(this).text() == '1') {
+                            $(this).text("男")
+                        } else if ($(this).text() == '2') {
+                            $(this).text("女")
+                        }
+                    });
                 }
-                , {type: 'checkbox'}
-                , {toolbar: '#barDemo', title: '操作'}
-
-            ]],
-            done: function (res, curr, count) {
-                $("[data-field='sex']").children().each(function () {
-                    if ($(this).text() == '1') {
-                        $(this).text("男")
-                    } else if ($(this).text() == '2') {
-                        $(this).text("女")
-                    }
-                });
-            }
-        });
-
+            });
+        }
+        tableInfo();
         //自定义验证
         form.verify({
             tt: [
@@ -97,7 +99,7 @@
             ]
         });
 
-        //新增
+        //新增打开页面
         $('#btnAdd').click(function () {
             layer.open({
                 type: 1,
@@ -107,26 +109,28 @@
             });
             form.render();//渲染页面，不加，表单可能出不来
 
+            //新增用户
             form.on('submit(fd)', function (data) {
                 layer.closeAll('page');//关闭页面
                 table.reload('demo');//重新加载
                 $.get("/addUser", data.field, function (res) {
                     if (res == 1) {
-                        layer.msg("新增成功", {icon: 5});
-                        setTimeout(function () {
-                            layer.closeAll();//关闭所有的弹出层
-                        }, 1000);
-                        location.reload();
+                        layer.msg("新增成功", {icon: 1});
+                        /*  setTimeout(function () {
+                              window.location.reload();
+                          }, 1000);*/
+                        layer.close();//关闭所有的弹出层
+                        tableInfo();
                     } else if (res == 2) {
-                        layer.msg("用户名重复", {icon: 5});
+                        layer.msg("用户名重复", {icon: 2});
                         $("#re").trigger("click");
                         return false;
                     } else if (res == 3) {
-                        layer.msg("电话号码已注册", {icon: 5});
+                        layer.msg("电话号码已注册", {icon: 2});
                         $("#re").trigger("click");
                         return false;
                     } else {
-                        layer.msg("新增失败");
+                        layer.msg("新增失败", {icon: 3});
                         $("#re").trigger("click");
                         return false;
                     }
@@ -136,7 +140,7 @@
         });
 
 
-        //查询
+        //根据用户名查询
         $('#queryRole').click(function () {
             var find = document.getElementById("find").value;
             table.reload('demo', {
@@ -160,12 +164,18 @@
                 layer.confirm("确认要删除吗，删除后不能恢复", {title: "删除确认"}, function (index) {
                     $.get('/DeleteUser', "user_id=" + ids, function (flag) {
                         if (flag) {
-                            layer.msg('删除成功', {icon: 6});
-                            location.reload();
+                            layer.msg('删除成功', {icon: 1});
+                            /* setTimeout(function () {
+                                 window.location.reload();
+                             }, 2000);*/
+                            layer.close();//关闭所有的弹出层
+                            tableInfo();
                         } else {
-                            layer.msg('删除失败', {icon: 5});
+                            layer.msg('删除失败', {icon: 1});
+                            return false;
                         }
                     });
+                    return false;
                 });
             }
 
@@ -200,11 +210,13 @@
                     table.reload('demo');//重新加载
                     $.post("/UpdateUser", data.field, function (res) {
                         if (res == 1) {
-                            layer.msg("修改成功", {icon: 5});
-                            setTimeout(function () {
-                                layer.closeAll();//关闭所有的弹出层
-                            }, 1000);
-                            location.reload();
+                            layer.msg("修改成功", {icon: 1});
+                            /* setTimeout(function () {
+                                 window.location.reload();
+                             },1000);*/
+                            layer.close();//关闭所有的弹出层
+                            tableInfo();
+
                         } else {
                             layer.msg("修改失败");
                             $("#re2").trigger("click");
@@ -219,12 +231,18 @@
                 layer.confirm("确认要删除吗，删除后不能恢复", {title: "删除确认"}, function (index) {
                     $.get('/DeleteUser', "id=" + data.user_id, function (flag) {
                         if (flag) {
-                            layer.msg('删除成功', {icon: 6});
-                            location.reload();
+                            layer.msg('删除成功', {icon: 2});
+                            /* setTimeout(function () {
+                                 window.location.reload();
+                             }, 2000);*/
+                            layer.close();//关闭所有的弹出层
+                            tableInfo();
                         } else {
                             layer.msg('删除失败', {icon: 5});
+                            return false;
                         }
                     });
+                    return false;
                 });
                 table.reload('demo');
             }

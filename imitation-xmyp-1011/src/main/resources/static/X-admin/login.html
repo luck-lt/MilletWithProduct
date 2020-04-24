@@ -37,16 +37,6 @@
             const layer = layui.layer;
             //监听提交
             form.on('submit(login)', function (data) {
-                /* $.post("http://127.0.0.1:1022/consumer/login", data.field, function (res) {
-                    if (res == 1) {
-                        location.href = 'index.html';
-                    } else {
-                        layer.msg("用户名或密码错误！", {time: 2000});
-                        return false;
-                    }
-                }, 'json');
-                return false;*/
-
                 $.ajax({
                     url: 'http://127.0.0.1:1022/consumer/login',
                     type: 'post',

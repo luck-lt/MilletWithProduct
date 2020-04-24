@@ -25,4 +25,19 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public List<Category> CategoryFindAll(Category category) {
         return categoryMapper.CategoryFindAll(category);
     }
+
+    @Override
+    public List<Category> CategoryParFindAll(int id) {
+        return categoryMapper.CategoryParFindAll(id);
+    }
+
+    @Override
+    public int UpdateCategory(Category category) {
+        return categoryMapper.UpdateCategory(category);
+    }
+
+    @Override
+    public int DeleteCategory(Integer id) {
+        return categoryMapper.DeleteCategory(id);
+    }
 }

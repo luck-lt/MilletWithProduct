@@ -4,9 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xm.dao.ProductMapper;
 import com.xm.dao.UserMapper;
 import com.xm.pojo.Product;
-import com.xm.pojo.User;
 import com.xm.service.ProductService;
-import com.xm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.stereotype.Service;
@@ -27,11 +25,11 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
     @Override
     public int UpdateProduct(Product product) {
-        return 0;
+        return productMapper.UpdateProduct(product);
     }
 
     @Override
     public int DeleteProduct(Integer id) {
-        return 0;
+        return productMapper.DeleteProduct(id);
     }
 }

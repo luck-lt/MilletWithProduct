@@ -3,6 +3,7 @@ package com.xm.dao;
 import com.xm.SuperMapper;
 import com.xm.pojo.Product;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

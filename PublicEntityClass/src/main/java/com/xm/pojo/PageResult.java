@@ -6,10 +6,10 @@ public class PageResult<T> {
 
     private String msg;
     //返回的数据
-    private  T data;
-    private  int code;
+    private T data;
+    private int code;
     //总记录数
-    private  int count;
+    private int count;
 
 
     public String getMsg() {
@@ -44,7 +44,7 @@ public class PageResult<T> {
         this.count = count;
     }
 
-    public PageResult(String msg, T data, int code, int count, List<Category> categoryList) {
+    public PageResult(String msg, T data, int code, int count) {
         this.msg = msg;
         this.data = data;
         this.code = code;

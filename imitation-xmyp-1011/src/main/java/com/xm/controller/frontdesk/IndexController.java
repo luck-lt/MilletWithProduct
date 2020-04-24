@@ -1,10 +1,8 @@
+/*
 package com.xm.controller.frontdesk;
 
-import com.xm.dao.CategoryMapper;
-import com.xm.dao.ProductMapper;
 import com.xm.pojo.Category;
 import com.xm.pojo.Product;
-import com.xm.pojo.verificationcode;
 import com.xm.service.CategoryService;
 import com.xm.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+*/
 /**
  * @description
  * @author: Specime
  * @date:2020/4/17
- */
+ *//*
+
 @RestController
 public class IndexController {
     @Autowired
@@ -44,3 +44,4 @@ public class IndexController {
         return list;
     }
 }
+*/

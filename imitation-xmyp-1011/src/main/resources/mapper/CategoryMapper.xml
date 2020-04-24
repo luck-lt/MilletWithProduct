@@ -15,14 +15,16 @@
         <include refid="condition"/>
     </select>
 
-    <update id="UpdateProduct" parameterType="Product">
-		UPDATE User SET
-		login_password=#{login_password},real_name=#{real_name},sex=#{sex}
-		,telephone=#{telephone}
-		WHERE login_name=#{login_name}
+    <select id="CategoryParFindAll" resultType="Category">
+        select * from Category where parent_id = #{parent_id}
+    </select>
+
+
+    <update id="UpdateCategory" parameterType="Category">
+      UPDATE category set `parent_id`=#{parent_id},`category_name`=#{category_name} WHERE `category_id`=#{category_id}
 	</update>
 
-    <delete id="DeleteUser" parameterType="int">
-          delete from User where user_id=#{user_id}
+    <delete id="DeleteCategory" parameterType="int">
+          delete from category where category_id=#{category_id}
     </delete>
 </mapper>

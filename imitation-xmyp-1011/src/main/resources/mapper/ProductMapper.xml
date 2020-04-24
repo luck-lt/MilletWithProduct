@@ -3,26 +3,42 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xm.dao.ProductMapper">
+
+    <resultMap type="product" id="e">
+        <id column="product_id" property="product_id"/>
+
+        <association property="category" javaType="category">
+            <id column="category_id" property="category_id"/>
+        </association>
+
+    </resultMap>
+
+
     <sql id="condition">
         <where>
             <if test="pname!=null and pname!=''">
-               pname = #{pname}
+                pname = #{pname}
+            </if>
+            <if test="category_id!=null and category_id!=0">
+                and b.category_id = #{category_id}
             </if>
         </where>
     </sql>
-    <select id="ProductFindAll" resultType="Product">
-        select * from Product
+    <select id="ProductFindAll" resultMap="e">
+        SELECT
+        `category_name`,`product_id`,`pname`,`stock`,`show_price`,`attribute_list`,a.`category_id`,`introduce`,`pic_img`
+        FROM
+        category a
+        INNER JOIN product b ON a.`category_id`=b.`category_id`
         <include refid="condition"/>
     </select>
 
-    <update id="UpdateProduct" parameterType="Product">
-		UPDATE User SET
-		login_password=#{login_password},real_name=#{real_name},sex=#{sex}
-		,telephone=#{telephone}
-		WHERE login_name=#{login_name}
+    <update id="UpdateProduct" parameterType="User">
+		UPDATE Product SET `pname`=#{pname},`stock`=#{stock},`show_price`=#{show_price},`attribute_list`=#{attribute_list},
+		`category_id`=#{category_id},`introduce`=#{introduce},`pic_img`=#{pic_img} WHERE `product_id`=#{product_id}
 	</update>
 
-    <delete id="DeleteUser" parameterType="int">
-          delete from User where user_id=#{user_id}
+    <delete id="DeleteProduct" parameterType="int">
+          delete from product where a.product_id=#{product_id}
     </delete>
 </mapper>
