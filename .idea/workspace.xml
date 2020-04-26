@@ -454,10 +454,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587120839217" />
-    <state x="69" y="12" key="CommitChangelistDialog2" timestamp="1587895853756">
+    <state x="69" y="12" key="CommitChangelistDialog2" timestamp="1587895878638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587895853756" />
+    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587895878638" />
     <state x="882" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600916127" />
     <state width="518" height="438" key="DebuggerActiveHint" timestamp="1587823166564">
       <screen x="0" y="0" width="1536" height="824" />
@@ -536,10 +536,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1587637857900" />
-    <state x="465" y="129" key="MultipleFileMergeDialog" timestamp="1587300746051">
+    <state x="465" y="129" key="MultipleFileMergeDialog" timestamp="1587895923481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1587300746051" />
+    <state x="465" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1587895923481" />
     <state x="284" y="82" key="Registry" timestamp="1587181613996">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -549,23 +549,23 @@
     </state>
     <state x="387" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586922664049" />
     <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586600753791" />
-    <state x="459" y="130" key="VCS.ChangeListViewerDialog" timestamp="1587294183285">
+    <state x="459" y="130" key="VCS.ChangeListViewerDialog" timestamp="1587895905224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="459" y="130" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1587294183285" />
-    <state x="435" y="182" key="Vcs.Push.Dialog.v2" timestamp="1587895860859">
+    <state x="459" y="130" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1587895905224" />
+    <state x="435" y="182" key="Vcs.Push.Dialog.v2" timestamp="1587895881360">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587895860859" />
+    <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587895881360" />
     <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600922622" />
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586739983680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1586739983680" />
-    <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587343466244">
+    <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587895911627">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1587343466244" />
+    <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1587895911627" />
     <state x="384" y="214" key="git4idea.merge.GitPullDialog" timestamp="1586696585730">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
