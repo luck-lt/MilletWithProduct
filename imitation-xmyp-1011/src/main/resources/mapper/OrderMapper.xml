@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xm.dao.OrderMapper">
+    <sql id="condition">
+        <where>
+            <if test="order_number!=null and order_number!=''">
+                order_number = #{order_number}
+            </if>
+        </where>
+    </sql>
+    <select id="OrderFindAll" resultType="map">
+        SELECT
+        `address_id`,`user_name`,`user_adress`,`order_id`,`order_number`,`order_status`,`create_time`,u.`user_id`,`login_name`,`login_password`,`real_name`,`sex`,`status`,`telephone`,`regeist_time`
+        FROM `order` o
+        INNER JOIN `user` u ON o.`user_id`=u.`user_id`
+        INNER JOIN address a ON a.`user_id`=u.`user_id`
+        <include refid="condition"/>
+    </select>
+
+
+    <update id="UpdateCategory" parameterType="Category">
+      UPDATE category set `parent_id`=#{parent_id},`category_name`=#{category_name} WHERE `category_id`=#{category_id}
+	</update>
+
+    <delete id="DeleteCategory" parameterType="int">
+          delete from category where category_id=#{category_id}
+    </delete>
+</mapper>

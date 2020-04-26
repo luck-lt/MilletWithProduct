@@ -21,6 +21,11 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
         <!--使用分页插件只需要导这个包 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>

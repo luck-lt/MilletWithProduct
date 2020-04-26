@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xm.dao.OrderDetailMapper">
+    <sql id="condition">
+      <!--  <where>
+            <if test="parent_id!=null and parent_id!=0">
+                parent_id = #{parent_id}
+            </if>
+        </where>-->
+    </sql>
+    <select id="OrderDetailFindAll" resultType="map">
+        SELECT p.`product_id`,`pname`,`stock`,`show_price`,`attribute_list`,`category_id`,`introduce`,`pic_img`,`order_product_id`,`order_id`,o.`product_id`,`buy_number`,`product_amount`
+        FROM product p INNER JOIN orderdetail o ON p.`product_id`=o.`product_id`
+        <include refid="condition"/>
+    </select>
+
+    <!--<select id="CategoryParFindAll" resultType="Category">
+        select * from Category where parent_id = #{parent_id}
+    </select>
+
+
+    <update id="UpdateCategory" parameterType="Category">
+      UPDATE category set `parent_id`=#{parent_id},`category_name`=#{category_name} WHERE `category_id`=#{category_id}
+	</update>
+
+    <delete id="DeleteCategory" parameterType="int">
+          delete from category where category_id=#{category_id}
+    </delete>-->
+</mapper>
