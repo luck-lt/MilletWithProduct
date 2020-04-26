@@ -7,8 +7,11 @@ import com.xm.service.verificationcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -53,18 +56,43 @@ public class UsersController {
         return "false";
     }
 
-   /* @PostMapping("/dl")
-    public String dl(String username, String password) {
+    @Autowired
+    private HttpServletRequest request;
+
+    private List<String> userSession;
+
+    @PostMapping("/dl")
+    public String dl(String username, String password, HttpSession session) {
         User user = new User();
-        if (username.length() < 11) {
-            user.setUser_id(Integer.parseInt(username));
-        }
-        user.setTelephone(username);
         user.setLogin_password(password);
-        int i = userService.findLogin(user);
-        if (i > 0) {
-            return "{\"zj\":\"true\"}";
+        session.setAttribute("user", username);
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        if (username.length() < 11) {
+            map.put("user_id", username);
+        }
+        map.put("login_name", username);
+        map.put("login_password", password);
+        List<User> users = (List<User>) userService.listByMap(map);
+        if (users.size() != 0) {
+            userSession = (List<String>) request.getServletContext().getAttribute("vsers");
+            if (userSession.contains(session.getId())) {
+                return "{\"zj\":\"用户已在线\"}";
+            } else {
+                userSession.add(session.getId());
+                return "{\"zj\":\"true\"}";
+            }
         }
         return "{\"zj\":\"false\"}";
-    }*/
+    }
+
+    @PostMapping("/zx")
+    public void dl(String username, HttpSession session) {
+        List<String> users = (List<String>) request.getServletContext().getAttribute("vsers");
+        if (users.contains(session.getId())) {
+            users.remove(session.getId());
+        }
+        System.out.println("-------------------------------------------注销成功");
+    }
+
 }

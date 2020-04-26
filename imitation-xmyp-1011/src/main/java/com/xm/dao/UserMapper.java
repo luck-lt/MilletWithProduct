@@ -18,4 +18,5 @@ public interface UserMapper extends SuperMapper<User> {
    public List<User> findAll(User user);
    public int UpdateUser(User user);
    public int DeleteUser(Integer id);
+   public int findLogin(User user);
 }

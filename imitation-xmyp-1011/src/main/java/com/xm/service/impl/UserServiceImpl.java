@@ -40,13 +40,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.DeleteUser(id);
     }
 
-    @Override
+ /*   @Override
     public int findLogin(User user) {
-        return 0;
-    }
-
-
-  /*  public int findLogin(User user) {
         return userMapper.findLogin(user);
     }*/
 

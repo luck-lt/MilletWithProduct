@@ -5,12 +5,10 @@ import com.xm.pojo.PageResult;
 import com.xm.pojo.Product;
 import com.xm.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class CategoryController {
@@ -31,6 +29,7 @@ public class CategoryController {
         List<Category> categories = categoryService.CategoryFindAll(null);
         return categories;
     }
+
     //查询一级分类下的分类
     @ResponseBody
     @PostMapping("/CategoryByID")
@@ -82,5 +81,4 @@ public class CategoryController {
         }
         return 0;
     }
-
 }

@@ -1200,12 +1200,12 @@ a:hover, a:focus {
 .site-topbar {
     *position: relative;
     *z-index: 11;
-    height: 36px;
+    /*height: 36px;*/
     border-bottom: 1px solid #dfdfdf;
     font-size: 12px;
     line-height: 36px;
     color: #8c8c8c;
-    background: #fafafa
+    background: #333333;
 }
 
 .site-topbar a {
@@ -1213,7 +1213,7 @@ a:hover, a:focus {
 }
 
 .site-topbar a:hover, .site-topbar a.current {
-    color: #333
+    color: #FFFFFF;
 }
 
 .site-topbar .sep {
@@ -1310,21 +1310,17 @@ a:hover, a:focus {
     position: relative;
     float: left;
     height: 70px;
-    margin-bottom: 15px
+    /*    margin-bottom: 15px*/
+    margin-top: 20px;
 }
 
 .site-header .site-logo .logo {
     position: relative;
     z-index: 5;
     display: block;
-    width: 70px;
-    height: 70px;
-    background-image: url('http://c1.mifile.cn/f/i/2014/cn/icon/site-logo.png');
-    background-image: -webkit-image-set(url('http://c1.mifile.cn/f/i/2014/cn/icon/site-logo.png') 1x, url('http://c1.mifile.cn/f/i/2014/cn/icon/site-logo_2x.png') 2x);
-    background-repeat: no-repeat;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px
+    width: 49px;
+    height: 50px;
+    border-radius: 2px;
 }
 
 .site-header .site-logo .logo i {
@@ -1528,7 +1524,8 @@ a:hover, a:focus {
 
 .site-header .header-info .search-form {
     position: relative;
-    width: 422px;
+    /* width: 422px;*/
+    width: 300px;
     height: 38px;
     border: 1px solid #dfdfdf
 }
@@ -1669,12 +1666,12 @@ a:hover, a:focus {
     display: none
 }
 
-.site-header .header-nav {
+/*.site-header .header-nav {
     position: relative;
     clear: both;
     height: 50px;
     background: #404144
-}
+}*/
 
 .site-header .header-nav .nav-main {
     float: left
@@ -1686,13 +1683,13 @@ a:hover, a:focus {
     list-style-type: none
 }
 
-.site-header .header-nav .nav-category {
+/*.site-header .header-nav .nav-category {
     position: relative;
     float: left;
     width: 248px;
     height: 50px;
     background: #ff4a00
-}
+}*/
 
 .site-header .header-nav .btn-category-list {
     display: block;
@@ -2889,4 +2886,178 @@ a:hover, a:focus {
     .row .col-15 {
         width: 620px
     }
+}
+
+
+/*导航*/
+.site-header .header-nav {
+    float: left;
+    width: 730px;
+    position: relative;
+    height: 70px;
+    /* background: #404144;*/
+}
+
+.nav-list {
+    position: relative;
+    z-index: 10;
+    float: left;
+    width: 700px;
+    height: 40px;
+    /*    margin: 0;*/
+    padding: 40px 0 0 30px;
+    list-style-type: none;
+    font-size: 16px;
+}
+
+.nav-category {
+    text-align: center;
+    position: relative;
+    float: left;
+    width: 100px;
+    /* padding-right: 15px;*/
+}
+
+.header-nav-menu {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 147px;
+    left: 0;
+    z-index: 24;
+    width: 100%;
+    height: 200px;
+    border-top: 1px solid #e0e0e0;
+    /* background: #fff;*/
+    display: none;
+}
+
+.container1 {
+    width: 1226px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.children-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 12px;
+}
+
+.header-nav-menu .children-list li {
+    position: relative;
+    float: left;
+    width: 180px;
+    padding: 35px 12px 0;
+    text-align: center;
+}
+
+.header-nav-menu .figure-thumb {
+    width: 160px;
+    height: 110px;
+    margin: 0 auto 16px;
+    text-align: center;
+}
+
+.header-nav-menu .title {
+    color: #333;
+}
+
+.header-nav-menu .price {
+    margin: 0;
+    line-height: 20px;
+    color: #ff6700;
+}
+
+/*导航下的图标和图片*/
+.home-hero-sub {
+    margin-top: 14px;
+}
+
+.span4 {
+    width: 234px;
+}
+
+.home-channel-list {
+    margin: 0;
+    padding: 3px;
+    list-style-type: none;
+    font-size: 12px;
+    text-align: center;
+    background: #5f5750;
+}
+
+.home-channel-list li {
+    position: relative;
+    float: left;
+    width: 70px;
+    height: 82px;
+    padding: 0 3px;
+}
+
+.home-channel-list a {
+    display: block;
+    padding-top: 18px;
+    text-overflow: ellipsis;
+    color: #fff;
+    opacity: .7;
+    -webkit-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+.home-channel-list img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 4px;
+    border: 0;
+}
+
+.span16 {
+    width: 992px;
+    float: left;
+    margin-left: 14px;
+    min-height: 1px;
+}
+
+.home-promo-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.home-promo-list li.first {
+    margin-left: 0;
+}
+
+.home-promo-list li {
+    float: left;
+    width: 316px;
+    height: 170px;
+    margin-left: 22px;
+    -webkit-transition: -webkit-box-shadow .2s linear;
+    transition: -webkit-box-shadow .2s linear;
+    transition: box-shadow .2s linear;
+    transition: box-shadow .2s linear, -webkit-box-shadow .2s linear;
+}
+
+.home-promo-list a {
+    display: block;
+    height: 170px;
+    background: url(//i1.mifile.cn/f/i/2014/cn/placeholder-80.png) no-repeat 50%;
+}
+
+.home-promo-list img {
+    display: block;
+    width: 316px;
+    height: 170px;
+    border: 0;
+}
+
+.layui-icon {
+    float: right
+}
+
+#sj {
+    margin-top: 20px;
 }

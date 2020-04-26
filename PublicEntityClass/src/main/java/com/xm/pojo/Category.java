@@ -1,12 +1,24 @@
 package com.xm.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.io.Serializable;
 
+/**
+ * @description
+ * @author: Specime
+ * @date:2020/4/17
+ */
 @Data
-public class Category {
-    public Integer category_id;
-    public Integer parent_id;
-    public String category_name;
+@AllArgsConstructor
+@NoArgsConstructor
+public class Category implements Serializable {
+
+    private Integer category_id;
+    private int parent_id;
+    private String name;
+
+
 }
