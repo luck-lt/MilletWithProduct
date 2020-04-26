@@ -6,6 +6,7 @@ import javafx.scene.chart.CategoryAxis;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface CategoryMapper extends SuperMapper<Category> {
@@ -16,4 +17,6 @@ public interface CategoryMapper extends SuperMapper<Category> {
     public int UpdateCategory(Category category);
 
     public int DeleteCategory(Integer id);
+
+    public List<Map<String, Object>> listallsp();
 }

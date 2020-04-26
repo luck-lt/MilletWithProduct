@@ -27,4 +27,8 @@
     <delete id="DeleteCategory" parameterType="int">
           delete from category where category_id=#{category_id}
     </delete>
+    <select id="listallsp" resultType="java.util.HashMap" >
+SELECT a.category_id,a.name,b.product_id,b.pname,b.show_price,b.pic_img FROM category AS a INNER JOIN product AS b ON a.category_id=b.category_id  WHERE a.parent_id=0 ORDER BY b.product_id ASC
+    </select>
+
 </mapper>

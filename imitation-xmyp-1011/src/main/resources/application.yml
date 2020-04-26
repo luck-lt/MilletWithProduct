@@ -8,6 +8,13 @@ spring:
     nacos:
       discovery:
         server-addr:  127.0.0.1:8848
+  #  渲染模板
+  thymeleaf:
+    encoding: UTF-8
+    #\u5F00\u53D1\u65F6\u5173\u95ED\u7F13\u5B58,\u4E0D\u7136\u6CA1\u6CD5\u770B\u5230\u5B9E\u65F6\u9875\u9762
+    cache: false
+    #prefix: classpath:/templates/
+    suffix: .html
   #ccl:
   #  sms:
   #    accessKeyId: LTAI4FumTFVrUjgqyLZ5AMcV         # accessKeyId
@@ -21,8 +28,8 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql:///xmyp?serverTimezone=UTC
     username: root
-    #    password: longtao
-    password: 123456
+    password: longtao
+    #    password: 123456
     dbcp2:
       min-idle: 5
       initial-size: 5

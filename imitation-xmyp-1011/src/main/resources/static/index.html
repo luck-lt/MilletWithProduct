@@ -8,8 +8,6 @@
     <meta name="description"
           content="小米官方网站包含小米手机系列小米4、小米3移动版电信版联通版4G等，红米手机、红米Note、小米电视、小米盒子、小米路由器等产品配件配置参数详细介绍及在线购买。"/>
     <meta name="keywords" content="小米,小米手机,小米官网,红米手机,小米平板,小米电视"/>
-    <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"/>-->
     <link rel="stylesheet" href="css/base.min.css"/>
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
     <script src="layui/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
@@ -29,11 +27,9 @@
 
             var xxx = document.getElementById("dl").innerHTML;
             var sss = document.getElementById("dls");
-            /* console.log(sss)*/
             laytpl(xxx).render(layui.sessionData('user'), function (html) {
                 sss.innerHTML = html;
             })
-            element.render();
 
             /*轮播*/
             //建造实例
@@ -44,6 +40,18 @@
                 , arrow: 'hover' //始终显示箭头
                 , anim: 'fade' //切换动画方式
             });
+            $.post('./cd', function (data) {
+                layui.sessionData("index", {key: 'category', value: data});
+            }, 'json');
+            $.post('./cd2', function (data) {
+                layui.sessionData("index", {key: 'product', value: data});
+                var list = document.getElementById("listsp").innerHTML;
+                var lists = document.getElementById("listspView");
+                laytpl(list).render(layui.sessionData("index"), function (html) {
+                    lists.innerHTML = html;
+                });
+            }, 'json');
+
         });
         $(function () {
             $('.site-logo').hover(function () {
@@ -92,7 +100,6 @@
                 laytpl(xxx).render(layui.sessionData('user'), function (html) {
                     sss.innerHTML = html;
                 })
-                layer.ms
                 element.render();
             });
             window.location.reload();
@@ -112,6 +119,60 @@
 
 </head>
 <body>
+<script id="listsp" type="text/html">
+    {{#
+    layui.each(d.category,function(index,item){
+    }}
+    <div class="types">
+        <div class="sj">
+            <div class="top">
+                <div style="float: left;padding: 10px;">
+                    <h2>{{item.name}}</h2>
+                </div>
+                <div style="float: right;padding: 10px;">
+                    <a href="#">查看全部 <i class="layui-icon layui-icon-right"
+                                        style="font-size: 25px;"></i></a>
+                </div>
+            </div>
+            <div class="bem">
+                <div>
+                    <div class="tp">
+                        <a>
+                            <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/574c6643ab91c6618bfb2d0e2c761d0b.jpg?thumb=1&w=234&h=614&f=webp&q=90">
+                        </a>
+                    </div>
+                    <div class="tps">
+                        <ul class="tpul">
+                            {{# layui.each(d.product,function(index1,item1){
+                            }}
+                            {{# if(item.category_id==item1.category_id){
+                            }}
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <img src="{{item1.pic_img}}" style="width: 160px;height: 160px;">
+                                        <h3 style="color: #0C0C0C">{{item1.pname}}</h3>
+                                        <!--  <p>{{item1.introduce}}</p>-->
+                                        <p class="price" style="color: #ff8113">
+                                            <span class="num">{{item1.show_price}}</span>元<span>起</span></p>
+                                    </div>
+                                </a>
+                            </li>
+
+                            {{#}
+                            }}
+                            {{# });
+                            }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{# });
+    }}
+
+</script>
 <script id="dl" type="text/html">
     {{#  if(d.name==null){ }}
     <a data-needlogin="true" href="Logins.html">登录</a>
@@ -294,826 +355,818 @@
             </ul>
         </div>
     </div>
-    <div class="home-star-goods">
-        <div class="xm-plain-box J_starGoodsCarousel">
-            <div class="box-hd">
-                <h3 class="title">小米明星单品<a class="acc-link" href="c/peijian/"
-                                           onClick="_msq.push(['trackEvent',' CN-WW-HP-PJ-A0','', '']);_hmt.push(['_trackEvent','PC','首页_B1_8_/c/peijian/']);">根据机型选配件</a>
-                </h3>
-                <div class="more">
-                    <div class="xm-recommend-page clearfix">
-                        <a class="page-btn-prev page-btn-prev-disabled iconfont J_carouselPrev"
-                           href="javascript: void(0);">&#xe604;</a><a class="page-btn-next iconfont J_carouselNext"
-                                                                      href="javascript: void(0);">&#xe605;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="box-bd">
-                <div class="xm-star-goods-list-wrap J_carouselWrap">
-                    <div class="xm-star-goods-list clearfix J_carouselList">
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="http://item.mi.com/static/buymitv" data-stat-aid='AA77' data-stat-pid='1_3_1'><img
-                  src="http://i1.mifile.cn/a1/T1WpD_BT_T1RXrhCrK!220x220.jpg"
-                  srcset="http://i1.mifile.cn/a1/T1WpD_BT_T1RXrhCrK!440x440.jpg 2x" alt="小米电视2 单售3399元"/></a>
-        </span>
-                                <span class="item-title"><a
-                                        href="http://item.mi.com/static/buymitv">小米电视2 单售3399元</a></span>
-                                <span class="item-desc">顶配49英寸4K电视，性价比之王</span>
-                            </div>
-                        </div>
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="shouhuan/" data-stat-aid='AA153' data-stat-pid='1_3_2'><img
-                  src="http://i1.mifile.cn/a1/T1qaVvB7CT1RXrhCrK.jpg?width=220&height=220 "
-                  srcset="http://i1.mifile.cn/a1/T1qaVvB7CT1RXrhCrK.jpg?width=440&height=440  2x" alt="小米手环"/></a>
-        </span>
-                                <span class="item-title"><a href="shouhuan/">小米手环</a></span>
-                                <span class="item-desc">军用传感器，30天超长续航</span>
-                            </div>
-                        </div>
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="air/" data-stat-aid='AA79' data-stat-pid='1_3_3'><img
-                  src="http://i1.mifile.cn/a1/T1XYxTBsAT1RXrhCrK!220x220.jpg"
-                  srcset="http://i1.mifile.cn/a1/T1XYxTBsAT1RXrhCrK!440x440.jpg 2x" alt="小米空气净化器 立即预约"/></a>
-        </span>
-                                <span class="item-title"><a href="air/">小米空气净化器 立即预约</a></span>
-                                <span class="item-desc">3层顶级家用空气滤芯，PM2.5过滤率达99.99%</span>
-                            </div>
-                        </div>
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="miwifimini/" data-stat-aid='AA80' data-stat-pid='1_3_4'><img
-                  src="http://i2.mifile.cn/a1/T1s1JTB4bT1RXrhCrK!220x220.jpg"
-                  srcset="http://i2.mifile.cn/a1/T1s1JTB4bT1RXrhCrK!440x440.jpg 2x" alt="小米路由器mini "/></a>
-        </span>
-                                <span class="item-title"><a href="miwifimini/">小米路由器mini </a></span>
-                                <span class="item-desc">主流双频AC智能路由器，性价比之王</span>
-                            </div>
-                        </div>
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="miwifi/" data-stat-aid='AA110' data-stat-pid='1_3_5'><img
-                  src="http://i1.mifile.cn/a1/T1kiWTBChT1RXrhCrK!220x220.jpg"
-                  srcset="http://i1.mifile.cn/a1/T1kiWTBChT1RXrhCrK!440x440.jpg 2x" alt="小米路由器 "/></a>
-        </span>
-                                <span class="item-title"><a href="miwifi/">小米路由器 </a></span>
-                                <span class="item-desc">顶配双频AC智能路由器，内置1TB大硬盘</span>
-                            </div>
-                        </div>
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="dianyuan16000/" data-stat-aid='AA111' data-stat-pid='1_3_6'><img
-                  src="http://i1.mifile.cn/a1/T1pOWvBKET1RXrhCrK!220x220.jpg"
-                  srcset="http://i1.mifile.cn/a1/T1pOWvBKET1RXrhCrK!440x440.jpg 2x" alt="小米移动电源16000mAh "/></a>
-        </span>
-                                <span class="item-title"><a href="dianyuan16000/">小米移动电源16000mAh </a></span>
-                                <span class="item-desc">双USB输出 高品质电芯 全铝合金金属外壳</span>
-                            </div>
-                        </div>
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="huosai-jianzhuang/" data-stat-aid='AA197' data-stat-pid='1_3_7'><img
-                  src="http://i1.mifile.cn/a1/T1y0JTBy_T1RXrhCrK.jpg?width=220&height=220 "
-                  srcset="http://i1.mifile.cn/a1/T1y0JTBy_T1RXrhCrK.jpg?width=440&height=440  2x" alt="小米活塞耳机简装版"/></a>
-        </span>
-                                <span class="item-title"><a href="huosai-jianzhuang/">小米活塞耳机简装版</a></span>
-                                <span class="item-desc">好声音源自活塞式音腔，延续经典设计</span>
-                            </div>
-                        </div>
-                        <div class="xm-star-goods-item">
-                            <div class="item-content">
-        <span class="item-thumb">
-          <a href="dianyuan5000/" data-stat-aid='AA113' data-stat-pid='1_3_8'><img
-                  src="http://i1.mifile.cn/a1/T1pZbvBTET1RXrhCrK!220x220.jpg"
-                  srcset="http://i1.mifile.cn/a1/T1pZbvBTET1RXrhCrK!440x440.jpg 2x" alt="小米移动电源5000mAh"/></a>
-        </span>
-                                <span class="item-title"><a href="dianyuan5000/">小米移动电源5000mAh</a></span>
-                                <span class="item-desc">仅 9.9mm 薄，可以放入衬衫兜的移动电源</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .home-star-goods END -->
 
-    <div class="home-new-goods">
-        <div class="xm-plain-box">
-            <div class="box-hd">
-                <h3 class="title">新品上架</h3>
-                <div class="more">
-                    <a class="more-link" href="http://list.mi.com/xinpin">更多<i class="iconfont">&#xe605;</i></a>
-                </div>
-            </div>
-            <div class="box-bd">
-                <div class="row">
-                    <div class="col col-15">
-                        <div class="brick-list">
-                            <div class="brick-item brick-item-l">
-                                <div class="item">
-                                    <div class="item-content">
-                                        <a href="xiaoyi/" data-stat-aid='AA132' data-stat-pid='1_4_1'>
-                        <span class="item-thumb">
-                            <img src="http://c1.mifile.cn/f/i/g/2014/cn/index/xiaoyimixiao.jpg" alt="小蚁智能摄像机"
-                                 srcset="http://c1.mifile.cn/f/i/g/2014/cn/index/xiaoyimishexiangjida.jpg 2x"/>
-                        </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a href="yeelight/">Yeelight智能灯</a></span>
-                        <span class="item-price">129元 </span>
-                    </span>
-                                        <span class="item-thumb">
-                        <a href="yeelight/" data-stat-aid='AA243' data-stat-pid='1_4_2'><img
-                                src="http://i1.mifile.cn/a1/T118dvBTET1RXrhCrK!220x220.jpg" alt="Yeelight智能灯"
-                                srcset="http://i1.mifile.cn/a1/T118dvBTET1RXrhCrK!440x440.jpg 2x"/></a>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="brick-item brick-item-s">
-                                    <div class="item">
-                                        <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a href="http://item.mi.com/1141500010.html">QCY派Q8蓝牙耳机</a></span>
-                        <span class="item-price">49元 <del>59.9元</del></span>
-                    </span>
-                                            <span class="item-thumb">
-                        <a href="http://item.mi.com/1141500010.html" data-stat-aid='AA167' data-stat-pid='1_4_3'><img
-                                src="http://i1.mifile.cn/a1/T1SrKTBmWT1RXrhCrK!135x135.jpg" alt="QCY派Q8蓝牙耳机"
-                                srcset="http://i1.mifile.cn/a1/T1SrKTBmWT1RXrhCrK!270x270.jpg 2x"/></a>
-                    </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="brick-item brick-item-s">
-                                    <div class="item">
-                                        <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a href="http://item.mi.com/1144900003.html">功夫米兔手机支架</a></span>
-                        <span class="item-price">19元 </span>
-                    </span>
-                                            <span class="item-thumb">
-                        <a href="http://item.mi.com/1144900003.html" data-stat-aid='AA211' data-stat-pid='1_4_4'><img
-                                src="http://i1.mifile.cn/a1/T1_8YvBKJT1RXrhCrK!135x135.jpg" alt="功夫米兔手机支架"
-                                srcset="http://i1.mifile.cn/a1/T1_8YvBKJT1RXrhCrK!270x270.jpg 2x"/></a>
-                    </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a href="dianyuan10400/">小米移动电源10400mAh</a></span>
-                        <span class="item-price">69元 </span>
-                    </span>
-                                        <span class="item-thumb">
-                        <a href="dianyuan10400/" data-stat-aid='AA138' data-stat-pid='1_4_5'><img
-                                src="http://i1.mifile.cn/a1/T15TVvBXxT1RXrhCrK!220x220.jpg" alt="小米移动电源10400mAh"
-                                srcset="http://i1.mifile.cn/a1/T15TVvBXxT1RXrhCrK!440x440.jpg 2x"/></a>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a href="http://item.mi.com/1150300022.html">小米4实木后盖</a></span>
-                        <span class="item-price">69元 </span>
-                    </span>
-                                        <span class="item-thumb">
-                        <a href="http://item.mi.com/1150300022.html" data-stat-aid='AA213' data-stat-pid='1_4_6'><img
-                                src="http://i1.mifile.cn/a1/T1NAhvBvAT1RXrhCrK!220x220.jpg" alt="小米4实木后盖"
-                                srcset="http://i1.mifile.cn/a1/T1NAhvBvAT1RXrhCrK!440x440.jpg 2x"/></a>
-                    </span>
-                                        <span class="item-flag">
-                		<span class="icon-flag">买赠</span>
-            		</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a href="http://item.mi.com/1151200001.html">小米多功能电脑双肩包</a></span>
-                        <span class="item-price">99元 </span>
-                    </span>
-                                        <span class="item-thumb">
-                        <a href="http://item.mi.com/1151200001.html" data-stat-aid='AA214' data-stat-pid='1_4_7'><img
-                                src="http://i1.mifile.cn/a1/T1lVCvBsJT1RXrhCrK!220x220.jpg" alt="小米多功能电脑双肩包"
-                                srcset="http://i1.mifile.cn/a1/T1lVCvBsJT1RXrhCrK!440x440.jpg 2x"/></a>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a
-                                href="http://item.mi.com/1151200008.html">红米Note钢化玻璃贴膜（0.33mm）</a></span>
-                        <span class="item-price">19元 </span>
-                    </span>
-                                        <span class="item-thumb">
-                        <a href="http://item.mi.com/1151200008.html" data-stat-aid='AA228' data-stat-pid='1_4_8'><img
-                                src="http://i1.mifile.cn/a1/T1yPbvByWv1RXrhCrK!220x220.jpg" alt="红米Note钢化玻璃贴膜（0.33mm）"
-                                srcset="http://i1.mifile.cn/a1/T1yPbvByWv1RXrhCrK!440x440.jpg 2x"/></a>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                    <span class="item-info">
-                        <span class="item-title"><a
-                                href="http://item.mi.com/1151200022.html">Skullcandy Uprock2头戴式耳机</a></span>
-                        <span class="item-price">349元 </span>
-                    </span>
-                                        <span class="item-thumb">
-                        <a href="http://item.mi.com/1151200022.html" data-stat-aid='AA241' data-stat-pid='1_4_9'><img
-                                src="http://i1.mifile.cn/a1/T1UPDvBbLT1RXrhCrK!220x220.jpg"
-                                alt="Skullcandy Uprock2头戴式耳机"
-                                srcset="http://i1.mifile.cn/a1/T1UPDvBbLT1RXrhCrK!440x440.jpg 2x"/></a>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-5">
-                        <div class="channel-section">
-                            <ul class="channel-list">
-                                <li id="J_secKillGoods">
+    <div id="listspView"></div>
+    <!--   <div class="sj">
+           <div class="top">
+               <div style="float: left;padding: 10px;">
+                   <h2>手机</h2>
+               </div>
+               <div style="float: right;padding: 10px;">
+                   <a href="#">查看全部 <i class="layui-icon layui-icon-right"
+                                       style="font-size: 25px;"></i></a>
+               </div>
+           </div>
+           <div class="bem">
+               <div>
+                   <div class="tp">
+                       <a>
+                           <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/574c6643ab91c6618bfb2d0e2c761d0b.jpg?thumb=1&w=234&h=614&f=webp&q=90">
+                       </a>
+                   </div>
+                   <div class="tps">
+                       <ul class="tpul">
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <div>
+                                       <img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0099822e42b4428cb25c4cdebc6ca53d.jpg?thumb=1&w=200&h=200&f=webp&q=90">
+                                       <h3 style="color: #0C0C0C">小米10</h3>
+                                       <p>骁龙865/1亿像素相机</p>
+                                       <p class="price" style="color: #ff8113">
+                                           <span class="num">3999</span>元<span>起</span></p>
+                                   </div>
+                               </a>
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+       </div>-->
+</div>
+<!-- <div class="home-new-goods">
+     <div class="xm-plain-box">
+         <div class="box-hd">
+             <h3 class="title">新品上架</h3>
+             <div class="more">
+                 <a class="more-link" href="http://list.mi.com/xinpin">更多<i class="iconfont">&#xe605;</i></a>
+             </div>
+         </div>
+         <div class="box-bd">
+             <div class="row">
+                 <div class="col col-15">
+                     <div class="brick-list">
+                         <div class="brick-item brick-item-l">
+                             <div class="item">
+                                 <div class="item-content">
+                                     <a href="xiaoyi/" data-stat-aid='AA132' data-stat-pid='1_4_1'>
+                     <span class="item-thumb">
+                         <img src="http://c1.mifile.cn/f/i/g/2014/cn/index/xiaoyimixiao.jpg" alt="小蚁智能摄像机"
+                              srcset="http://c1.mifile.cn/f/i/g/2014/cn/index/xiaoyimishexiangjida.jpg 2x"/>
+                     </span>
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a href="yeelight/">Yeelight智能灯</a></span>
+                     <span class="item-price">129元 </span>
+                 </span>
+                                     <span class="item-thumb">
+                     <a href="yeelight/" data-stat-aid='AA243' data-stat-pid='1_4_2'><img
+                             src="http://i1.mifile.cn/a1/T118dvBTET1RXrhCrK!220x220.jpg" alt="Yeelight智能灯"
+                             srcset="http://i1.mifile.cn/a1/T118dvBTET1RXrhCrK!440x440.jpg 2x"/></a>
+                 </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="brick-item brick-item-s">
+                                 <div class="item">
+                                     <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a href="http://item.mi.com/1141500010.html">QCY派Q8蓝牙耳机</a></span>
+                     <span class="item-price">49元 <del>59.9元</del></span>
+                 </span>
+                                         <span class="item-thumb">
+                     <a href="http://item.mi.com/1141500010.html" data-stat-aid='AA167' data-stat-pid='1_4_3'><img
+                             src="http://i1.mifile.cn/a1/T1SrKTBmWT1RXrhCrK!135x135.jpg" alt="QCY派Q8蓝牙耳机"
+                             srcset="http://i1.mifile.cn/a1/T1SrKTBmWT1RXrhCrK!270x270.jpg 2x"/></a>
+                 </span>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="brick-item brick-item-s">
+                                 <div class="item">
+                                     <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a href="http://item.mi.com/1144900003.html">功夫米兔手机支架</a></span>
+                     <span class="item-price">19元 </span>
+                 </span>
+                                         <span class="item-thumb">
+                     <a href="http://item.mi.com/1144900003.html" data-stat-aid='AA211' data-stat-pid='1_4_4'><img
+                             src="http://i1.mifile.cn/a1/T1_8YvBKJT1RXrhCrK!135x135.jpg" alt="功夫米兔手机支架"
+                             srcset="http://i1.mifile.cn/a1/T1_8YvBKJT1RXrhCrK!270x270.jpg 2x"/></a>
+                 </span>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a href="dianyuan10400/">小米移动电源10400mAh</a></span>
+                     <span class="item-price">69元 </span>
+                 </span>
+                                     <span class="item-thumb">
+                     <a href="dianyuan10400/" data-stat-aid='AA138' data-stat-pid='1_4_5'><img
+                             src="http://i1.mifile.cn/a1/T15TVvBXxT1RXrhCrK!220x220.jpg" alt="小米移动电源10400mAh"
+                             srcset="http://i1.mifile.cn/a1/T15TVvBXxT1RXrhCrK!440x440.jpg 2x"/></a>
+                 </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a href="http://item.mi.com/1150300022.html">小米4实木后盖</a></span>
+                     <span class="item-price">69元 </span>
+                 </span>
+                                     <span class="item-thumb">
+                     <a href="http://item.mi.com/1150300022.html" data-stat-aid='AA213' data-stat-pid='1_4_6'><img
+                             src="http://i1.mifile.cn/a1/T1NAhvBvAT1RXrhCrK!220x220.jpg" alt="小米4实木后盖"
+                             srcset="http://i1.mifile.cn/a1/T1NAhvBvAT1RXrhCrK!440x440.jpg 2x"/></a>
+                 </span>
+                                     <span class="item-flag">
+                     <span class="icon-flag">买赠</span>
+                 </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a href="http://item.mi.com/1151200001.html">小米多功能电脑双肩包</a></span>
+                     <span class="item-price">99元 </span>
+                 </span>
+                                     <span class="item-thumb">
+                     <a href="http://item.mi.com/1151200001.html" data-stat-aid='AA214' data-stat-pid='1_4_7'><img
+                             src="http://i1.mifile.cn/a1/T1lVCvBsJT1RXrhCrK!220x220.jpg" alt="小米多功能电脑双肩包"
+                             srcset="http://i1.mifile.cn/a1/T1lVCvBsJT1RXrhCrK!440x440.jpg 2x"/></a>
+                 </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a
+                             href="http://item.mi.com/1151200008.html">红米Note钢化玻璃贴膜（0.33mm）</a></span>
+                     <span class="item-price">19元 </span>
+                 </span>
+                                     <span class="item-thumb">
+                     <a href="http://item.mi.com/1151200008.html" data-stat-aid='AA228' data-stat-pid='1_4_8'><img
+                             src="http://i1.mifile.cn/a1/T1yPbvByWv1RXrhCrK!220x220.jpg" alt="红米Note钢化玻璃贴膜（0.33mm）"
+                             srcset="http://i1.mifile.cn/a1/T1yPbvByWv1RXrhCrK!440x440.jpg 2x"/></a>
+                 </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+                 <span class="item-info">
+                     <span class="item-title"><a
+                             href="http://item.mi.com/1151200022.html">Skullcandy Uprock2头戴式耳机</a></span>
+                     <span class="item-price">349元 </span>
+                 </span>
+                                     <span class="item-thumb">
+                     <a href="http://item.mi.com/1151200022.html" data-stat-aid='AA241' data-stat-pid='1_4_9'><img
+                             src="http://i1.mifile.cn/a1/T1UPDvBbLT1RXrhCrK!220x220.jpg"
+                             alt="Skullcandy Uprock2头戴式耳机"
+                             srcset="http://i1.mifile.cn/a1/T1UPDvBbLT1RXrhCrK!440x440.jpg 2x"/></a>
+                 </span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col col-5">
+                     <div class="channel-section">
+                         <ul class="channel-list">
+                             <li id="J_secKillGoods">
 
-                                </li>
-                                <li>
-                                    <a href="http://list.mi.com/30">
-                                        <span class="item-info">
-                                            <span class="item-title">特惠配件套装</span>
-                                            <span class="item-desc">手机必备配件组合购买<br/>实惠更优惠</span>
-                                        </span>
-                                        <span class="item-thumb">
-                                            <img src="http://c1.mifile.cn/f/i/2014/cn/index/channel-list-cool.jpg?ver=20140419"
-                                                 alt=""/>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://wan.mi.com/">
-                                        <span class="item-info">
-                                            <span class="item-title">我爱酷玩</span>
-                                            <span class="item-desc">邂逅炫酷的电子产品<br/>结交趣味相投的朋友</span>
-                                        </span>
-                                        <span class="item-thumb">
-                                            <img src="http://c1.mifile.cn/f/i/2014/cn/index/channel-list-new.jpg?ver=20140419"
-                                                 alt=""/>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="news-section">
-                            <ul>
-                                <li class="first"><a href="http://qiye.mi.com/" data-stat-aid='AA60'
-                                                     data-stat-pid='1_11_1'>企业用户采购通道<i class="iconfont">&#xe605;</i></a>
-                                </li>
-                                <li><a href="http://order.mi.com/misc/checkindex" data-stat-aid='AA61'
-                                       data-stat-pid='1_11_2'>小米手机防伪查询<i class="iconfont">&#xe605;</i></a></li>
-                                <li><a href="http://item.mi.com/static/re" data-stat-aid='AA62' data-stat-pid='1_11_3'>小米手机官翻版<i
-                                        class="iconfont">&#xe605;</i></a></li>
-                                <li><a href="http://item.mi.com/re/miwifi" data-stat-aid='AA195' data-stat-pid='1_11_4'>小米路由器官翻版<i
-                                        class="iconfont">&#xe605;</i></a></li>
-                            </ul>
-                        </div>
-                        <div class="recharge-section">
-                            <h3>话费充值<span id="rechargeTips" class="xm-recharge-tips"></span></h3>
-                            <form class="xm-recharge-form" action="#">
-                                <fieldset class="xm-recharge-tel">
-                                    <input id="rechargeTel" type="tel" name="rechargeTel" placeholder="请输入手机号码"
-                                           autocomplete="false"/>
-                                </fieldset>
-                                <fieldset class="xm-recharge-amount">
-                                    <select name="rechargeAmount" id="rechargeAmount">
-                                        <option id="amount100" value="100">100元</option>
-                                        <option id="amount30" value="30">30元</option>
-                                        <option id="amount50" value="50">50元</option>
-                                    </select>
-                                </fieldset>
-                                <fieldset class="xm-recharge-price">
-                                    <span class="fieldset-name">实付价格：</span>
-                                    <span id="rechargePrice" class="fieldset-text"><span>98.4</span>元起</span>
-                                </fieldset>
-                                <fieldset class="xm-recharge-submit">
-                                    <input id="rechargeBtn"
-                                           class="btn btn-primary btn-recharge-submit  btn-block disabled" type="submit"
-                                           value="立即充值"
-                                           onclick="_hmt.push(['_trackEvent','首页', '首页_话费充值','首页_话费充值_立即充值']);"/>
-                                </fieldset>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .home-new-goods END -->
+                             </li>
+                             <li>
+                                 <a href="http://list.mi.com/30">
+                                     <span class="item-info">
+                                         <span class="item-title">特惠配件套装</span>
+                                         <span class="item-desc">手机必备配件组合购买<br/>实惠更优惠</span>
+                                     </span>
+                                     <span class="item-thumb">
+                                         <img src="http://c1.mifile.cn/f/i/2014/cn/index/channel-list-cool.jpg?ver=20140419"
+                                              alt=""/>
+                                     </span>
+                                 </a>
+                             </li>
+                             <li>
+                                 <a href="http://wan.mi.com/">
+                                     <span class="item-info">
+                                         <span class="item-title">我爱酷玩</span>
+                                         <span class="item-desc">邂逅炫酷的电子产品<br/>结交趣味相投的朋友</span>
+                                     </span>
+                                     <span class="item-thumb">
+                                         <img src="http://c1.mifile.cn/f/i/2014/cn/index/channel-list-new.jpg?ver=20140419"
+                                              alt=""/>
+                                     </span>
+                                 </a>
+                             </li>
+                         </ul>
+                     </div>
+                     <div class="news-section">
+                         <ul>
+                             <li class="first"><a href="http://qiye.mi.com/" data-stat-aid='AA60'
+                                                  data-stat-pid='1_11_1'>企业用户采购通道<i class="iconfont">&#xe605;</i></a>
+                             </li>
+                             <li><a href="http://order.mi.com/misc/checkindex" data-stat-aid='AA61'
+                                    data-stat-pid='1_11_2'>小米手机防伪查询<i class="iconfont">&#xe605;</i></a></li>
+                             <li><a href="http://item.mi.com/static/re" data-stat-aid='AA62' data-stat-pid='1_11_3'>小米手机官翻版<i
+                                     class="iconfont">&#xe605;</i></a></li>
+                             <li><a href="http://item.mi.com/re/miwifi" data-stat-aid='AA195' data-stat-pid='1_11_4'>小米路由器官翻版<i
+                                     class="iconfont">&#xe605;</i></a></li>
+                         </ul>
+                     </div>
+                     <div class="recharge-section">
+                         <h3>话费充值<span id="rechargeTips" class="xm-recharge-tips"></span></h3>
+                         <form class="xm-recharge-form" action="#">
+                             <fieldset class="xm-recharge-tel">
+                                 <input id="rechargeTel" type="tel" name="rechargeTel" placeholder="请输入手机号码"
+                                        autocomplete="false"/>
+                             </fieldset>
+                             <fieldset class="xm-recharge-amount">
+                                 <select name="rechargeAmount" id="rechargeAmount">
+                                     <option id="amount100" value="100">100元</option>
+                                     <option id="amount30" value="30">30元</option>
+                                     <option id="amount50" value="50">50元</option>
+                                 </select>
+                             </fieldset>
+                             <fieldset class="xm-recharge-price">
+                                 <span class="fieldset-name">实付价格：</span>
+                                 <span id="rechargePrice" class="fieldset-text"><span>98.4</span>元起</span>
+                             </fieldset>
+                             <fieldset class="xm-recharge-submit">
+                                 <input id="rechargeBtn"
+                                        class="btn btn-primary btn-recharge-submit  btn-block disabled" type="submit"
+                                        value="立即充值"
+                                        onclick="_hmt.push(['_trackEvent','首页', '首页_话费充值','首页_话费充值_立即充值']);"/>
+                             </fieldset>
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="home-hot-goods">
+     <div class="xm-plain-box">
+         <div class="box-hd">
+             <h3 class="title">大家都喜欢</h3>
+         </div>
+         <div class="box-bd">
+             <div class="row">
+                 <div class="col col-15">
+                     <div class="brick-list">
+                         <div class="brick-item brick-item-l">
+                             <div class="item">
+                                 <div class="item-content">
+                                     <a href="http://item.mi.com/1144200023.html" data-stat-aid='AA20'
+                                        data-stat-pid='1_5_1'>
+                 <span class="item-thumb">
+                     <img src="http://c1.mifile.cn/f/i/g/2014/cn/index/1225xiaogangp.jpg" alt="小钢炮蓝牙音箱 经典款"
+                          srcset="http://c1.mifile.cn/f/i/g/2014/cn/index/1225xiaogangpda.jpg 2x"/>
+                 </span>
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+             <span class="item-info">
+                 <span class="item-title"><a href="http://item.mi.com/1134900291.html">小米随身杯</a></span>
+                 <span class="item-price">30元 <del>39元</del></span>
+             </span>
+                                     <span class="item-thumb">
+                 <a href="http://item.mi.com/1134900291.html" data-stat-aid='AA232' data-stat-pid='1_5_2'><img
+                         src="http://i1.mifile.cn/a1/T1_adTBvKT1RXrhCrK!220x220.jpg" alt="小米随身杯"
+                         srcset="http://i1.mifile.cn/a1/T1_adTBvKT1RXrhCrK!440x440.jpg 2x"/></a>
+             </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+             <span class="item-info">
+                 <span class="item-title"><a href="http://item.mi.com/1144200011.html">Easy Shot手机遥控自拍器</a></span>
+                 <span class="item-price">99元 <del>168元</del></span>
+             </span>
+                                     <span class="item-thumb">
+                 <a href="http://item.mi.com/1144200011.html" data-stat-aid='AA245' data-stat-pid='1_5_3'><img
+                         src="http://i1.mifile.cn/a1/T1iRDgBQKT1RXrhCrK!220x220.jpg" alt="Easy Shot手机遥控自拍器"
+                         srcset="http://i1.mifile.cn/a1/T1iRDgBQKT1RXrhCrK!440x440.jpg 2x"/></a>
+             </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+             <span class="item-info">
+                 <span class="item-title"><a href="http://item.mi.com/1141900059.html">红米Note高光亮彩后盖</a></span>
+                 <span class="item-price">29元 </span>
+             </span>
+                                     <span class="item-thumb">
+                 <a href="http://item.mi.com/1141900059.html" data-stat-aid='AA235' data-stat-pid='1_5_4'><img
+                         src="http://i1.mifile.cn/a1/T1IyW_ByAT1RXrhCrK!220x220.jpg" alt="红米Note高光亮彩后盖"
+                         srcset="http://i1.mifile.cn/a1/T1IyW_ByAT1RXrhCrK!440x440.jpg 2x"/></a>
+             </span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="brick-item brick-item-m">
+                             <div class="item">
+                                 <div class="item-content">
+             <span class="item-info">
+                 <span class="item-title"><a href="http://item.mi.com/1151200012.html">长袖T恤 正能量</a></span>
+                 <span class="item-price">39元 <del>49元</del></span>
+             </span>
+                                     <span class="item-thumb">
+                 <a href="http://item.mi.com/1151200012.html" data-stat-aid='AA237' data-stat-pid='1_5_5'><img
+                         src="http://i1.mifile.cn/a1/T16OhvBX_v1RXrhCrK!220x220.jpg" alt="长袖T恤 正能量"
+                         srcset="http://i1.mifile.cn/a1/T16OhvBX_v1RXrhCrK!440x440.jpg 2x"/></a>
+             </span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col col-5">
+                     <div class="board-section">
+                         <h3><span>HOT</span>热销商品排行</h3>
+                         <ul class="board-list">
+                             <li class="top">
+     <span class="item-info">
+         <span class="item-title"><a href="http://item.mi.com/1143900019.html" data-stat-aid='AA192'
+                                     data-stat-pid='1_6_1'>小米LED随身灯</a></span>
+         <span class="item-price">19.9元 </span>
+     </span>
+                                 <span class="item-thumb">
+         <a href="http://item.mi.com/1143900019.html" data-stat-aid='AA192' data-stat-pid='1_6_1'><img
+                 src="http://i1.mifile.cn/a1/T1mxh_BvxT1RXrhCrK!70x70.jpg" alt="小米LED随身灯"
+                 srcset="http://i1.mifile.cn/a1/T1mxh_BvxT1RXrhCrK!140x140.jpg 2x"/></a>
+     </span>
+                                 <span class="item-num">1</span>
+                             </li>
+                             <li class="top">
+     <span class="item-info">
+         <span class="item-title"><a href="http://item.mi.com/1134900187.html" data-stat-aid='AA40'
+                                     data-stat-pid='1_6_2'>趣味防尘塞</a></span>
+         <span class="item-price">3.9元 </span>
+     </span>
+                                 <span class="item-thumb">
+         <a href="http://item.mi.com/1134900187.html" data-stat-aid='AA40' data-stat-pid='1_6_2'><img
+                 src="http://i1.mifile.cn/a1/T19UxTBQEv1RXrhCrK!70x70.jpg" alt="趣味防尘塞"
+                 srcset="http://i1.mifile.cn/a1/T19UxTBQEv1RXrhCrK!140x140.jpg 2x"/></a>
+     </span>
+                                 <span class="item-num">2</span>
+                             </li>
+                             <li class="top">
+     <span class="item-info">
+         <span class="item-title"><a href="http://item.mi.com/1134900274.html" data-stat-aid='AA41'
+                                     data-stat-pid='1_6_3'>米兔青春扑克牌</a></span>
+         <span class="item-price">9.9元 </span>
+     </span>
+                                 <span class="item-thumb">
+         <a href="http://item.mi.com/1134900274.html" data-stat-aid='AA41' data-stat-pid='1_6_3'><img
+                 src="http://i1.mifile.cn/a1/T1QaxTBgYT1RXrhCrK!70x70.jpg" alt="米兔青春扑克牌"
+                 srcset="http://i1.mifile.cn/a1/T1QaxTBgYT1RXrhCrK!140x140.jpg 2x"/></a>
+     </span>
+                                 <span class="item-num">3</span>
+                             </li>
+                             <li>
+     <span class="item-info">
+         <span class="item-title"><a href="http://item.mi.com/1134900288.html" data-stat-aid='AA142'
+                                     data-stat-pid='1_6_4'>小米百变随身杯</a></span>
+         <span class="item-price">39元 </span>
+     </span>
+                                 <span class="item-thumb">
+         <a href="http://item.mi.com/1134900288.html" data-stat-aid='AA142' data-stat-pid='1_6_4'><img
+                 src="http://i1.mifile.cn/a1/T1ozZTB4ZT1RXrhCrK!70x70.jpg" alt="小米百变随身杯"
+                 srcset="http://i1.mifile.cn/a1/T1ozZTB4ZT1RXrhCrK!140x140.jpg 2x"/></a>
+     </span>
+                                 <span class="item-num">4</span>
+                             </li>
+                             <li>
+     <span class="item-info">
+         <span class="item-title"><a href="http://item.mi.com/1134900264.html" data-stat-aid='AA199'
+                                     data-stat-pid='1_6_5'>巨蟹星座挂绳</a></span>
+         <span class="item-price">9.9元 <del>12元</del></span>
+     </span>
+                                 <span class="item-thumb">
+         <a href="http://item.mi.com/1134900264.html" data-stat-aid='AA199' data-stat-pid='1_6_5'><img
+                 src="http://i1.mifile.cn/a1/T1CyJTBj_v1RXrhCrK!70x70.jpg" alt="巨蟹星座挂绳"
+                 srcset="http://i1.mifile.cn/a1/T1CyJTBj_v1RXrhCrK!140x140.jpg 2x"/></a>
+     </span>
+                                 <span class="item-num">5</span>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="home-commented-goods">
+     <div class="xm-plain-box">
+         <div class="box-hd">
+             <h3 class="title">热评产品</h3>
+         </div>
+         <div class="box-bd">
+             <div class="xm-commented-goods-list-wrap">
+                 <div class="xm-commented-goods-list clearfix">
+                     <div class="xm-commented-goods-item J_commentedGoods" data-cid="2134900342">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://item.mi.com/1134900318.html">经典版米兔</a></span>
+             <span class="item-meta"></span>
+             <span class="item-price">29元 </span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1134900318.html" data-stat-aid='AA120' data-stat-pid='1_7_1'><img
+                     src="http://i1.mifile.cn/a1/T1dRZTB_xT1RXrhCrK!220x220.jpg" alt="经典版米兔"
+                     srcset="http://i1.mifile.cn/a1/T1dRZTB_xT1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">非常可爱的小米兔~</span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item J_commentedGoods" data-cid="2134900096">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://item.mi.com/1134900087.html">红米至简翻盖支架保护套</a></span>
+             <span class="item-meta"></span>
+             <span class="item-price">39元 </span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1134900087.html" data-stat-aid='AA121' data-stat-pid='1_7_2'><img
+                     src="http://i1.mifile.cn/a1/T1FaxTBmKT1RXrhCrK!220x220.jpg" alt="红米至简翻盖支架保护套"
+                     srcset="http://i1.mifile.cn/a1/T1FaxTBmKT1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">官网出品，质量真的不错，支架保护壳两用。</span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item J_commentedGoods" data-cid="2142100002">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://item.mi.com/1142100002.html">米键</a></span>
+             <span class="item-meta"></span>
+             <span class="item-price">4.9元 </span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1142100002.html" data-stat-aid='AA122' data-stat-pid='1_7_3'><img
+                     src="http://i1.mifile.cn/a1/T1kgDgByWT1RXrhCrK!220x220.jpg" alt="米键"
+                     srcset="http://i1.mifile.cn/a1/T1kgDgByWT1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">小小一个，功能超级强大。</span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item J_commentedGoods" data-cid="2143300081">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://item.mi.com/1143300042.html">红米Note后盖背贴</a></span>
+             <span class="item-meta"></span>
+             <span class="item-price">39元 </span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1143300042.html" data-stat-aid='AA236' data-stat-pid='1_7_4'><img
+                     src="http://i1.mifile.cn/a1/T1p_CTByxv1RXrhCrK!220x220.jpg" alt="红米Note后盖背贴"
+                     srcset="http://i1.mifile.cn/a1/T1p_CTByxv1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">触感很舒服，图案也好看！</span>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="home-saleoff-goods">
+     <div class="xm-plain-box">
+         <div class="box-hd">
+             <h3 class="title">特价产品</h3>
+         </div>
+         <div class="box-bd">
+             <div class="home-saleoff-goods-list-wrap">
+                 <div class="home-saleoff-goods-list clearfix">
+                     <div class="home-saleoff-goods-item">
+                         <div class="item-content">
+                             <span class="item-title"><a href="http://item.mi.com/1150900002.html">红米必备套装</a></span>
+                             <span class="item-price"><i>79</i>元 <del>117元</del></span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1150900002.html" data-stat-aid='AA136' data-stat-pid='1_8_1'><img
+                     src="http://i1.mifile.cn/a1/T1F9ZTBbxT1RXrhCrK!220x220.jpg" alt="红米必备套装"
+                     srcset="http://i1.mifile.cn/a1/T1F9ZTBbxT1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <div class="item-flag">
+                                 <span class="icon-flag">省38元</span>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="home-saleoff-goods-item">
+                         <div class="item-content">
+                             <span class="item-title"><a
+                                     href="http://item.mi.com/1144900004.html">fotopro手机相机支架套装</a></span>
+                             <span class="item-price"><i>59</i>元 <del>64元</del></span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1144900004.html" data-stat-aid='AA210' data-stat-pid='1_8_2'><img
+                     src="http://i1.mifile.cn/a1/T1GtZvBvVT1RXrhCrK!220x220.jpg" alt="fotopro手机相机支架套装"
+                     srcset="http://i1.mifile.cn/a1/T1GtZvBvVT1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <div class="item-flag">
+                                 <span class="icon-flag">省5元</span>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="home-saleoff-goods-item">
+                         <div class="item-content">
+                             <span class="item-title"><a href="http://item.mi.com/1150500005.html">大电池全能套装</a></span>
+                             <span class="item-price"><i>129</i>元 <del>178元</del></span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1150500005.html" data-stat-aid='AA126' data-stat-pid='1_8_3'><img
+                     src="http://i1.mifile.cn/a1/T1icAvBTdT1RXrhCrK!220x220.jpg" alt="大电池全能套装"
+                     srcset="http://i1.mifile.cn/a1/T1icAvBTdT1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <div class="item-flag">
+                                 <span class="icon-flag">省49元</span>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="home-saleoff-goods-item">
+                         <div class="item-content">
+                             <span class="item-title"><a href="http://item.mi.com/1134900392.html">IVS吸盘音箱</a></span>
+                             <span class="item-price"><i>79</i>元 <del>99元</del></span>
+                             <span class="item-thumb">
+             <a href="http://item.mi.com/1134900392.html" data-stat-aid='AA193' data-stat-pid='1_8_4'><img
+                     src="http://i1.mifile.cn/a1/T13JCTByCv1RXrhCrK!220x220.jpg" alt="IVS吸盘音箱"
+                     srcset="http://i1.mifile.cn/a1/T13JCTByCv1RXrhCrK!440x440.jpg 2x"/></a>
+         </span>
+                             <div class="item-flag">
+                                 <span class="icon-flag">省20元</span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="home-commented-goods home-duokan-goods">
+     <div class="xm-plain-box">
+         <div class="box-hd">
+             <h3 class="title">多看图书</h3>
+             <div class="more">
+                 <a class="more-link" href="http://www.duokan.com/list/1-1?from=xiaomi" target="_blank"
+                    onclick="_hmt.push(['_trackEvent','PC','首页_E1_更多_http://www.duokan.com/list/1-1?from=xiaomi']);">更多<i
+                         class="iconfont">&#xe605;</i></a>
+             </div>
+         </div>
+         <div class="box-bd">
+             <div class="xm-commented-goods-list-wrap">
+                 <div class="xm-commented-goods-list clearfix">
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://www.duokan.com/book/86042?ch=MiCom"
+                                         target="_blank">《锦绣缘》</a></span>
+              <span class="item-author">念一</span>
+             <span class="item-price">1.99元</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://www.duokan.com/book/86042?ch=MiCom" data-stat-aid='AA204' data-stat-pid='1_9_1'
+                target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/jxys.jpg" alt="《锦绣缘》"
+                                     srcset="http://c1.mifile.cn/f/i/duokan/jxyb.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">湖南卫视同名电视剧热播ing！黄晓明、陈乔恩、乔任梁主演！</span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://www.duokan.com/book/28697?ch=MiCom" target="_blank">《林海雪原》</a></span>
+              <span class="item-author">叶佼志</span>
+             <span class="item-price">6元</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://www.duokan.com/book/28697?ch=MiCom" data-stat-aid='AA205' data-stat-pid='1_9_2'
+                target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/lhxys.jpg" alt="《林海雪原》"
+                                     srcset="http://c1.mifile.cn/f/i/duokan/lhxyb.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">中国版的007邦德！徐克大片《智取威虎山》原著！</span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://www.duokan.com/book/86056?ch=MiCom"
+                                         target="_blank">《码农（第17期）》</a></span>
+              <span class="item-author">图灵社区</span>
+             <span class="item-price">免费</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://www.duokan.com/book/86056?ch=MiCom" data-stat-aid='AA206' data-stat-pid='1_9_3'
+                target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/mn17s.jpg" alt="《码农（第17期）》"
+                                     srcset="http://c1.mifile.cn/f/i/duokan/mn17b.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">在大数据时代，数据科学家无疑就是这个时代点“石”成金的人。</span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a href="http://www.duokan.com/book/86111?ch=MiCom" target="_blank">《姑娘，欢迎降落在这残酷世界》</a></span>
+              <span class="item-author">黄佟佟</span>
+             <span class="item-price">3.99元</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://www.duokan.com/book/86111?ch=MiCom" data-stat-aid='AA207' data-stat-pid='1_9_4'
+                target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/cksjs.jpg" alt="《姑娘，欢迎降落在这残酷世界》"
+                                     srcset="http://c1.mifile.cn/f/i/duokan/cksjb.jpg 2x"/></a>
+         </span>
+                             <span class="item-comment">致所有被生活辜负的好姑娘，20个心痛故事，给你方法、盔甲和武器，抵御世事无常。</span>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="home-commented-goods home-miui-goods">
+     <div class="xm-plain-box">
+         <div class="box-hd">
+             <h3 class="title">MIUI 主题</h3>
+             <div class="more">
+                 <a class="more-link" href="http://zhuti.xiaomi.com/?from=mi" target="_blank"
+                    onclick="_hmt.push(['_trackEvent','PC','首页_E2_更多_http://zhuti.xiaomi.com/?from=mi']);">更多<i
+                         class="iconfont">&#xe605;</i></a>
+             </div>
+         </div>
+         <div class="box-bd">
+             <div class="xm-commented-goods-list-wrap">
+                 <div class="xm-commented-goods-list clearfix">
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a
+                     href="http://zhuti.xiaomi.com/detail/ebd8b380-4893-495a-ad27-1c6b9eed57b8?channel=999"
+                     target="_blank">iWatch</a></span>
+             <span class="item-price">6米币</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://zhuti.xiaomi.com/detail/ebd8b380-4893-495a-ad27-1c6b9eed57b8?channel=999"
+                data-stat-aid='AA218' data-stat-pid='1_10_1' target="_blank"><img
+                     src="http://c1.mifile.cn/f/i/miui/3.17.4.2.jpg" alt="iWatch"
+                     srcset="http://c1.mifile.cn/f/i/miui/3.17.4.1.jpg 2x"/></a>
+         </span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a
+                     href="http://zhuti.xiaomi.com/detail/7f18a870-27cb-4e69-8363-565f3332e28b?channel=999"
+                     target="_blank">可口可乐</a></span>
+             <span class="item-price">免费</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://zhuti.xiaomi.com/detail/7f18a870-27cb-4e69-8363-565f3332e28b?channel=999"
+                data-stat-aid='AA219' data-stat-pid='1_10_2' target="_blank"><img
+                     src="http://c1.mifile.cn/f/i/miui/3.17.1.2.jpg" alt="可口可乐"
+                     srcset="http://c1.mifile.cn/f/i/miui/3.17.1.1.jpg 2x"/></a>
+         </span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a
+                     href="http://zhuti.xiaomi.com/detail/452ebba1-8852-48f9-b9d2-c0b28e34919e?channel=999"
+                     target="_blank">7 style</a></span>
+             <span class="item-price">6米币</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://zhuti.xiaomi.com/detail/452ebba1-8852-48f9-b9d2-c0b28e34919e?channel=999"
+                data-stat-aid='AA220' data-stat-pid='1_10_3' target="_blank"><img
+                     src="http://c1.mifile.cn/f/i/miui/3.17.2.2.jpg" alt="7 style"
+                     srcset="http://c1.mifile.cn/f/i/miui/3.17.2.1.jpg 2x"/></a>
+         </span>
+                         </div>
+                     </div>
+                     <div class="xm-commented-goods-item">
+                         <div class="item-content">
+         <span class="item-info">
+             <span class="item-title"><a
+                     href="http://zhuti.xiaomi.com/detail/f402865a-e7cd-4376-8738-ce64a1c14564?channel=999"
+                     target="_blank">沁心</a></span>
+             <span class="item-price">6米币</span>
+         </span>
+                             <span class="item-thumb">
+             <a href="http://zhuti.xiaomi.com/detail/f402865a-e7cd-4376-8738-ce64a1c14564?channel=999"
+                data-stat-aid='AA221' data-stat-pid='1_10_4' target="_blank"><img
+                     src="http://c1.mifile.cn/f/i/miui/3.17.3.2.png" alt="沁心"
+                     srcset="http://c1.mifile.cn/f/i/miui/3.17.3.1.png 2x"/></a>
+         </span>
+                         </div>
+                     </div>
 
-    <div class="home-hot-goods">
-        <div class="xm-plain-box">
-            <div class="box-hd">
-                <h3 class="title">大家都喜欢</h3>
-            </div>
-            <div class="box-bd">
-                <div class="row">
-                    <div class="col col-15">
-                        <div class="brick-list">
-                            <div class="brick-item brick-item-l">
-                                <div class="item">
-                                    <div class="item-content">
-                                        <a href="http://item.mi.com/1144200023.html" data-stat-aid='AA20'
-                                           data-stat-pid='1_5_1'>
-                    <span class="item-thumb">
-                        <img src="http://c1.mifile.cn/f/i/g/2014/cn/index/1225xiaogangp.jpg" alt="小钢炮蓝牙音箱 经典款"
-                             srcset="http://c1.mifile.cn/f/i/g/2014/cn/index/1225xiaogangpda.jpg 2x"/>
-                    </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                <span class="item-info">
-                    <span class="item-title"><a href="http://item.mi.com/1134900291.html">小米随身杯</a></span>
-                    <span class="item-price">30元 <del>39元</del></span>
-                </span>
-                                        <span class="item-thumb">
-                    <a href="http://item.mi.com/1134900291.html" data-stat-aid='AA232' data-stat-pid='1_5_2'><img
-                            src="http://i1.mifile.cn/a1/T1_adTBvKT1RXrhCrK!220x220.jpg" alt="小米随身杯"
-                            srcset="http://i1.mifile.cn/a1/T1_adTBvKT1RXrhCrK!440x440.jpg 2x"/></a>
-                </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                <span class="item-info">
-                    <span class="item-title"><a href="http://item.mi.com/1144200011.html">Easy Shot手机遥控自拍器</a></span>
-                    <span class="item-price">99元 <del>168元</del></span>
-                </span>
-                                        <span class="item-thumb">
-                    <a href="http://item.mi.com/1144200011.html" data-stat-aid='AA245' data-stat-pid='1_5_3'><img
-                            src="http://i1.mifile.cn/a1/T1iRDgBQKT1RXrhCrK!220x220.jpg" alt="Easy Shot手机遥控自拍器"
-                            srcset="http://i1.mifile.cn/a1/T1iRDgBQKT1RXrhCrK!440x440.jpg 2x"/></a>
-                </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                <span class="item-info">
-                    <span class="item-title"><a href="http://item.mi.com/1141900059.html">红米Note高光亮彩后盖</a></span>
-                    <span class="item-price">29元 </span>
-                </span>
-                                        <span class="item-thumb">
-                    <a href="http://item.mi.com/1141900059.html" data-stat-aid='AA235' data-stat-pid='1_5_4'><img
-                            src="http://i1.mifile.cn/a1/T1IyW_ByAT1RXrhCrK!220x220.jpg" alt="红米Note高光亮彩后盖"
-                            srcset="http://i1.mifile.cn/a1/T1IyW_ByAT1RXrhCrK!440x440.jpg 2x"/></a>
-                </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brick-item brick-item-m">
-                                <div class="item">
-                                    <div class="item-content">
-                <span class="item-info">
-                    <span class="item-title"><a href="http://item.mi.com/1151200012.html">长袖T恤 正能量</a></span>
-                    <span class="item-price">39元 <del>49元</del></span>
-                </span>
-                                        <span class="item-thumb">
-                    <a href="http://item.mi.com/1151200012.html" data-stat-aid='AA237' data-stat-pid='1_5_5'><img
-                            src="http://i1.mifile.cn/a1/T16OhvBX_v1RXrhCrK!220x220.jpg" alt="长袖T恤 正能量"
-                            srcset="http://i1.mifile.cn/a1/T16OhvBX_v1RXrhCrK!440x440.jpg 2x"/></a>
-                </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-5">
-                        <div class="board-section">
-                            <h3><span>HOT</span>热销商品排行</h3>
-                            <ul class="board-list">
-                                <li class="top">
-        <span class="item-info">
-            <span class="item-title"><a href="http://item.mi.com/1143900019.html" data-stat-aid='AA192'
-                                        data-stat-pid='1_6_1'>小米LED随身灯</a></span>
-            <span class="item-price">19.9元 </span>
-        </span>
-                                    <span class="item-thumb">
-            <a href="http://item.mi.com/1143900019.html" data-stat-aid='AA192' data-stat-pid='1_6_1'><img
-                    src="http://i1.mifile.cn/a1/T1mxh_BvxT1RXrhCrK!70x70.jpg" alt="小米LED随身灯"
-                    srcset="http://i1.mifile.cn/a1/T1mxh_BvxT1RXrhCrK!140x140.jpg 2x"/></a>
-        </span>
-                                    <span class="item-num">1</span>
-                                </li>
-                                <li class="top">
-        <span class="item-info">
-            <span class="item-title"><a href="http://item.mi.com/1134900187.html" data-stat-aid='AA40'
-                                        data-stat-pid='1_6_2'>趣味防尘塞</a></span>
-            <span class="item-price">3.9元 </span>
-        </span>
-                                    <span class="item-thumb">
-            <a href="http://item.mi.com/1134900187.html" data-stat-aid='AA40' data-stat-pid='1_6_2'><img
-                    src="http://i1.mifile.cn/a1/T19UxTBQEv1RXrhCrK!70x70.jpg" alt="趣味防尘塞"
-                    srcset="http://i1.mifile.cn/a1/T19UxTBQEv1RXrhCrK!140x140.jpg 2x"/></a>
-        </span>
-                                    <span class="item-num">2</span>
-                                </li>
-                                <li class="top">
-        <span class="item-info">
-            <span class="item-title"><a href="http://item.mi.com/1134900274.html" data-stat-aid='AA41'
-                                        data-stat-pid='1_6_3'>米兔青春扑克牌</a></span>
-            <span class="item-price">9.9元 </span>
-        </span>
-                                    <span class="item-thumb">
-            <a href="http://item.mi.com/1134900274.html" data-stat-aid='AA41' data-stat-pid='1_6_3'><img
-                    src="http://i1.mifile.cn/a1/T1QaxTBgYT1RXrhCrK!70x70.jpg" alt="米兔青春扑克牌"
-                    srcset="http://i1.mifile.cn/a1/T1QaxTBgYT1RXrhCrK!140x140.jpg 2x"/></a>
-        </span>
-                                    <span class="item-num">3</span>
-                                </li>
-                                <li>
-        <span class="item-info">
-            <span class="item-title"><a href="http://item.mi.com/1134900288.html" data-stat-aid='AA142'
-                                        data-stat-pid='1_6_4'>小米百变随身杯</a></span>
-            <span class="item-price">39元 </span>
-        </span>
-                                    <span class="item-thumb">
-            <a href="http://item.mi.com/1134900288.html" data-stat-aid='AA142' data-stat-pid='1_6_4'><img
-                    src="http://i1.mifile.cn/a1/T1ozZTB4ZT1RXrhCrK!70x70.jpg" alt="小米百变随身杯"
-                    srcset="http://i1.mifile.cn/a1/T1ozZTB4ZT1RXrhCrK!140x140.jpg 2x"/></a>
-        </span>
-                                    <span class="item-num">4</span>
-                                </li>
-                                <li>
-        <span class="item-info">
-            <span class="item-title"><a href="http://item.mi.com/1134900264.html" data-stat-aid='AA199'
-                                        data-stat-pid='1_6_5'>巨蟹星座挂绳</a></span>
-            <span class="item-price">9.9元 <del>12元</del></span>
-        </span>
-                                    <span class="item-thumb">
-            <a href="http://item.mi.com/1134900264.html" data-stat-aid='AA199' data-stat-pid='1_6_5'><img
-                    src="http://i1.mifile.cn/a1/T1CyJTBj_v1RXrhCrK!70x70.jpg" alt="巨蟹星座挂绳"
-                    srcset="http://i1.mifile.cn/a1/T1CyJTBj_v1RXrhCrK!140x140.jpg 2x"/></a>
-        </span>
-                                    <span class="item-num">5</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .home-hot-goods END -->
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>-->
 
-    <div class="home-commented-goods">
-        <div class="xm-plain-box">
-            <div class="box-hd">
-                <h3 class="title">热评产品</h3>
-            </div>
-            <div class="box-bd">
-                <div class="xm-commented-goods-list-wrap">
-                    <div class="xm-commented-goods-list clearfix">
-                        <div class="xm-commented-goods-item J_commentedGoods" data-cid="2134900342">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://item.mi.com/1134900318.html">经典版米兔</a></span>
-                <span class="item-meta"></span>
-                <span class="item-price">29元 </span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1134900318.html" data-stat-aid='AA120' data-stat-pid='1_7_1'><img
-                        src="http://i1.mifile.cn/a1/T1dRZTB_xT1RXrhCrK!220x220.jpg" alt="经典版米兔"
-                        srcset="http://i1.mifile.cn/a1/T1dRZTB_xT1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">非常可爱的小米兔~</span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item J_commentedGoods" data-cid="2134900096">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://item.mi.com/1134900087.html">红米至简翻盖支架保护套</a></span>
-                <span class="item-meta"></span>
-                <span class="item-price">39元 </span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1134900087.html" data-stat-aid='AA121' data-stat-pid='1_7_2'><img
-                        src="http://i1.mifile.cn/a1/T1FaxTBmKT1RXrhCrK!220x220.jpg" alt="红米至简翻盖支架保护套"
-                        srcset="http://i1.mifile.cn/a1/T1FaxTBmKT1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">官网出品，质量真的不错，支架保护壳两用。</span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item J_commentedGoods" data-cid="2142100002">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://item.mi.com/1142100002.html">米键</a></span>
-                <span class="item-meta"></span>
-                <span class="item-price">4.9元 </span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1142100002.html" data-stat-aid='AA122' data-stat-pid='1_7_3'><img
-                        src="http://i1.mifile.cn/a1/T1kgDgByWT1RXrhCrK!220x220.jpg" alt="米键"
-                        srcset="http://i1.mifile.cn/a1/T1kgDgByWT1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">小小一个，功能超级强大。</span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item J_commentedGoods" data-cid="2143300081">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://item.mi.com/1143300042.html">红米Note后盖背贴</a></span>
-                <span class="item-meta"></span>
-                <span class="item-price">39元 </span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1143300042.html" data-stat-aid='AA236' data-stat-pid='1_7_4'><img
-                        src="http://i1.mifile.cn/a1/T1p_CTByxv1RXrhCrK!220x220.jpg" alt="红米Note后盖背贴"
-                        srcset="http://i1.mifile.cn/a1/T1p_CTByxv1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">触感很舒服，图案也好看！</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .home-commented-goods END -->
-
-    <div class="home-saleoff-goods">
-        <div class="xm-plain-box">
-            <div class="box-hd">
-                <h3 class="title">特价产品</h3>
-            </div>
-            <div class="box-bd">
-                <div class="home-saleoff-goods-list-wrap">
-                    <div class="home-saleoff-goods-list clearfix">
-                        <div class="home-saleoff-goods-item">
-                            <div class="item-content">
-                                <span class="item-title"><a href="http://item.mi.com/1150900002.html">红米必备套装</a></span>
-                                <span class="item-price"><i>79</i>元 <del>117元</del></span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1150900002.html" data-stat-aid='AA136' data-stat-pid='1_8_1'><img
-                        src="http://i1.mifile.cn/a1/T1F9ZTBbxT1RXrhCrK!220x220.jpg" alt="红米必备套装"
-                        srcset="http://i1.mifile.cn/a1/T1F9ZTBbxT1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <div class="item-flag">
-                                    <span class="icon-flag">省38元</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-saleoff-goods-item">
-                            <div class="item-content">
-                                <span class="item-title"><a
-                                        href="http://item.mi.com/1144900004.html">fotopro手机相机支架套装</a></span>
-                                <span class="item-price"><i>59</i>元 <del>64元</del></span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1144900004.html" data-stat-aid='AA210' data-stat-pid='1_8_2'><img
-                        src="http://i1.mifile.cn/a1/T1GtZvBvVT1RXrhCrK!220x220.jpg" alt="fotopro手机相机支架套装"
-                        srcset="http://i1.mifile.cn/a1/T1GtZvBvVT1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <div class="item-flag">
-                                    <span class="icon-flag">省5元</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-saleoff-goods-item">
-                            <div class="item-content">
-                                <span class="item-title"><a href="http://item.mi.com/1150500005.html">大电池全能套装</a></span>
-                                <span class="item-price"><i>129</i>元 <del>178元</del></span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1150500005.html" data-stat-aid='AA126' data-stat-pid='1_8_3'><img
-                        src="http://i1.mifile.cn/a1/T1icAvBTdT1RXrhCrK!220x220.jpg" alt="大电池全能套装"
-                        srcset="http://i1.mifile.cn/a1/T1icAvBTdT1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <div class="item-flag">
-                                    <span class="icon-flag">省49元</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-saleoff-goods-item">
-                            <div class="item-content">
-                                <span class="item-title"><a href="http://item.mi.com/1134900392.html">IVS吸盘音箱</a></span>
-                                <span class="item-price"><i>79</i>元 <del>99元</del></span>
-                                <span class="item-thumb">
-                <a href="http://item.mi.com/1134900392.html" data-stat-aid='AA193' data-stat-pid='1_8_4'><img
-                        src="http://i1.mifile.cn/a1/T13JCTByCv1RXrhCrK!220x220.jpg" alt="IVS吸盘音箱"
-                        srcset="http://i1.mifile.cn/a1/T13JCTByCv1RXrhCrK!440x440.jpg 2x"/></a>
-            </span>
-                                <div class="item-flag">
-                                    <span class="icon-flag">省20元</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .home-saleoff-goods END -->
-
-    <div class="home-commented-goods home-duokan-goods">
-        <div class="xm-plain-box">
-            <div class="box-hd">
-                <h3 class="title">多看图书</h3>
-                <div class="more">
-                    <a class="more-link" href="http://www.duokan.com/list/1-1?from=xiaomi" target="_blank"
-                       onclick="_hmt.push(['_trackEvent','PC','首页_E1_更多_http://www.duokan.com/list/1-1?from=xiaomi']);">更多<i
-                            class="iconfont">&#xe605;</i></a>
-                </div>
-            </div>
-            <div class="box-bd">
-                <div class="xm-commented-goods-list-wrap">
-                    <div class="xm-commented-goods-list clearfix">
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://www.duokan.com/book/86042?ch=MiCom"
-                                            target="_blank">《锦绣缘》</a></span>
-                 <span class="item-author">念一</span>
-                <span class="item-price">1.99元</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://www.duokan.com/book/86042?ch=MiCom" data-stat-aid='AA204' data-stat-pid='1_9_1'
-                   target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/jxys.jpg" alt="《锦绣缘》"
-                                        srcset="http://c1.mifile.cn/f/i/duokan/jxyb.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">湖南卫视同名电视剧热播ing！黄晓明、陈乔恩、乔任梁主演！</span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://www.duokan.com/book/28697?ch=MiCom" target="_blank">《林海雪原》</a></span>
-                 <span class="item-author">叶佼志</span>
-                <span class="item-price">6元</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://www.duokan.com/book/28697?ch=MiCom" data-stat-aid='AA205' data-stat-pid='1_9_2'
-                   target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/lhxys.jpg" alt="《林海雪原》"
-                                        srcset="http://c1.mifile.cn/f/i/duokan/lhxyb.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">中国版的007邦德！徐克大片《智取威虎山》原著！</span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://www.duokan.com/book/86056?ch=MiCom"
-                                            target="_blank">《码农（第17期）》</a></span>
-                 <span class="item-author">图灵社区</span>
-                <span class="item-price">免费</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://www.duokan.com/book/86056?ch=MiCom" data-stat-aid='AA206' data-stat-pid='1_9_3'
-                   target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/mn17s.jpg" alt="《码农（第17期）》"
-                                        srcset="http://c1.mifile.cn/f/i/duokan/mn17b.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">在大数据时代，数据科学家无疑就是这个时代点“石”成金的人。</span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a href="http://www.duokan.com/book/86111?ch=MiCom" target="_blank">《姑娘，欢迎降落在这残酷世界》</a></span>
-                 <span class="item-author">黄佟佟</span>
-                <span class="item-price">3.99元</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://www.duokan.com/book/86111?ch=MiCom" data-stat-aid='AA207' data-stat-pid='1_9_4'
-                   target="_blank"><img src="http://c1.mifile.cn/f/i/duokan/cksjs.jpg" alt="《姑娘，欢迎降落在这残酷世界》"
-                                        srcset="http://c1.mifile.cn/f/i/duokan/cksjb.jpg 2x"/></a>
-            </span>
-                                <span class="item-comment">致所有被生活辜负的好姑娘，20个心痛故事，给你方法、盔甲和武器，抵御世事无常。</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .home-duokan-goods END -->
-
-    <div class="home-commented-goods home-miui-goods">
-        <div class="xm-plain-box">
-            <div class="box-hd">
-                <h3 class="title">MIUI 主题</h3>
-                <div class="more">
-                    <a class="more-link" href="http://zhuti.xiaomi.com/?from=mi" target="_blank"
-                       onclick="_hmt.push(['_trackEvent','PC','首页_E2_更多_http://zhuti.xiaomi.com/?from=mi']);">更多<i
-                            class="iconfont">&#xe605;</i></a>
-                </div>
-            </div>
-            <div class="box-bd">
-                <div class="xm-commented-goods-list-wrap">
-                    <div class="xm-commented-goods-list clearfix">
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a
-                        href="http://zhuti.xiaomi.com/detail/ebd8b380-4893-495a-ad27-1c6b9eed57b8?channel=999"
-                        target="_blank">iWatch</a></span>
-                <span class="item-price">6米币</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://zhuti.xiaomi.com/detail/ebd8b380-4893-495a-ad27-1c6b9eed57b8?channel=999"
-                   data-stat-aid='AA218' data-stat-pid='1_10_1' target="_blank"><img
-                        src="http://c1.mifile.cn/f/i/miui/3.17.4.2.jpg" alt="iWatch"
-                        srcset="http://c1.mifile.cn/f/i/miui/3.17.4.1.jpg 2x"/></a>
-            </span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a
-                        href="http://zhuti.xiaomi.com/detail/7f18a870-27cb-4e69-8363-565f3332e28b?channel=999"
-                        target="_blank">可口可乐</a></span>
-                <span class="item-price">免费</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://zhuti.xiaomi.com/detail/7f18a870-27cb-4e69-8363-565f3332e28b?channel=999"
-                   data-stat-aid='AA219' data-stat-pid='1_10_2' target="_blank"><img
-                        src="http://c1.mifile.cn/f/i/miui/3.17.1.2.jpg" alt="可口可乐"
-                        srcset="http://c1.mifile.cn/f/i/miui/3.17.1.1.jpg 2x"/></a>
-            </span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a
-                        href="http://zhuti.xiaomi.com/detail/452ebba1-8852-48f9-b9d2-c0b28e34919e?channel=999"
-                        target="_blank">7 style</a></span>
-                <span class="item-price">6米币</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://zhuti.xiaomi.com/detail/452ebba1-8852-48f9-b9d2-c0b28e34919e?channel=999"
-                   data-stat-aid='AA220' data-stat-pid='1_10_3' target="_blank"><img
-                        src="http://c1.mifile.cn/f/i/miui/3.17.2.2.jpg" alt="7 style"
-                        srcset="http://c1.mifile.cn/f/i/miui/3.17.2.1.jpg 2x"/></a>
-            </span>
-                            </div>
-                        </div>
-                        <div class="xm-commented-goods-item">
-                            <div class="item-content">
-            <span class="item-info">
-                <span class="item-title"><a
-                        href="http://zhuti.xiaomi.com/detail/f402865a-e7cd-4376-8738-ce64a1c14564?channel=999"
-                        target="_blank">沁心</a></span>
-                <span class="item-price">6米币</span>
-            </span>
-                                <span class="item-thumb">
-                <a href="http://zhuti.xiaomi.com/detail/f402865a-e7cd-4376-8738-ce64a1c14564?channel=999"
-                   data-stat-aid='AA221' data-stat-pid='1_10_4' target="_blank"><img
-                        src="http://c1.mifile.cn/f/i/miui/3.17.3.2.png" alt="沁心"
-                        srcset="http://c1.mifile.cn/f/i/miui/3.17.3.1.png 2x"/></a>
-            </span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- .home-miui-goods END -->
 </div>
 <!-- Main Content END -->
 

@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AutoConfigureAfter({CategoryMapper.class})
@@ -39,5 +40,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     @Override
     public int DeleteCategory(Integer id) {
         return categoryMapper.DeleteCategory(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> listallsp() {
+        return categoryMapper.listallsp();
     }
 }

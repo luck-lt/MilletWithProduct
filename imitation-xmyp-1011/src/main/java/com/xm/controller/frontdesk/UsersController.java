@@ -7,6 +7,7 @@ import com.xm.service.verificationcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,11 +87,12 @@ public class UsersController {
     }
 
     @PostMapping("/zx")
-    public void dl(String username,HttpSession session) {
+    public void dl(String username, HttpSession session) {
         List<String> users = (List<String>) request.getServletContext().getAttribute("vsers");
         if (users.contains(session.getId())) {
             users.remove(session.getId());
         }
         System.out.println("-------------------------------------------注销成功");
     }
+
 }
