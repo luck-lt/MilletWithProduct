@@ -55,15 +55,10 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-input-inline layui-show-xs-block">
-                            <input class="layui-input" placeholder="开始日" name="start" id="start"></div>
-                        <div class="layui-input-inline layui-show-xs-block">
-                            <input class="layui-input" placeholder="截止日" name="end" id="end"></div>
-                        <div class="layui-input-inline layui-show-xs-block">
-                            <select name="contrller">
-                                <option value="">订单状态</option>
-                                <option value="0">待确认</option>
-                                <option value="1">已确认</option>
-                                <option value="2">已收货</option>
+                            <select name="contrller" id="select">
+                                <option value="0">订单状态</option>
+                                <option value="1">待确认</option>
+                                <option value="2">已确认</option>
                                 <option value="3">已取消</option>
                                 <option value="4">已完成</option>
                             </select>
@@ -72,7 +67,7 @@
                             <input type="text" name="username" placeholder="请输入订单号" autocomplete="off"
                                    id="find" class="layui-input"></div>
                         <div class="layui-input-inline layui-show-xs-block">
-                            <button class="layui-btn" data-type="reload" id="queryRole">搜索</button>
+                            <button class="layui-btn" data-type="reload" id="queryRole" type="button">搜索</button>
                         </div>
                     </form>
                 </div>
@@ -107,7 +102,6 @@
                 elem: '#Products'
                 , url: '/OrderFindAll'
                 , cellMinWidth: 90
-                , cellminHeight: 90
                 , cols: [[
                     {type: 'checkbox', fixed: 'left'}
                     , {field: 'order_id', title: 'ID', fixed: 'left', sort: true, align: 'center'}
@@ -119,6 +113,7 @@
                             return '<span">' + d.user_name + '</span>&nbsp;:<span">' + d.telephone + '</span>';
                         }
                     }
+                    , {field: 'order_number', title: '订单编号', sort: true, align: 'center'}
                     , {field: 'list', title: '商品', sort: true, templet: "#product"}
                     , {field: 'order_status', title: '订单状态', sort: true, align: 'center'}
                     , {
@@ -131,7 +126,19 @@
                     , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
                 ]]
                 , page: true
-
+                , done: function (res, curr, count) {
+                    $("[data-field='order_status']").children().each(function () {
+                        if ($(this).text() == '1') {
+                            $(this).text("待确认")
+                        } else if ($(this).text() == '2') {
+                            $(this).text("已确认")
+                        } else if ($(this).text() == '3') {
+                            $(this).text("已取消")
+                        } else {
+                            $(this).text("已完成")
+                        }
+                    });
+                }
             });
         }
         table.on('tool(test)', function (obj) {
@@ -139,7 +146,7 @@
                 type: 1,
                 offset: '10px',
                 title: "修改订单",
-                area: ['400px', '620px'],
+                area: ['460px', '420px'],
                 content: $("#order-add"),
             });
             form.val("myfm", {
@@ -153,30 +160,36 @@
             });
         });
         tableInfo();
+
         //查询
         $('#queryRole').click(function () {
             var find = document.getElementById("find").value;
+            var select = document.getElementById("select").value;
             table.reload('Products', {
+                id: 'Products',
                 url: '/OrderFindAll',
                 where: {
-                    'order_number': find
+                    'order_number': find,
+                    'order_status': select,
+
                 }
             });
         });
+        tableInfo();
 
     });
 
 </script>
 <table class="layui-hide" id="Products" lay-filter="test"></table>
-
 <div class="layui-row" id="order-add" style="display:none;">
     <div class="layui-col-md10">
         <form class="layui-form">
-            <div class="layui-form-item">
+            <div class="layui-form-item" hidden="hidden">
                 <label for="username" class="layui-form-label">
-                    <span class="x-red">*</span>用户名</label>
+                    <span class="x-red">*</span>用户id</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="un" name="username" required="" lay-verify="required" autocomplete="off"
+                    <input type="text" id="userd_id" name="userd_id" required="" lay-verify="required"
+                           autocomplete="off"
                            class="layui-input"></div>
             </div>
             <div class="layui-form-item">
@@ -200,7 +213,6 @@
                     <input type="text" id="username" name="username" required="" lay-verify="required"
                            autocomplete="off" class="layui-input"></div>
             </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label">订单详情</label>
                 <div class="layui-input-inline select">

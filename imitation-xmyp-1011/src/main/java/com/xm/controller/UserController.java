@@ -31,7 +31,7 @@ public class UserController {
     @ResponseBody
     @GetMapping("/SelectUser")
     public PageResult<List<User>> SelectUser(User user, Integer page, Integer limit) {
-        int count = userService.findAll(null).size();
+        int count = userService.findAll(user).size();
         PageHelper.startPage(page, limit);
         List<User> users = userService.findAll(user);
         PageResult<List<User>> listPageResult = new PageResult<List<User>>("", users, 0, count);

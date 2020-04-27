@@ -1,11 +1,14 @@
 package com.xm.controller;
 
 import org.apache.http.HttpRequest;
+import org.apache.http.entity.ContentType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.net.ssl.HandshakeCompletedEvent;
 import javax.servlet.http.HttpServletRequest;
@@ -32,12 +35,11 @@ public class UploadImgController {
             //扩展名
             String extendName = originalFilename.substring(originalFilename.indexOf("."));
             String newfilename = "xmyp/img/index/" + UUID.randomUUID().toString() + extendName;
-            String filepath = "D:/Y2/毕业项目/MilletWithProduct/imitation-xmyp-1011/targetclasses/static/X-admin/";
-            String filepath2 = "D:/Y2/毕业项目/MilletWithProduct/imitation-xmyp-1011/target/classes/static/X-admin/";
-
-            File uploadfile = new File(filepath + newfilename);
-            File uploadfile2 = new File(filepath + newfilename);
-            file.transferTo(uploadfile);
+            //String filepath = "D:/Y2/毕业项目/MilletWithProduct/imitation-xmyp-1011/src/main/resources/static/X-admin/";
+             String filepath2 = "D:/Y2/毕业项目/MilletWithProduct/imitation-xmyp-1011/target/classes/static/X-admin/";
+            //File uploadfile = new File(filepath + newfilename);
+            File uploadfile2 = new File(filepath2 + newfilename);
+            //file.transferTo(uploadfile);
             file.transferTo(uploadfile2);
             map.put("data", newfilename);
             map.put("code", 0);

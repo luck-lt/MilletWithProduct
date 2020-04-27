@@ -1,5 +1,6 @@
 package com.xm.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class Category implements Serializable {
 
     private Integer category_id;
     private int parent_id;
-    private String name;
+    private String category_name;
 
 
 }

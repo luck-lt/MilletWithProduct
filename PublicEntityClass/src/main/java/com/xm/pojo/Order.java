@@ -10,6 +10,7 @@ public class Order {
     public String order_number;
     public Integer product_id;
     public String pname;
+    public Integer order_status;
     public List<OrderDetail> orderDetailList;
 
 }

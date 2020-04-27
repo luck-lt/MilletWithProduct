@@ -8,6 +8,9 @@
             <if test="order_number!=null and order_number!=''">
                 order_number = #{order_number}
             </if>
+            <if test="order_status!=null and order_status!=0">
+                and order_status = #{order_status}
+            </if>
         </where>
     </sql>
     <select id="OrderFindAll" resultType="map">

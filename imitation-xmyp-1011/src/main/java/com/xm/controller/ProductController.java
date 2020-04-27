@@ -27,7 +27,7 @@ public class ProductController {
     @ResponseBody
     @GetMapping("/ProductFindAll")
     public PageResult<List<Product>> ProductFindAll(Product product, Integer page, Integer limit, HttpSession session) {
-        int count = productService.ProductFindAll(null).size();
+        int count = productService.ProductFindAll(product).size();
         PageHelper.startPage(page, limit);
         List<Product> products = productService.ProductFindAll(product);
         PageResult<List<Product>> listPageResult = new PageResult<List<Product>>("", products, 0, count);

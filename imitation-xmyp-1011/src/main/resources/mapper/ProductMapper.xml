@@ -39,6 +39,6 @@
 	</update>
 
     <delete id="DeleteProduct" parameterType="int">
-          delete from product where a.product_id=#{product_id}
+          delete from product where product_id=#{product_id}
     </delete>
 </mapper>
