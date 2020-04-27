@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小米购物车</title>
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/car.css"/>
+    <link rel="stylesheet" type="text/css" href="css/checkout.css"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script type="text/javascript" src="layui/jquery.min.js"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript" src="layui/mods/layarea.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            layui.config({
+                base: 'layui/'
+            }).use(['jquery', 'laytpl', 'carousel', 'element', 'form', 'layer', 'layarea'], function () {
+                var $ = layui.jquery
+                    , form = layui.form
+                    , element = layui.element
+                    , carousel = layui.carousel
+                    , laytpl = layui.laytpl
+                    , layarea = layui.layarea
+                    , layer = layui.layer;
+
+                var xxx = document.getElementById("dl").innerHTML;
+                var sss = document.getElementById("dls");
+                laytpl(xxx).render(layui.sessionData('user'), function (html) {
+                    sss.innerHTML = html;
+                });
+
+                $.post("./show", {'phone': layui.sessionData('user').name}, function (data) {
+                    $.post("./spcx", {'id': data[0].pid}, function (data1) {
+                        data.data1 = data1;
+                        data.sids = layui.sessionData('spcount').id;
+                        var xxx = document.getElementById("sp").innerHTML;
+                        var sss = document.getElementById("spView");
+                        laytpl(xxx).render(data, function (html) {
+                            sss.innerHTML = html;
+                        });
+                        var sum = 0;
+                        for (var i = 0; i < $("div[name=sum]").length; i++) {
+                            sum += parseFloat($("div[name=sum]")[i].innerHTML);
+                        }
+                        $('#sums').text(sum);
+                        layarea.render({
+                            elem: '#area-picker',
+                            change: function (res) {
+                                if (res.province != '--选择省--') {
+                                    if (res.province == res.city) {
+                                        layui.sessionData("product", {key: 'dz', value: res.province + res.county});
+                                    }
+                                    layui.sessionData("product", {
+                                        key: 'dz',
+                                        value: res.province + res.city + res.county
+                                    });
+                                }
+                                //选择结果
+                                console.log(res);
+                            }
+                        });
+                        form.on('submit(formDemo2)', function (data) {
+                            var sid = [];
+                            for (var i = 0; i < layui.sessionData('spcount').id.length; i++) {
+                                sid.push(layui.sessionData('spcount').id[i]);
+                            }
+
+                            var dz = layui.sessionData("product").dz + " " + data.field.title;
+
+                            $.post('./adddd', {
+                                sid: sid,
+                                'dz': dz,
+                                'sum': sum
+                            }, function (data) {
+                                if (i > 0) {
+                                    layer.msg('下单成功')
+                                }
+                            }, 'json');
+                            return false;
+                        });
+                    })
+                });
+            });
+        });
+
+
+        function zx() {
+            $.post('./zx', {'username': layui.sessionData('user').name});
+            layui.use(['element', 'laytpl'], function () {
+                var laytpl = layui.laytpl
+                    , element = layui.element;
+                layui.sessionData('user', {
+                    key: 'name'
+                    , remove: true
+                });
+                layui.sessionData('user', null);
+                var xxx = document.getElementById("dl").innerHTML;
+                var sss = document.getElementById("dls");
+                laytpl(xxx).render(layui.sessionData('user'), function (html) {
+                    sss.innerHTML = html;
+                });
+                element.render();
+            });
+        }
+    </script>
+</head>
+
+<body>
+<script id="sp" type="text/html">
+    <div class="mi-checkout page-main">
+        <div class="container">
+            <form class="layui-form" action="">
+                <div data-v-0166ce07="" class="checkout-wrap">
+                    <div data-v-0166ce07="" class="checkout-detail">
+                        <div data-v-0166ce07="" class="fixed-header">
+                            <div data-v-0166ce07="" class="fixed-address-choose"><a data-v-0166ce07=""
+                                                                                    href="javascript:void(0)"
+                                                                                    data-stat-id="ee202123db3b6aa6"
+                                                                                    onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-ee202123db3b6aa6', 'javascript:void0', 'pcpid', '']);"
+                                                                                    class="choose-btn btn btn-primary">选择该收货地址</a>
+                                <div data-v-0166ce07="" class="address-title"><span data-v-0166ce07=""
+                                                                                    class="address-desc"></span><span
+                                        data-v-0166ce07="" class="address-desc"></span></div>
+                            </div>
+                        </div>
+                        <div data-v-0166ce07="" class="detail-section address-detail">
+                            <div data-v-0166ce07="" class="address-header"><span data-v-0166ce07=""
+                                                                                 class="header-title">收货地址</span>
+                            </div>
+                            <div data-v-039a89f6="" data-v-0166ce07="" address-tip-info="[object Object]"
+                                 class="address-list show-less-list">
+                                <fieldset class="layui-elem-field" style="margin: 20px;">
+                                    <div>
+                                        <legend>请选择收货地址</legend>
+                                    </div>
+                                    <div class="layui-form">
+                                        <div class="layui-form-item" id="area-picker" style="margin-left: 20px">
+                                            <div class="layui-input-inline" style="width: 250px;margin-bottom: 5px">
+                                                <select name="province" class="province-selector" data-value=""
+                                                        lay-filter="province-1">
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title">
+                                                        <input type="text" placeholder="请选择" value="" readonly=""
+                                                               class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-input-inline" style="width: 250px;margin-bottom: 5px">
+                                                <select name="city" class="city-selector" data-value=""
+                                                        lay-filter="city-1">
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title">
+                                                        <input type="text" placeholder="请选择" value="" readonly=""
+                                                               class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-input-inline" style="width: 250px;">
+                                                <select name="county" class="county-selector" data-value=""
+                                                        lay-filter="county-1">
+                                                </select>
+                                                <div class="layui-unselect layui-form-select">
+                                                    <div class="layui-select-title">
+                                                        <input type="text" placeholder="请选择" style="text-align: center"
+                                                               value="" readonly=""
+                                                               class="layui-input layui-unselect"><i
+                                                            class="layui-edge"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-input-inline" style="width: 250px;">
+                                                <input type="text" name="title" required="" lay-verify="required"
+                                                       placeholder="请输入详细地址" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div data-v-0166ce07="" class="detail-section">
+                            <div data-v-0166ce07="" class="detail-header">商品及优惠券</div>
+                            <div data-v-73ddf45a="" data-v-0166ce07="" class="goods-list">
+                                {{# layui.each(d.sids,function(index1,item1){
+
+                                }}
+
+
+                                {{# layui.each(d,function(index,item){
+
+                                }}
+                                {{# if(item1==item.sid){
+                                }}
+                                <div data-v-73ddf45a="" class="good-item">
+                                    <div data-v-73ddf45a="" class="item-desc good-img"><img data-v-73ddf45a=""
+                                                                                            src="{{d.data1.pic_img}}">
+                                    </div>
+                                    <div data-v-73ddf45a="" class="item-desc good-name"><a data-v-73ddf45a=""
+                                                                                           data-v-73ddf45a="">{{d.data1.pname}}
+                                        {{item.text}}</span></a>
+                                    </div>
+                                    <div data-v-73ddf45a="" class="item-desc">
+                                        <div data-v-73ddf45a="" class="special-handling-differentiate">
+                                            <div data-v-73ddf45a="" class="item-desc good-price">{{item.money}} x
+                                                {{item.count}}
+                                            </div>
+                                            <div data-v-73ddf45a="" class="item-desc good-status"></div>
+                                            <div data-v-73ddf45a="" name="sum" class="item-desc good-total">
+                                                {{item.money*item.count}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{#
+                                }
+                                }}
+                                {{#
+                                });
+                                }}
+                                {{#}); }}
+                            </div>
+                        </div>
+                        <div data-v-0166ce07="" class="detail-section">
+                            <div data-v-0166ce07="" class="section-options section-shipment">
+                                <div data-v-0166ce07="" class="options-desc options-header">
+                                    <div data-v-0166ce07="" class="title">配送方式</div>
+                                </div>
+                                <div data-v-0166ce07="" class="options-desc options-body">
+                                    <div data-v-0166ce07="" class="options-list">
+                                        <div data-v-0166ce07="" class="options-item selected">包邮</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--      <div data-v-0166ce07="" class="section-options section-invoice">
+                                      <div data-v-0166ce07="" class="options-desc options-header">
+                                          <div data-v-0166ce07="" class="title">发票</div>
+                                      </div>
+                                      <div data-v-0166ce07="" class="options-desc options-body">
+                                          <div data-v-0166ce07="" class="options-list">
+                                              <div data-v-0166ce07="" class="options-item selected">电子普通发票</div>
+                                              <div data-v-0166ce07="" class="options-item selected">个人</div>
+                                              <div data-v-0166ce07="" class="options-item selected">商品明细</div>
+                                              <a data-v-0166ce07="" data-log_code="bid=3515489.4&amp;bpm=25.83.3513652.1"
+                                                 href="javascript:void(0);" data-stat-id="c723ef8064a7a3f0"
+                                                 onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-c723ef8064a7a3f0', 'javascript:void0', 'pcpid', 'bid=3515489.4&amp;bpm=25.83.3513652.1']);"
+                                                 class="options-item selected">修改 &gt;</a></div>
+                                      </div>
+                                  </div>-->
+                        </div>
+                        <div data-v-0166ce07="" class="detail-section count-detail">
+                            <!--   <div data-v-0166ce07="" class="section-discount">
+                                   <div data-v-0166ce07="" class="discount-coupon"><a data-v-0166ce07=""
+                                                                                      href="javascript:void(0)"
+                                                                                      data-log_code="bid=3515489.5&amp;bpm=25.83.3514683.1"
+                                                                                      data-stat-id="356e6eab0bd36ff7"
+                                                                                      onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-356e6eab0bd36ff7', 'javascript:void0', 'pcpid', 'bid=3515489.5&amp;bpm=25.83.3514683.1']);"
+                                                                                      class="coupon-title"><i
+                                           data-v-0166ce07="" class="iconfont icon-plus"></i><span
+                                           data-v-0166ce07="">使用优惠券</span></a></div>
+                                   <div data-v-0166ce07="" class="position-box">
+                                       <div data-v-0166ce07="" class="discount-ecard"><a data-v-0166ce07=""
+                                                                                         data-log_code="bid=3515489.6&amp;bpm=25.83.3514684.1"
+                                                                                         data-stat-id="41ab6a78a86917b4"
+                                                                                         onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-41ab6a78a86917b4', '', 'pcpid', 'bid=3515489.6&amp;bpm=25.83.3514684.1']);"
+                                                                                         class="coupon-title"><i
+                                               data-v-0166ce07="" class="iconfont icon-plus"></i><span data-v-0166ce07="">使用小米礼品卡</span></a>
+                                       </div>
+                                   </div>
+                               </div>-->
+                            <div data-v-0166ce07="" class="section-bill">
+                                <div data-v-0166ce07="" class="bill-item">
+                                    <div data-v-0166ce07="" class="bill-name">商品件数：</div>
+                                    <div data-v-0166ce07="" class="bill-money">{{d.sids.length}}件</div>
+                                </div>
+                                <div data-v-0166ce07="" class="bill-item">
+                                    <div data-v-0166ce07="" class="bill-name">运费：</div>
+                                    <div data-v-0166ce07="" class="bill-money">0元</div>
+                                </div>
+                                <div data-v-0166ce07="" class="bill-item total-price">
+                                    <div data-v-0166ce07="" class="bill-name">应付总额：</div>
+                                    <div data-v-0166ce07="" class="bill-money"><em data-v-0166ce07=""
+                                                                                   id="sums">3399</em>元
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-v-0166ce07="" class="detail-section footer-detail clearfix">
+                            <div data-v-0166ce07="" class="handle-action">
+                                <div data-v-0166ce07="" class="operating-button">
+                                    <button type="button" lay-submit name="formDemo1"
+                                            class="layui-btn layui-btn-warm"
+                                            lay-filter="formDemo1">返货购物车
+                                    </button>
+                                    <button type="button" lay-submit name="formDemo2"
+                                            class="layui-btn layui-btn-warm"
+                                            lay-filter="formDemo2">下单
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</script>
+<script id="dl" type="text/html">
+    {{#  if(d.name==null){ }}
+    <a data-needlogin="true" href="Logins.html">登录</a>
+    <span class="sep">|</span> <a href="register.html">注册</a>
+    {{#  } }}
+    {{# if(d.name!=null){}}
+    <a data-needlogin="true" href="Logins.html">欢迎:{{d.name}}</a>
+    <span class="sep">|</span><a onclick="zx()">注销</a>
+    {{# }}}
+</script>
+<div class="site-header site-mini-header">
+    <div class="container">
+        <div class="header-logo" style="margin-left: 3.8rem;">
+            <a href="index.html">
+                <img src="xmyp/img/milogo.png" width="50%"/>
+            </a>
+        </div>
+        <div class="header-title has-more" id="J_miniHeaderTitle"><h2>确认订单</h2>
+            <p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p></div>
+        <div class="topbar-info" id="J_userInfo" style="font-size: 18px">
+            <div class="topbar-info J_userInfo" id="dls">
+                <!--<a data-needlogin="true" href="Logins.html">登录</a>
+                <span class="sep">|</span> <a href="register.html">注册</a>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="float-box">
+    <div id="spView">
+        <!--  <div class="mi-checkout page-main">
+              <div class="container">
+                  <div data-v-0166ce07="" class="checkout-wrap">
+                      <div data-v-0166ce07="" class="checkout-detail">
+                          <div data-v-0166ce07="" class="fixed-header">
+                              <div data-v-0166ce07="" class="fixed-address-choose"><a data-v-0166ce07=""
+                                                                                      href="javascript:void(0)"
+                                                                                      data-stat-id="ee202123db3b6aa6"
+                                                                                      onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-ee202123db3b6aa6', 'javascript:void0', 'pcpid', '']);"
+                                                                                      class="choose-btn btn btn-primary">选择该收货地址</a>
+                                  <div data-v-0166ce07="" class="address-title"><span data-v-0166ce07=""
+                                                                                      class="address-desc"></span><span
+                                          data-v-0166ce07="" class="address-desc"></span></div>
+                              </div>
+                          </div>
+                          <div data-v-0166ce07="" class="detail-section address-detail">
+                              <div data-v-0166ce07="" class="address-header"><span data-v-0166ce07="" class="header-title">收货地址</span>
+                              </div>
+                              <div data-v-039a89f6="" data-v-0166ce07="" address-tip-info="[object Object]"
+                                   class="address-list show-less-list">
+                                  <fieldset class="layui-elem-field" style="margin: 20px;">
+                                      <div>
+                                          <legend>请选择收货地址</legend>
+                                      </div>
+                                      <div class="layui-form">
+                                          <div class="layui-form-item" id="area-picker" style="margin-left: 20px">
+                                              <div class="layui-input-inline" style="width: 250px;margin-bottom: 5px">
+                                                  <select name="province" class="province-selector" data-value=""
+                                                          lay-filter="province-1">
+                                                  </select>
+                                                  <div class="layui-unselect layui-form-select">
+                                                      <div class="layui-select-title">
+                                                          <input type="text" placeholder="请选择" value="" readonly=""
+                                                                 class="layui-input layui-unselect"><i class="layui-edge"></i>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="layui-input-inline" style="width: 250px;margin-bottom: 5px">
+                                                  <select name="city" class="city-selector" data-value="" lay-filter="city-1">
+                                                  </select>
+                                                  <div class="layui-unselect layui-form-select">
+                                                      <div class="layui-select-title">
+                                                          <input type="text" placeholder="请选择" value="" readonly=""
+                                                                 class="layui-input layui-unselect"><i class="layui-edge"></i>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="layui-input-inline" style="width: 250px;">
+                                                  <select name="county" class="county-selector" data-value=""
+                                                          lay-filter="county-1">
+                                                  </select>
+                                                  <div class="layui-unselect layui-form-select">
+                                                      <div class="layui-select-title">
+                                                          <input type="text" placeholder="请选择" style="text-align: center"
+                                                                 value="" readonly=""
+                                                                 class="layui-input layui-unselect"><i class="layui-edge"></i>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="layui-input-inline" style="width: 250px;">
+                                                  <input type="text" name="title" required="" lay-verify="required"
+                                                         placeholder="请输入详细地址" autocomplete="off" class="layui-input">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </fieldset>
+                              </div>
+                          </div>
+                          <div data-v-0166ce07="" class="detail-section">
+                              <div data-v-0166ce07="" class="detail-header">商品及优惠券</div>
+                              <div data-v-73ddf45a="" data-v-0166ce07="" class="goods-list">
+                                  &lt;!&ndash;<div id="spView">
+
+                                  </div>&ndash;&gt;
+                              </div>
+                          </div>
+                          <div data-v-0166ce07="" class="detail-section">
+                              <div data-v-0166ce07="" class="section-options section-shipment">
+                                  <div data-v-0166ce07="" class="options-desc options-header">
+                                      <div data-v-0166ce07="" class="title">配送方式</div>
+                                  </div>
+                                  <div data-v-0166ce07="" class="options-desc options-body">
+                                      <div data-v-0166ce07="" class="options-list">
+                                          <div data-v-0166ce07="" class="options-item selected">包邮</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div data-v-0166ce07="" class="section-options section-invoice">
+                                  <div data-v-0166ce07="" class="options-desc options-header">
+                                      <div data-v-0166ce07="" class="title">发票</div>
+                                  </div>
+                                  <div data-v-0166ce07="" class="options-desc options-body">
+                                      <div data-v-0166ce07="" class="options-list">
+                                          <div data-v-0166ce07="" class="options-item selected">电子普通发票</div>
+                                          <div data-v-0166ce07="" class="options-item selected">个人</div>
+                                          <div data-v-0166ce07="" class="options-item selected">商品明细</div>
+                                          <a data-v-0166ce07="" data-log_code="bid=3515489.4&amp;bpm=25.83.3513652.1"
+                                             href="javascript:void(0);" data-stat-id="c723ef8064a7a3f0"
+                                             onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-c723ef8064a7a3f0', 'javascript:void0', 'pcpid', 'bid=3515489.4&amp;bpm=25.83.3513652.1']);"
+                                             class="options-item selected">修改 &gt;</a></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div data-v-0166ce07="" class="detail-section count-detail">
+                              <div data-v-0166ce07="" class="section-discount">
+                                  <div data-v-0166ce07="" class="discount-coupon"><a data-v-0166ce07=""
+                                                                                     href="javascript:void(0)"
+                                                                                     data-log_code="bid=3515489.5&amp;bpm=25.83.3514683.1"
+                                                                                     data-stat-id="356e6eab0bd36ff7"
+                                                                                     onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-356e6eab0bd36ff7', 'javascript:void0', 'pcpid', 'bid=3515489.5&amp;bpm=25.83.3514683.1']);"
+                                                                                     class="coupon-title"><i
+                                          data-v-0166ce07="" class="iconfont icon-plus"></i><span
+                                          data-v-0166ce07="">使用优惠券</span></a></div>
+                                  <div data-v-0166ce07="" class="position-box">
+                                      <div data-v-0166ce07="" class="discount-ecard"><a data-v-0166ce07=""
+                                                                                        data-log_code="bid=3515489.6&amp;bpm=25.83.3514684.1"
+                                                                                        data-stat-id="41ab6a78a86917b4"
+                                                                                        onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-41ab6a78a86917b4', '', 'pcpid', 'bid=3515489.6&amp;bpm=25.83.3514684.1']);"
+                                                                                        class="coupon-title"><i
+                                              data-v-0166ce07="" class="iconfont icon-plus"></i><span data-v-0166ce07="">使用小米礼品卡</span></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div data-v-0166ce07="" class="section-bill">
+                                  <div data-v-0166ce07="" class="bill-item">
+                                      <div data-v-0166ce07="" class="bill-name">商品件数：</div>
+                                      <div data-v-0166ce07="" class="bill-money">1件</div>
+                                  </div>
+                                  <div data-v-0166ce07="" class="bill-item">
+                                      <div data-v-0166ce07="" class="bill-name">商品总价：</div>
+                                      <div data-v-0166ce07="" class="bill-money">3399元</div>
+                                  </div>
+                                  <div data-v-0166ce07="" class="bill-item">
+                                      <div data-v-0166ce07="" class="bill-name">活动优惠：</div>
+                                      <div data-v-0166ce07="" class="bill-money">-0元</div>
+                                  </div>
+                                  <div data-v-0166ce07="" class="bill-item">
+                                      <div data-v-0166ce07="" class="bill-name">优惠券抵扣：</div>
+                                      <div data-v-0166ce07="" class="bill-money">-0元</div>
+                                  </div>
+                                  <div data-v-0166ce07="" class="bill-item">
+                                      <div data-v-0166ce07="" class="bill-name">运费：</div>
+                                      <div data-v-0166ce07="" class="bill-money">0元</div>
+                                  </div>
+                                  <div data-v-0166ce07="" class="bill-item total-price">
+                                      <div data-v-0166ce07="" class="bill-name">应付总额：</div>
+                                      <div data-v-0166ce07="" class="bill-money"><em data-v-0166ce07="">3399</em>元</div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div data-v-0166ce07="" class="detail-section footer-detail clearfix">
+                              <div data-v-0166ce07="" class="handle-action">
+                                  <div data-v-0166ce07="" class="operating-button"><a data-v-0166ce07=""
+                                                                                      data-log_code="bid=3515489.8&amp;bpm=25.83.3513216.1&amp;next=26.82"
+                                                                                      href="javascript:void(0);"
+                                                                                      data-stat-id="7e3b3b2b5b4f1112"
+                                                                                      onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-7e3b3b2b5b4f1112', 'javascript:void0', 'pcpid', 'bid=3515489.8&amp;bpm=25.83.3513216.1&amp;next=26.82']);"
+                                                                                      class="btn btn-primary">去结算</a><a
+                                          data-v-0166ce07="" href="javascript:void(0);" data-stat-id="38e9493ff4e8aeb4"
+                                          onclick="_msq.push(['trackEvent', 'f8510bf55a388fba-38e9493ff4e8aeb4', 'javascript:void0', 'pcpid', '']);"
+                                          class="btn btn-return">返回购物车</a></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>-->
+    </div>
+    <div class="mz-foot"></div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/cart.js"></script>
+</div>
+
+
+</body>
+</html>

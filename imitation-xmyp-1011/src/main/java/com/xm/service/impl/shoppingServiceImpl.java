@@ -28,4 +28,9 @@ public class shoppingServiceImpl extends ServiceImpl<shoppingMapper, shopping> i
     public int update(shopping shopping) {
         return shoppingMapper.update(shopping);
     }
+
+    @Override
+    public int updatecount(shopping shopping) {
+        return shoppingMapper.updatecount(shopping);
+    }
 }
