@@ -12,4 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface shoppingMapper extends SuperMapper<shopping> {
     public int update(shopping shopping);
+
+    public int updatecount(shopping shopping);
 }

@@ -35,35 +35,142 @@
                         data.data1 = data1;
                         var xxx = document.getElementById("show").innerHTML;
                         var sss = document.getElementById("showView");
-                        /* console.log(sss)*/
                         laytpl(xxx).render(data, function (html) {
                             sss.innerHTML = html;
                         });
-                        /*form.verify({
-                            count: function (value) {
-
-                            }
-                        });*/
                         form.on('submit(jia)', function (data) {
-                            $(this).prev().attr('value', parseInt(data.field.count) + 1);
+                            $(this).prev().attr('value', parseInt($(this).prev().val()) + 1);
                             var dj = $(this).parent().parent().parent().next().children("span").text();
-                            $(this).parent().parent().parent().next().children("input").attr('value', parseFloat(dj) * (parseInt(data.field.count) + 1));
-
+                            $(this).parent().parent().parent().next().children("input").attr('value', parseFloat(dj) * (parseInt($(this).prev().val())));
+                            var sum = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                if ($('input[name=like' + i + ']').prop('checked') == true) {
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
                             return false;
                         });
                         form.on('submit(jian)', function (data) {
-                            if (data.field.count > 1) {
-                                $(this).next().attr('value', parseInt(data.field.count) - 1);
+                            if ($(this).next().val() > 1) {
+                                $(this).next().attr('value', parseInt($(this).next().val()) - 1);
                                 var dj = $(this).parent().parent().parent().next().children("span").text();
-                                $(this).parent().parent().parent().next().children("input").attr('value', parseFloat(dj) * (parseInt(data.field.count) - 1));
+                                $(this).parent().parent().parent().next().children("input").attr('value', parseFloat(dj) * (parseInt($(this).next().val())));
                             }
+                            var sum = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                if ($('input[name=like' + i + ']').prop('checked') == true) {
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
                             return false;
                         });
+
+                        form.on('checkbox(menu)', function (data) {
+                            var id = data.value;
+                            var bools = false;
+                            var counts = 0;
+                            var sum = 0;
+                            //这里实现勾选
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                $('input[name*=like]').each(function (index, item) {
+                                    item.checked = data.elem.checked;
+                                });
+                                if ($('input[name=like' + i + ']').prop('checked')) {
+                                    counts++;
+                                    bools = true;
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
+                            $('#couns').text(counts);
+
+                            $('input[name=qx]').each(function (index, item) {
+                                item.checked = data.elem.checked;
+                            });
+
+                            if (bools == true) {
+                                $('button[name=formDemo]').removeClass("layui-btn-disabled");
+                            } else {
+                                $('button[name=formDemo]').addClass("layui-btn-disabled");
+                            }
+                            form.render('checkbox');
+                        });
+                        form.on('checkbox(menus)', function (data) {
+                            //这里实现勾选
+                            var counts = 0;
+                            var bool = true;
+                            var bools = false;
+                            var sum = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                if ($('input[name=like' + i + ']').prop('checked') == false) {
+                                    bool = false;
+                                } else {
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                    bools = true;
+                                    counts++;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
+                            $('#couns').text(counts);
+                            if (bool == true) {
+                                $('input[name=qx]').each(function (index, item) {
+                                    item.checked = true;
+                                });
+                            } else {
+                                $('input[name=qx]').each(function (index, item) {
+                                    item.checked = false;
+                                });
+                            }
+                            if (bools == true) {
+                                $('button[name=formDemo]').removeClass("layui-btn-disabled");
+                            } else {
+                                $('button[name=formDemo]').addClass("layui-btn-disabled");
+                            }
+                            form.render('checkbox');
+                            /*console.log(data.elem); //得到checkbox原始DOM对象
+                            console.log(data.elem.checked); //是否被选中，true或者false
+                            console.log(data.value); //复选框value值，也可以通过data.elem.value得到
+                            console.log(data.othis); //得到美化后的DOM对象*/
+                        });
+                        form.on('submit(formDemo)', function () {
+                            /*layer.msg(JSON.stringify(data.field));*/
+                            var arrList = new Array();
+                            var si = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                var jd = $('input[name=like' + i + ']');
+                                if ($('input[name=like' + i + ']').prop('checked') == true) {
+                                    var sid = jd.val();
+                                    var count = jd.parent().next().next().children().children().children('input').val();
+                                    arrList[si] = sid;
+                                    si++;
+                                    $.post('./updata', {
+                                        'phone': layui.sessionData('user').name,
+                                        'sid': sid,
+                                        'count': count
+                                    }, function (data) {
+                                    }, 'json');
+                                }
+                            }
+                            layui.sessionData("spcount", {key: 'id', value: arrList});
+                            window.location.href = "checkout.html";
+                            return false;
+                        });
+                        form.render();
                     }, 'json');
                 }, 'json');
             });
-
-        });
+        })
+        ;
 
 
         function zx() {
@@ -88,50 +195,91 @@
 </head>
 
 <body>
-<script id="show" type="text/html">
-    {{# layui.each(d,function(index,item){
 
-    }}
-    <li class="goods-list">
-        <form class="layui-form" action="">
-            <table class="goods-body">
-                <tr>
-                    <td class="goods-col-select"><a href="javascript:;" class="check-label check-product"> <i
-                            class="checkbox"> <span class="check-mark"></span> </i> </a> <a href="javascript:;"
-                                                                                            class="goods-img"> <img
-                            src="{{d.data1.pic_img}}" alt=""> </a> <a href="javascript:;" class="goods-info"><h4
-                            class="goods-info-title">{{d.data1.pname}}</h4>
-                        <p class="goods-info-tips">{{item.text}}</p></a></td>
-                    <td class="goods-col-price"><span>{{item.money}}</span></td>
-                    <td class="goods-col-volumes">
-                        <div class="num-ctrl-area clearfix">
-                            <div class="layui-input-inline header-center">
-                                <button class="layui-btn" lay-submit  lay-filter="jian">-</button>
-                                <input type="text" class="layui-disabled" name="count" lay-verify="count"
-                                       value="{{item.count}}"
-                                       required>
-                                <button class="layui-btn" lay-submit lay-filter="jia">+</button>
-                            </div>
-                            <!--<button class="minus forbid">-</button>
-                            <input type="text" value="1" class="input">
-                            <button class="plus">+</button>
-                            <em class="hint">限购10件</em>-->
-                        </div>
-                    </td>
-                    <td class="goods-col-total"><span hidden>{{item.money}}</span>
-                        ￥<input style="width: 100px;" type="text" class="layui-disabled"
-                                name="money" value="{{item.money*item.count}}"
-                                required lay-verify="money">
-                    </td>
-                    <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
-                            class="line-left"></span> <span class="line-right"></span> </i></td>
-                </tr>
-            </table>
-        </form>
-    </li>
-    {{#
-    });
-    }}
+<script id="show" type="text/html">
+    <form class="layui-form" action="">
+        <div class="mzContainer">
+            <div class="check-container">
+                <div class="shop-cart-nav">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="check-area">
+                                <input type="checkbox" lay-filter="menu" name="qx" value="{{d.length}}"
+                                       title="全选"
+                                       lay-skin="primary">
+                            <td class="singal-price"> 单价(元)</td>
+                            <td class="volumes"> 数量</td>
+                            <td class="small-total"> 小计(元)</td>
+                            <td class="edit-area"><span class="edit">编辑</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="goods-ul">
+                    {{# layui.each(d,function(index,item){
+
+                    }}
+                    <li class="goods-list">
+                        <table class="goods-body">
+                            <tr>
+                                <td class="goods-col-select">
+                                    <input type="checkbox" lay-filter="menus" name="like{{index}}"
+                                           lay-skin="primary"
+                                           value="{{item.sid}}">
+                                    <a href="javascript:;"
+                                       class="goods-img"> <img
+                                            src="{{d.data1.pic_img}}" alt=""> </a> <a href="javascript:;"
+                                                                                      class="goods-info"><h4
+                                        class="goods-info-title">{{d.data1.pname}}</h4>
+                                    <p class="goods-info-tips">{{item.text}}</p></a></td>
+                                <td class="goods-col-price"><span>{{item.money}}</span></td>
+                                <td class="goods-col-volumes">
+                                    <div class="num-ctrl-area clearfix">
+                                        <div class="layui-input-inline header-center">
+                                            <button class="layui-btn" lay-submit lay-filter="jian">-</button>
+                                            <input type="text" class="layui-disabled" name="count"
+                                                   lay-verify="count"
+                                                   value="{{item.count}}"
+                                                   required>
+                                            <button class="layui-btn" lay-submit lay-filter="jia">+</button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="goods-col-total"><span hidden>{{item.money}}</span>
+                                    ￥<input style="width: 100px;" type="text" class="layui-disabled"
+                                            name="money" value="{{item.money*item.count}}"
+                                            required lay-verify="money">
+                                </td>
+                                <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
+                                        class="line-left"></span> <span class="line-right"></span> </i></td>
+                            </tr>
+                        </table>
+                    </li>
+                    {{#
+                    });
+                    }}
+                </ul>
+            </div>
+            <div class="shop-cart-footer fixed">
+                <div class="cart-foot clearfix">
+                    <div class="cart-foot-left"><input type="checkbox" name="qx" title="全选" lay-filter="menu"
+                                                       lay-skin="primary" value="{{d.length}}">
+                        <em class="goods-delete">删除选中的商品</em> <em class="goods-num"> 共<span
+                                class="sum">{{d.length}}</span>件商品，
+                            已选择&nbsp;<span class="sum-selected" id="couns">0</span>&nbsp;件 </em></div>
+                    <div class="cart-foot-right"><em class="total-bill"> 合计(不含运费)： <span class="bill-price"
+                                                                                         id="sums"></span>
+                    </em>
+                        <button type="button" lay-submit name="formDemo"
+                                class="layui-btn layui-btn-warm layui-btn-disabled"
+                                lay-filter="formDemo">结算
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </script>
 <script id="dl" type="text/html">
     {{#  if(d.name==null){ }}
@@ -160,7 +308,7 @@
         </div>
     </div>
 </div>
-<div class="float-box">
+<!--<div class="float-box">
     <div class="confirm-box">
         <h4 class="confirm-title">
             <span></span>
@@ -178,66 +326,58 @@
             <a href="javascript:;" class="cancel">取消</a>
         </div>
     </div>
-</div>
-
-<div class="mzContainer">
-    <div class="check-container">
-        <div class="shop-cart-nav">
-            <table>
-                <tbody>
-                <tr>
-                    <td class="check-area"><a href="javascript:;" class="check-label check-all"
-                                              style="margin-left: 2rem;"> <i class="checkbox">
-                        <span class="check-mark"></span> </i> <em class="check-name">全选</em> </a></td>
-                    <td class="singal-price"> 单价(元)</td>
-                    <td class="volumes"> 数量</td>
-                    <td class="small-total"> 小计(元)</td>
-                    <td class="edit-area"><span class="edit">编辑</span></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <ul class="goods-ul">
-            <div id="showView"></div>
-            <!--<li class="goods-list">
-                <table class="goods-body layui-form" action="">
+</div>-->
+<div id="showView">
+    <div class="mzContainer">
+        <div class="check-container">
+            <div class="shop-cart-nav">
+                <table>
+                    <tbody>
                     <tr>
-                        <td class="goods-col-select"><a href="javascript:;" class="check-label check-product"> <i
-                                class="checkbox"> <span class="check-mark"></span> </i> </a> <a href="javascript:;"
-                                                                                                class="goods-img"> <img
-                                src="img/p2.png" alt=""> </a> <a href="javascript:;" class="goods-info"><h4
-                                class="goods-info-title">魅族 16Xs</h4>
-                            <p class="goods-info-tips">全网通公开版 珊瑚橙 6+64GB</p></a></td>
-                        <td class="goods-col-price"><span>￥1499.00</span></td>
-                        <td class="goods-col-volumes">
-                            <div class="num-ctrl-area clearfix">
-                                <button class="minus forbid">-</button>
-                                <input type="text" value="1" class="input">
-                                <button class="plus">+</button>
-                                <em class="hint">限购10件</em></div>
-                        </td>
-                        <td class="goods-col-total"><span>￥1499.00</span></td>
-                        <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
-                                class="line-left"></span> <span class="line-right"></span> </i></td>
+                        <td class="check-area">
+                            <input type="checkbox" name="" title="全选" lay-skin="primary">
+                        <td class="singal-price"> 单价(元)</td>
+                        <td class="volumes"> 数量</td>
+                        <td class="small-total"> 小计(元)</td>
+                        <td class="edit-area"><span class="edit">编辑</span></td>
                     </tr>
+                    </tbody>
                 </table>
-            </li>-->
-        </ul>
-    </div>
-    <div class="shop-cart-footer fixed">
-        <div class="cart-foot clearfix">
-            <div class="cart-foot-left"><a href="javascript:;" class="check-label check-all" style="margin-left: 2rem;">
-                <i class="checkbox"> <span
-                        class="check-mark"></span> </i> <em class="check-name">全选</em> </a> <em
-                    class="goods-delete">删除选中的商品</em> <em class="goods-num"> 共<span class="sum">5</span>件商品，
-                已选择&nbsp;<span class="sum-selected">0</span>&nbsp;件 </em></div>
-            <div class="cart-foot-right"><em class="total-bill"> 合计(不含运费)： <span class="bill-price">￥0.00</span> </em>
-                <a href="javascript:;" class="order-btn ban-order banOrder">去结算</a></div>
+            </div>
+            <ul class="goods-ul">
+                <!--<div id="showView"></div>-->
+                <!--<li class="goods-list">
+                    <table class="goods-body layui-form" action="">
+                        <tr>
+                            <td class="goods-col-select"><a href="javascript:;" class="check-label check-product"> <i
+                                    class="checkbox"> <span class="check-mark"></span> </i> </a> <a href="javascript:;"
+                                                                                                    class="goods-img"> <img
+                                    src="img/p2.png" alt=""> </a> <a href="javascript:;" class="goods-info"><h4
+                                    class="goods-info-title">魅族 16Xs</h4>
+                                <p class="goods-info-tips">全网通公开版 珊瑚橙 6+64GB</p></a></td>
+                            <td class="goods-col-price"><span>￥1499.00</span></td>
+                            <td class="goods-col-volumes">
+                                <div class="num-ctrl-area clearfix">
+                                    <button class="minus forbid">-</button>
+                                    <input type="text" value="1" class="input">
+                                    <button class="plus">+</button>
+                                    <em class="hint">限购10件</em></div>
+                            </td>
+                            <td class="goods-col-total"><span>￥1499.00</span></td>
+                            <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
+                                    class="line-left"></span> <span class="line-right"></span> </i></td>
+                        </tr>
+                    </table>
+                </li>-->
+            </ul>
+        </div>
+        <div class="shop-cart-footer fixed">
+            <div id="jsView"></div>
         </div>
     </div>
 </div>
 <div class="mz-foot"></div>
 <script src="js/jquery.min.js"></script>
-<script src="js/cart.js"></script>
+<!--<script src="js/cart.js"></script>-->
 </body>
 </html>

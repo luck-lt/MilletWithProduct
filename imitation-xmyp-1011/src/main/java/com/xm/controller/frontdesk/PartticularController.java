@@ -10,6 +10,7 @@ import com.xm.service.UserService;
 import com.xm.service.shoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -51,7 +52,8 @@ public class PartticularController {
         int index = -1;
         if (shoppings != null) {  //修改件数，格式照旧
             for (int i = 0; i < shoppings.size(); i++) {
-                if (shoppings.get(0).getText() == text) {
+                if (shoppings.get(i).getText().equals(text.trim())) {
+                    System.out.println("----------------------------------------------------" + i);
                     index = i;
                 }
             }
@@ -64,7 +66,7 @@ public class PartticularController {
             shopping.setPid(Integer.parseInt(pid));
             String[] jg = money.split("元");
             shopping.setMoney(Double.parseDouble(jg[0]));
-            shopping.setText(text);
+            shopping.setText(text.trim());
             shopping.setCount(1);
             shopping.setUid(user.get(0).getUser_id());
             boolean zj = shoppingService.save(shopping);
@@ -84,6 +86,36 @@ public class PartticularController {
         map2.put("uid", user.get(0).getUser_id());
         List<shopping> shoppings = (List<shopping>) shoppingService.listByMap(map2);
         return shoppings;
+    }
+
+    @RequestMapping("/updata")
+    public int updata(String phone, String sid, String count) {
+        Map map = new HashMap();
+        map.put("login_name", phone);
+        List<User> user = (List<User>) userService.listByMap(map);
+        Map map2 = new HashMap();
+        map2.put("uid", user.get(0).getUser_id());
+        List<shopping> shoppings = (List<shopping>) shoppingService.listByMap(map2);
+        for (int i = 0; i < shoppings.size(); i++) {
+            if (shoppings.get(i).getSid() == Integer.parseInt(sid)) {
+                shoppings.get(i).setCount(Integer.parseInt(count));
+                shoppingService.updatecount(shoppings.get(i));
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    @RequestMapping("/adddd")
+    public int adddd(@RequestParam(value = "sid[]") String[] sid, String dz, String sum) {
+
+        for (int i = 0; i < sid.length; i++) {
+            Map map = new HashMap();
+            map.put("sid", sid[i]);
+            List<shopping> list = (List<shopping>) shoppingService.listByMap(map);
+
+        }
+        return 0;
     }
 
 

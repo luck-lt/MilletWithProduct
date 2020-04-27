@@ -6,4 +6,7 @@
     <update id="update">
             UPDATE `shopping` SET `count`=`count`+1 WHERE sid=#{sid}
     </update>
+    <update id="updatecount">
+            UPDATE `shopping` SET `count`=#{count} WHERE sid=#{sid}
+    </update>
 </mapper>

@@ -11,4 +11,5 @@ import com.xm.pojo.shopping;
  */
 public interface shoppingService extends IService<shopping> {
     public int update(shopping shopping);
+    public int updatecount(shopping shopping);
 }
