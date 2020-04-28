@@ -22,7 +22,12 @@
         <include refid="condition"/>
     </select>
 
-
+    <insert id="add">
+        INSERT INTO `order` ( user_id, order_number, order_amount, address, order_status, create_time ) VALUES ( #{user_id}, #{order_number}, #{order_amount}, #{address}, #{order_status}, #{create_time}  );
+    </insert>
+    <select id="select" resultType="Order">
+        SELECT * FROM `order` WHERE order_number = #{oid}
+    </select>
     <update id="UpdateCategory" parameterType="Category">
       UPDATE category set `parent_id`=#{parent_id},`category_name`=#{category_name} WHERE `category_id`=#{category_id}
 	</update>
@@ -30,4 +35,7 @@
     <delete id="DeleteCategory" parameterType="int">
           delete from category where category_id=#{category_id}
     </delete>
+    <select id="listall" resultType="order">
+          SELECT * FROM `order` WHERE user_id = #{id}
+    </select>
 </mapper>

@@ -10,5 +10,6 @@ import java.util.Map;
 
 public interface OrderDetailService extends IService<OrderDetail> {
     public List<Map<String,Object>> OrderDetailFindAll(Order order);
-
+    public  List<OrderDetail> listall(int id);
+    public List<Map<String, Object>> mapList(int id);
 }

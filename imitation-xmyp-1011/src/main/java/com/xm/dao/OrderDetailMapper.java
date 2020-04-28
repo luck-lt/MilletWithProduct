@@ -11,4 +11,8 @@ import java.util.Map;
 @Mapper
 public interface OrderDetailMapper extends SuperMapper<OrderDetail> {
     public List<Map<String, Object>> OrderDetailFindAll(Order order);
+
+    public List<OrderDetail> listall(int id);
+
+    public List<Map<String, Object>> mapList(int id);
 }

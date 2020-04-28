@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Service
 @AutoConfigureAfter({OrderMapper.class})
-public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements OrderService {
+public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
     @Autowired
     public OrderMapper orderMapper;
 
@@ -26,4 +26,20 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper,Order> implements 
     public List<Map<String, Object>> OrderFindAll(Order order) {
         return orderMapper.OrderFindAll(order);
     }
+
+    @Override
+    public int add(Order order) {
+        return orderMapper.add(order);
+    }
+
+    @Override
+    public Order select(String oid) {
+        return orderMapper.select(oid);
+    }
+
+    @Override
+    public List<Order> listall(int id) {
+        return orderMapper.listall(id);
+    }
+
 }

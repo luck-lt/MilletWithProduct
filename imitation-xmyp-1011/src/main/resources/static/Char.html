@@ -1,131 +1,383 @@
 <!DOCTYPE html>
-<!-- saved from url=(0065)https://www.17sucai.com/preview/1424582/2019-12-06/gwc/index.html -->
 <html lang="zh-cn">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>小米购物车</title>
     <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="css/min.css"/>
     <link rel="stylesheet" type="text/css" href="css/car.css"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script type="text/javascript" src="layui/jquery.min.js"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            layui.config({
+                base: 'layui/'
+            }).use(['jquery', 'laytpl', 'carousel', 'element', 'form', 'layer'], function () {
+                var $ = layui.jquery
+                    , form = layui.form
+                    , element = layui.element
+                    , carousel = layui.carousel
+                    , laytpl = layui.laytpl
+                    , layer = layui.layer;
 
+                var xxx = document.getElementById("dl").innerHTML;
+                var sss = document.getElementById("dls");
+                /* console.log(sss)*/
+                laytpl(xxx).render(layui.sessionData('user'), function (html) {
+                    sss.innerHTML = html;
+                });
+                $.post("./show", {'phone': layui.sessionData('user').name}, function (data) {
+                    $.post("./spcx", {'id': data[0].pid}, function (data1) {
+                        data.data1 = data1;
+                        var xxx = document.getElementById("show").innerHTML;
+                        var sss = document.getElementById("showView");
+                        laytpl(xxx).render(data, function (html) {
+                            sss.innerHTML = html;
+                        });
+                        form.on('submit(jia)', function (data) {
+                            $(this).prev().attr('value', parseInt($(this).prev().val()) + 1);
+                            var dj = $(this).parent().parent().parent().next().children("span").text();
+                            $(this).parent().parent().parent().next().children("input").attr('value', parseFloat(dj) * (parseInt($(this).prev().val())));
+                            var sum = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                if ($('input[name=like' + i + ']').prop('checked') == true) {
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
+                            return false;
+                        });
+                        form.on('submit(jian)', function (data) {
+                            if ($(this).next().val() > 1) {
+                                $(this).next().attr('value', parseInt($(this).next().val()) - 1);
+                                var dj = $(this).parent().parent().parent().next().children("span").text();
+                                $(this).parent().parent().parent().next().children("input").attr('value', parseFloat(dj) * (parseInt($(this).next().val())));
+                            }
+                            var sum = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                if ($('input[name=like' + i + ']').prop('checked') == true) {
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
+                            return false;
+                        });
+
+                        form.on('checkbox(menu)', function (data) {
+                            var id = data.value;
+                            var bools = false;
+                            var counts = 0;
+                            var sum = 0;
+                            //这里实现勾选
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                $('input[name*=like]').each(function (index, item) {
+                                    item.checked = data.elem.checked;
+                                });
+                                if ($('input[name=like' + i + ']').prop('checked')) {
+                                    counts++;
+                                    bools = true;
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
+                            $('#couns').text(counts);
+
+                            $('input[name=qx]').each(function (index, item) {
+                                item.checked = data.elem.checked;
+                            });
+
+                            if (bools == true) {
+                                $('button[name=formDemo]').removeClass("layui-btn-disabled");
+                            } else {
+                                $('button[name=formDemo]').addClass("layui-btn-disabled");
+                            }
+                            form.render('checkbox');
+                        });
+                        form.on('checkbox(menus)', function (data) {
+                            //这里实现勾选
+                            var counts = 0;
+                            var bool = true;
+                            var bools = false;
+                            var sum = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                if ($('input[name=like' + i + ']').prop('checked') == false) {
+                                    bool = false;
+                                } else {
+                                    var dj = $('input[name=like' + i + ']').parent().next().children('span').text();
+                                    var sl = $('input[name=like' + i + ']').parent().next().next().children().children().children('input').val();
+                                    sum += dj * sl;
+                                    bools = true;
+                                    counts++;
+                                }
+                            }
+                            $('#sums').text('￥' + sum);
+                            $('#couns').text(counts);
+                            if (bool == true) {
+                                $('input[name=qx]').each(function (index, item) {
+                                    item.checked = true;
+                                });
+                            } else {
+                                $('input[name=qx]').each(function (index, item) {
+                                    item.checked = false;
+                                });
+                            }
+                            if (bools == true) {
+                                $('button[name=formDemo]').removeClass("layui-btn-disabled");
+                            } else {
+                                $('button[name=formDemo]').addClass("layui-btn-disabled");
+                            }
+                            form.render('checkbox');
+                            /*console.log(data.elem); //得到checkbox原始DOM对象
+                            console.log(data.elem.checked); //是否被选中，true或者false
+                            console.log(data.value); //复选框value值，也可以通过data.elem.value得到
+                            console.log(data.othis); //得到美化后的DOM对象*/
+                        });
+                        form.on('submit(formDemo)', function () {
+                            /*layer.msg(JSON.stringify(data.field));*/
+                            var arrList = new Array();
+                            var si = 0;
+                            for (var i = 0; i < $('input[name*=like]').length; i++) {
+                                var jd = $('input[name=like' + i + ']');
+                                if ($('input[name=like' + i + ']').prop('checked') == true) {
+                                    var sid = jd.val();
+                                    var count = jd.parent().next().next().children().children().children('input').val();
+                                    arrList[si] = sid;
+                                    si++;
+                                    $.post('./updata', {
+                                        'phone': layui.sessionData('user').name,
+                                        'sid': sid,
+                                        'count': count
+                                    }, function (data) {
+                                    }, 'json');
+                                }
+                            }
+                            layui.sessionData("spcount", {key: 'id', value: arrList});
+                            window.location.href = "checkout.html";
+                            return false;
+                        });
+                        form.render();
+                    }, 'json');
+                }, 'json');
+            });
+        })
+        ;
+
+
+        function zx() {
+            $.post('./zx', {'username': layui.sessionData('user').name});
+            layui.use(['element', 'laytpl'], function () {
+                var laytpl = layui.laytpl
+                    , element = layui.element;
+                layui.sessionData('user', {
+                    key: 'name'
+                    , remove: true
+                });
+                layui.sessionData('user', null);
+                var xxx = document.getElementById("dl").innerHTML;
+                var sss = document.getElementById("dls");
+                laytpl(xxx).render(layui.sessionData('user'), function (html) {
+                    sss.innerHTML = html;
+                });
+                element.render();
+            });
+        }
+    </script>
 </head>
 
 <body>
 
+<script id="show" type="text/html">
+    <form class="layui-form" action="">
+        <div class="mzContainer">
+            <div class="check-container">
+                <div class="shop-cart-nav">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="check-area">
+                                <input type="checkbox" lay-filter="menu" name="qx" value="{{d.length}}"
+                                       title="全选"
+                                       lay-skin="primary">
+                            <td class="singal-price"> 单价(元)</td>
+                            <td class="volumes"> 数量</td>
+                            <td class="small-total"> 小计(元)</td>
+                            <td class="edit-area"><span class="edit">编辑</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="goods-ul">
+                    {{# layui.each(d,function(index,item){
+
+                    }}
+                    <li class="goods-list">
+                        <table class="goods-body">
+                            <tr>
+                                <td class="goods-col-select">
+                                    <input type="checkbox" lay-filter="menus" name="like{{index}}"
+                                           lay-skin="primary"
+                                           value="{{item.sid}}">
+                                    <a href="javascript:;"
+                                       class="goods-img"> <img
+                                            src="{{d.data1.pic_img}}" alt=""> </a> <a href="javascript:;"
+                                                                                      class="goods-info"><h4
+                                        class="goods-info-title">{{d.data1.pname}}</h4>
+                                    <p class="goods-info-tips">{{item.text}}</p></a></td>
+                                <td class="goods-col-price"><span>{{item.money}}</span></td>
+                                <td class="goods-col-volumes">
+                                    <div class="num-ctrl-area clearfix">
+                                        <div class="layui-input-inline header-center">
+                                            <button class="layui-btn" lay-submit lay-filter="jian">-</button>
+                                            <input type="text" class="layui-disabled" name="count"
+                                                   lay-verify="count"
+                                                   value="{{item.count}}"
+                                                   required>
+                                            <button class="layui-btn" lay-submit lay-filter="jia">+</button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="goods-col-total"><span hidden>{{item.money}}</span>
+                                    ￥<input style="width: 100px;" type="text" class="layui-disabled"
+                                            name="money" value="{{item.money*item.count}}"
+                                            required lay-verify="money">
+                                </td>
+                                <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
+                                        class="line-left"></span> <span class="line-right"></span> </i></td>
+                            </tr>
+                        </table>
+                    </li>
+                    {{#
+                    });
+                    }}
+                </ul>
+            </div>
+            <div class="shop-cart-footer fixed">
+                <div class="cart-foot clearfix">
+                    <div class="cart-foot-left"><input type="checkbox" name="qx" title="全选" lay-filter="menu"
+                                                       lay-skin="primary" value="{{d.length}}">
+                        <em class="goods-delete">删除选中的商品</em> <em class="goods-num"> 共<span
+                                class="sum">{{d.length}}</span>件商品，
+                            已选择&nbsp;<span class="sum-selected" id="couns">0</span>&nbsp;件 </em></div>
+                    <div class="cart-foot-right"><em class="total-bill"> 合计(不含运费)： <span class="bill-price"
+                                                                                         id="sums"></span>
+                    </em>
+                        <button type="button" lay-submit name="formDemo"
+                                class="layui-btn layui-btn-warm layui-btn-disabled"
+                                lay-filter="formDemo">结算
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+<script id="dl" type="text/html">
+    {{#  if(d.name==null){ }}
+    <a data-needlogin="true" href="Logins.html">登录</a>
+    <span class="sep">|</span> <a href="register.html">注册</a>
+    {{#  } }}
+    {{# if(d.name!=null){}}
+    <a data-needlogin="true" href="Logins.html">欢迎:{{d.name}}</a>
+    <span class="sep">|</span><a onclick="zx()">注销</a>
+    {{# }}}
+</script>
 <div class="site-header site-mini-header">
     <div class="container">
         <div class="header-logo" style="margin-left: 3.8rem;">
-            <img src="xmyp/img/milogo.png" width="50%" href=""></img>
+            <a href="index.html">
+                <img src="xmyp/img/milogo.png" width="50%"/>
+            </a>
         </div>
         <div class="header-title has-more" id="J_miniHeaderTitle"><h2>我的购物车</h2>
             <p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p></div>
-        <div class="topbar-info" id="J_userInfo">
-            <a class="link" href="javascript:void(0);" data-agreement="true" data-login="true"
-               data-stat-id="40879d467387e3e0"
-               onclick="_msq.push(['trackEvent', '5df97b551662ffe7-40879d467387e3e0', '//order.mi.com/site/login', 'pcpid', '']);"
-               data-href="//order.mi.com/site/login?redirectUrl=https://static.mi.com/cart/">登录</a><span
-                class="sep">|</span><a class="link" href="javascript:void(0);" data-agreement="true"
-                                       data-register="true" data-stat-id="b072cf7c6a856e34"
-                                       onclick="_msq.push(['trackEvent', '5df97b551662ffe7-b072cf7c6a856e34', 'https://account.xiaomi.com/pass/register', 'pcpid', '']);"
-                                       data-href="https://account.xiaomi.com/pass/register">注册</a></div>
+        <div class="topbar-info" id="J_userInfo" style="font-size: 18px">
+            <div class="topbar-info J_userInfo" id="dls">
+                <!--<a data-needlogin="true" href="Logins.html">登录</a>
+                <span class="sep">|</span> <a href="register.html">注册</a>-->
+            </div>
+        </div>
     </div>
 </div>
-<div class="float-box">
-
+<!--<div class="float-box">
     <div class="confirm-box">
-
         <h4 class="confirm-title">
             <span></span>
             <i class="close-btn">
-
                 <span class="line-left"></span>
                 <span class="line-right"></span>
 
             </i>
         </h4>
-
         <div class="confirm-content">
-
             请选择您要删除的商品？
-
         </div>
-
         <div class="confirm-btn">
-
             <a href="javascript:;" class="delete">删除</a>
             <a href="javascript:;" class="cancel">取消</a>
-
         </div>
-
     </div>
-
-</div>
-
-<div class="mzContainer">
-    <div class="check-container">
-        <div class="shop-cart-nav">
-            <table>
-                <tbody>
-                <tr>
-                    <td class="check-area"><a href="javascript:;" class="check-label check-all"
-                                              style="margin-left: 2rem;"> <i class="checkbox">
-                        <span class="check-mark"></span> </i> <em class="check-name">全选</em> </a></td>
-                    <td class="singal-price"> 单价(元)</td>
-                    <td class="volumes"> 数量</td>
-                    <td class="small-total"> 小计(元)</td>
-                    <td class="edit-area"><span class="edit">编辑</span></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <ul class="goods-ul">
-            <li class="goods-list">
-                <table class="goods-body">
+</div>-->
+<div id="showView">
+    <div class="mzContainer">
+        <div class="check-container">
+            <div class="shop-cart-nav">
+                <table>
+                    <tbody>
                     <tr>
-                        <td class="goods-col-select"><a href="javascript:;" class="check-label check-product"> <i
-                                class="checkbox"> <span class="check-mark"></span> </i> </a> <a href="javascript:;"
-                                                                                                class="goods-img"> <img
-                                src="img/p2.png" alt=""> </a> <a href="javascript:;" class="goods-info"><h4
-                                class="goods-info-title">魅族 16Xs</h4>
-                            <p class="goods-info-tips">全网通公开版 珊瑚橙 6+64GB</p></a></td>
-                        <td class="goods-col-price"><span>￥1499.00</span></td>
-                        <td class="goods-col-volumes">
-                            <div class="num-ctrl-area clearfix">
-                                <button class="minus forbid">-</button>
-                                <input type="text" value="1" class="input">
-                                <button class="plus" οnclick="javascrtpt:location.href='/AddChopCar'">+</button>
-                                <em class="hint">限购10件</em></div>
-                        </td>
-                        <td class="goods-col-total"><span>￥1499.00</span></td>
-                        <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
-                                class="line-left"></span> <span class="line-right"></span> </i></td>
+                        <td class="check-area">
+                            <input type="checkbox" name="" title="全选" lay-skin="primary">
+                        <td class="singal-price"> 单价(元)</td>
+                        <td class="volumes"> 数量</td>
+                        <td class="small-total"> 小计(元)</td>
+                        <td class="edit-area"><span class="edit">编辑</span></td>
                     </tr>
+                    </tbody>
                 </table>
-            </li>
-        </ul>
-    </div>
-    <div class="shop-cart-footer fixed">
-        <div class="cart-foot clearfix">
-            <div class="cart-foot-left"><a href="javascript:;" class="check-label check-all" style="margin-left: 2rem;">
-                <i class="checkbox"> <span
-                        class="check-mark"></span> </i> <em class="check-name">全选</em> </a> <em
-                    class="goods-delete">删除选中的商品</em> <em class="goods-num"> 共<span class="sum">5</span>件商品，
-                已选择&nbsp;<span class="sum-selected">0</span>&nbsp;件 </em></div>
-            <div class="cart-foot-right"><em class="total-bill"> 合计(不含运费)： <span class="bill-price">￥0.00</span> </em>
-                <a href="javascript:;" class="order-btn ban-order banOrder">去结算</a></div>
+            </div>
+            <ul class="goods-ul">
+                <!--<div id="showView"></div>-->
+                <!--<li class="goods-list">
+                    <table class="goods-body layui-form" action="">
+                        <tr>
+                            <td class="goods-col-select"><a href="javascript:;" class="check-label check-product"> <i
+                                    class="checkbox"> <span class="check-mark"></span> </i> </a> <a href="javascript:;"
+                                                                                                    class="goods-img"> <img
+                                    src="img/p2.png" alt=""> </a> <a href="javascript:;" class="goods-info"><h4
+                                    class="goods-info-title">魅族 16Xs</h4>
+                                <p class="goods-info-tips">全网通公开版 珊瑚橙 6+64GB</p></a></td>
+                            <td class="goods-col-price"><span>￥1499.00</span></td>
+                            <td class="goods-col-volumes">
+                                <div class="num-ctrl-area clearfix">
+                                    <button class="minus forbid">-</button>
+                                    <input type="text" value="1" class="input">
+                                    <button class="plus">+</button>
+                                    <em class="hint">限购10件</em></div>
+                            </td>
+                            <td class="goods-col-total"><span>￥1499.00</span></td>
+                            <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
+                                    class="line-left"></span> <span class="line-right"></span> </i></td>
+                        </tr>
+                    </table>
+                </li>-->
+            </ul>
+        </div>
+        <div class="shop-cart-footer fixed">
+            <div id="jsView"></div>
         </div>
     </div>
 </div>
-
 <div class="mz-foot"></div>
-
-
 <script src="js/jquery.min.js"></script>
-<script src="js/cart.js"></script>
-
-
+<!--<script src="js/cart.js"></script>-->
 </body>
 </html>

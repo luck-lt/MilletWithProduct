@@ -21,5 +21,4 @@ public class Category implements Serializable {
     private int parent_id;
     private String category_name;
 
-
 }

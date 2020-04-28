@@ -24,4 +24,14 @@ public class OrderDetailServiceImpl extends ServiceImpl<OrderDetailMapper, Order
     public List<Map<String, Object>> OrderDetailFindAll(Order order) {
         return orderDetailMapper.OrderDetailFindAll(order);
     }
+
+    @Override
+    public List<OrderDetail> listall(int id) {
+        return orderDetailMapper.listall(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> mapList(int id) {
+        return orderDetailMapper.mapList(id);
+    }
 }

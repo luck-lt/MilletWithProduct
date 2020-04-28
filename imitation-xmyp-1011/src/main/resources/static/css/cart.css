@@ -461,7 +461,7 @@ div.float-box {
     top: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(245, 241, 241, 0.2);
     z-index: 100;
 }
 
@@ -554,7 +554,7 @@ div.float-box div.confirm-box > div.confirm-btn > a.delete {
     color: #777;
 }
 
- div.confirm-box > div.confirm-btn > a.cancel {
+div.confirm-box > div.confirm-btn > a.cancel {
     background-color: #00c3f5;
     color: #fff;
 }

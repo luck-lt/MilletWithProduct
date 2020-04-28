@@ -59,27 +59,35 @@
                                         value: res.province + res.city + res.county
                                     });
                                 }
+                                return '请选择';
                                 //选择结果
                                 console.log(res);
                             }
                         });
+
                         form.on('submit(formDemo2)', function (data) {
-                            var sid = [];
-                            for (var i = 0; i < layui.sessionData('spcount').id.length; i++) {
-                                sid.push(layui.sessionData('spcount').id[i]);
-                            }
-
-                            var dz = layui.sessionData("product").dz + " " + data.field.title;
-
-                            $.post('./adddd', {
-                                sid: sid,
-                                'dz': dz,
-                                'sum': sum
-                            }, function (data) {
-                                if (i > 0) {
-                                    layer.msg('下单成功')
+                            if (layui.sessionData("product").dz == null) {
+                                layer.msg('请先选择地址！！！')
+                            } else {
+                                var sid = [];
+                                for (var i = 0; i < layui.sessionData('spcount').id.length; i++) {
+                                    sid.push(layui.sessionData('spcount').id[i]);
                                 }
-                            }, 'json');
+
+                                var dz = layui.sessionData("product").dz + " " + data.field.title;
+
+                                $.post('./adddd', {
+                                    sid: sid,
+                                    'phone': layui.sessionData('user').name,
+                                    'dz': dz,
+                                    'sum': sum
+                                }, function (data) {
+                                    if (i > 0) {
+                                        layer.msg('下单成功')
+                                    }
+                                }, 'json');
+                                window.location.href = "shopping.html";
+                            }
                             return false;
                         });
                     })
@@ -137,7 +145,7 @@
                                     <div>
                                         <legend>请选择收货地址</legend>
                                     </div>
-                                    <div class="layui-form">
+                                    <div>
                                         <div class="layui-form-item" id="area-picker" style="margin-left: 20px">
                                             <div class="layui-input-inline" style="width: 250px;margin-bottom: 5px">
                                                 <select name="province" class="province-selector" data-value=""

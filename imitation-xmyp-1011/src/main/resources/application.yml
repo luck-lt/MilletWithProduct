@@ -28,8 +28,8 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql:///xmyp?serverTimezone=UTC
     username: root
-    #password: longtao
-    password: 123456
+    password: longtao
+    #password: 123456
     dbcp2:
       min-idle: 5
       initial-size: 5

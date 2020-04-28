@@ -127,7 +127,7 @@
         <div class="sj">
             <div class="top">
                 <div style="float: left;padding: 10px;">
-                    <h2>{{item.name}}</h2>
+                    <h2>{{item.category_name}}</h2>
                 </div>
                 <div style="float: right;padding: 10px;">
                     <a href="#">查看全部 <i class="layui-icon layui-icon-right"
@@ -281,7 +281,7 @@
                 <ul id="category">
                     <li v-for="(h,index) in category" id="firstLi" class="firstLi" @mouseover="mouseOver"
                         @mouseout="mouseout">
-                        <span v-if="index<10">{{h.name}}</span><span style="float: right"><i
+                        <span v-if="index<10">{{h.category_name}}</span><span style="float: right"><i
                             class="layui-icon layui-icon-right"></i></span>
                         <div class="info" id="info">
                             <ul>
