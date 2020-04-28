@@ -3,14 +3,71 @@
   <component name="ChangeListManager">
     <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/PublicEntityClass/src/main/java/com/xm/pojo/OrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/ProductManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/ProductManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/order-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/X-admin/order-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N03.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N03.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N04.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N04.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N07.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N08.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N08.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N09.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N09.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N10.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N10.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N11.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N13.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N13.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N14.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N14.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N15.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N16.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N16.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N17.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N17.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N18.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N19.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N19.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N20.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N20.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N21.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/N21.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a1.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a1.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a10.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a10.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a13.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a13.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a14.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a14.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a15.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a16.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a17.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a17.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a18.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a19.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a19.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a2.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a2.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a20.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a21.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a21.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a22.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a23.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a23.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a3.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a4.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a5.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a5.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a6.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a6.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a7.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a8.png" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a9.webp" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index/a9.webp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CompilerWorkspaceConfiguration">
-    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="MilletWithProduct" />
@@ -19,9 +76,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="HTML File" />
         <option value="Interface" />
-        <option value="mybatis-cfg.xml" />
         <option value="Class" />
       </list>
     </option>
@@ -62,6 +119,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
@@ -76,7 +134,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/index" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -90,25 +149,25 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\js" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\css" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\mapper" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\layui" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\xmyp\img\index" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\java\com\xm\service\impl" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\java\com\xm\service" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\java\com\xm\dao" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.xm.service.impl" />
-      <recent name="com.xm.service" />
-      <recent name="com.xm.dao" />
-      <recent name="com.xm.interceptor" />
-      <recent name="com.xm" />
+      <recent name="com.xm.pojo" />
+      <recent name="com.xm.controller" />
+      <recent name="com.cssl.file" />
+      <recent name="com.cssl" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\xmyp\img\particular" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\xmyp\img" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\Vue" />
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui\lay\modules\treetable-lay" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lib\layui\lay\modules" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\css" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin\lay\modules" />
+      <recent name="D:\Y2\毕业项目\MilletWithProduct\consumer-xmyp-1022\src\main\java\com\cssl\Controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -132,6 +191,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConsumerXmyp1022Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="consumer-xmyp-1022" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cssl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cssl.ConsumerXmyp1022Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ImitationXmyp1011Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="imitation-xmyp-1011" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.xm.ImitationXmyp1011Application" />
@@ -141,6 +213,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ConsumerXmyp1022Application" />
         <item itemvalue="Application.SendSms" />
       </list>
     </recent_temporary>
@@ -149,7 +222,7 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.18553889" />
+          <option name="contentProportion" value="0.27421555" />
           <treeState>
             <expand>
               <path>
@@ -184,17 +257,17 @@
       <workItem from="1586910501719" duration="7503000" />
       <workItem from="1586918889317" duration="29690000" />
       <workItem from="1586996867604" duration="5053000" />
-      <workItem from="1587002361474" duration="16339000" />
-      <workItem from="1587115173615" duration="6954000" />
-      <workItem from="1587170016796" duration="102314000" />
-      <workItem from="1587515967885" duration="63693000" />
-      <workItem from="1587645099025" duration="139000" />
-      <workItem from="1587645279603" duration="93000" />
-      <workItem from="1587645663667" duration="5827000" />
-      <workItem from="1587651986969" duration="20000" />
-      <workItem from="1587688562622" duration="31402000" />
-      <workItem from="1587733136242" duration="87846000" />
-      <workItem from="1587970480406" duration="33306000" />
+      <workItem from="1587002361474" duration="36061000" />
+      <workItem from="1587170034594" duration="23675000" />
+      <workItem from="1587279029822" duration="20466000" />
+      <workItem from="1587343083176" duration="64353000" />
+      <workItem from="1587516230567" duration="70738000" />
+      <workItem from="1587804587160" duration="34407000" />
+      <workItem from="1587948190433" duration="48000" />
+      <workItem from="1587948264034" duration="263000" />
+      <workItem from="1587948542599" duration="138000" />
+      <workItem from="1587948955394" duration="12000" />
+      <workItem from="1587949250568" duration="41878000" />
     </task>
     <task id="LOCAL-00001" summary="GitHub">
       <created>1586600920843</created>
@@ -287,138 +360,140 @@
       <option name="project" value="LOCAL" />
       <updated>1587039981003</updated>
     </task>
-    <task id="LOCAL-00014" summary="首页（未加数据）">
-      <created>1587121070823</created>
+    <task id="LOCAL-00014" summary="GitHub">
+      <created>1587093382754</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1587121070823</updated>
+      <updated>1587093382754</updated>
     </task>
-    <task id="LOCAL-00015" summary="首页（一半完成）">
-      <created>1587300233070</created>
+    <task id="LOCAL-00015" summary="GitHub">
+      <created>1587114714808</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1587300233070</updated>
+      <updated>1587114714808</updated>
     </task>
-    <task id="LOCAL-00016" summary="首页（一半完成）">
-      <created>1587300539190</created>
+    <task id="LOCAL-00016" summary="GitHub">
+      <created>1587181451369</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1587300539190</updated>
+      <updated>1587181451369</updated>
     </task>
-    <task id="LOCAL-00017" summary="商品的加入">
-      <created>1587731446129</created>
+    <task id="LOCAL-00017" summary="GitHub">
+      <created>1587294165891</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1587731446129</updated>
+      <updated>1587294165891</updated>
     </task>
-    <task id="LOCAL-00018" summary="商品的加入">
-      <created>1587732363997</created>
+    <task id="LOCAL-00018" summary="GitHub">
+      <created>1587718886526</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1587732363997</updated>
+      <updated>1587718886526</updated>
     </task>
-    <task id="LOCAL-00019" summary="购物车">
-      <created>1587895490622</created>
+    <task id="LOCAL-00019" summary="龙某C">
+      <created>1587718918216</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1587895490623</updated>
+      <updated>1587718918216</updated>
     </task>
-    <task id="LOCAL-00020" summary="购物车">
-      <created>1587895521563</created>
+    <task id="LOCAL-00020" summary="e">
+      <created>1587718962000</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1587895521563</updated>
+      <updated>1587718962000</updated>
     </task>
-    <task id="LOCAL-00021" summary="订单">
-      <created>1587984900711</created>
+    <task id="LOCAL-00021" summary="e">
+      <created>1587895857501</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1587984900711</updated>
+      <updated>1587895857501</updated>
     </task>
-    <task id="LOCAL-00022" summary="细节未处理">
-      <created>1588050666343</created>
+    <task id="LOCAL-00022" summary="e">
+      <created>1587895879641</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1588050666343</updated>
+      <updated>1587895879641</updated>
     </task>
-    <task id="LOCAL-00023" summary="细节未处理2">
-      <created>1588050940854</created>
+    <task id="LOCAL-00023" summary="e">
+      <created>1587895939035</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1588050940854</updated>
+      <updated>1587895939035</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="e">
+      <created>1587895970975</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1587895970975</updated>
+    </task>
+    <task id="LOCAL-00025" summary="e">
+      <created>1587985038286</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1587985038286</updated>
+    </task>
+    <task id="LOCAL-00026" summary="e">
+      <created>1587985113155</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1587985113155</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="GitHub" />
-    <MESSAGE value="首页（未加数据）" />
-    <MESSAGE value="首页（一半完成）" />
-    <MESSAGE value="商品的加入" />
-    <MESSAGE value="购物车" />
-    <MESSAGE value="订单" />
-    <MESSAGE value="细节未处理" />
-    <MESSAGE value="细节未处理2" />
-    <option name="LAST_COMMIT_MESSAGE" value="细节未处理2" />
+    <MESSAGE value="龙某C" />
+    <MESSAGE value="e" />
+    <option name="LAST_COMMIT_MESSAGE" value="e" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="182" key="#Notifications" timestamp="1587121110529">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="223" y="70" width="1133" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587434020823">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="552" y="182" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1587121110529" />
-    <state x="552" y="182" key="#Project_Structure" timestamp="1587985358411">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="223" y="70" width="1133" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1587434020823" />
+    <state x="413" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587380644325">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="552" y="182" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1587985358411" />
-    <state x="516" y="279" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587521694469">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="413" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1587380644325" />
+    <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser" timestamp="1587729506905">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="413" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586940607321" />
-    <state x="516" y="279" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587521694469" />
-    <state x="1060" y="183" key="#com.intellij.ide.util.MemberChooser" timestamp="1588037087752">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587004524627" />
-    <state x="1060" y="183" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588037087752" />
+    <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587729506905" />
     <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1586599732340">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586599732340" />
-    <state x="624" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587522213975">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1586690703063" />
-    <state x="624" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587522213975" />
-    <state x="690" y="270" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1587126710221">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="270" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587126710221" />
-    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1588051351346">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587039976000" />
-    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588051351346" />
-    <state width="478" height="438" key="DebuggerActiveHint" timestamp="1587003363563">
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587120839217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="478" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1587003363563" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1587120536975">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587120839217" />
+    <state x="69" y="12" key="CommitChangelistDialog2" timestamp="1587985112297">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587120536975" />
+    <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587985112297" />
+    <state x="882" y="117" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600916127" />
+    <state width="518" height="438" key="DebuggerActiveHint" timestamp="1587976799589">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="518" height="438" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1587976799589" />
     <state x="962" y="220" key="FileChooserDialogImpl" timestamp="1586922662580">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -432,119 +507,108 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1043" y="227" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586600779900" />
-    <state width="1504" height="245" key="GridCell.Tab.0.bottom" timestamp="1588046076691">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.0.bottom" timestamp="1588051590593">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="372" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
-    <state width="1504" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.0.center" timestamp="1588046076691">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588051590593" />
+    <state width="987" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
+    <state width="1063" height="192" key="GridCell.Tab.0.center" timestamp="1588051590593">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="372" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
-    <state width="1504" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.0.left" timestamp="1588046076691">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588051590593" />
+    <state width="987" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
+    <state width="1063" height="192" key="GridCell.Tab.0.left" timestamp="1588051590592">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="372" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587093326401" />
-    <state width="1504" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.0.right" timestamp="1588046076691">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588051590592" />
+    <state width="987" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
+    <state width="1063" height="192" key="GridCell.Tab.0.right" timestamp="1588051590593">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1495" height="372" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
-    <state width="1504" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.1.bottom" timestamp="1588046076692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588051590593" />
+    <state width="987" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586602767201" />
+    <state width="1063" height="192" key="GridCell.Tab.1.bottom" timestamp="1588051590593">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1193" height="235" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
-    <state width="1504" height="245" key="GridCell.Tab.1.center" timestamp="1588046076692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588051590593" />
+    <state width="670" height="279" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110732" />
+    <state width="1063" height="192" key="GridCell.Tab.1.center" timestamp="1588051590593">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1193" height="235" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
-    <state width="1504" height="245" key="GridCell.Tab.1.left" timestamp="1588046076692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1588051590593" />
+    <state width="670" height="279" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110731" />
+    <state width="1063" height="192" key="GridCell.Tab.1.left" timestamp="1588051590593">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1193" height="235" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
-    <state width="1504" height="245" key="GridCell.Tab.1.right" timestamp="1588046076692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1588051590593" />
+    <state width="670" height="279" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110731" />
+    <state width="1063" height="192" key="GridCell.Tab.1.right" timestamp="1588051590593">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1193" height="235" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
-    <state width="1504" height="279" key="GridCell.Tab.2.bottom" timestamp="1587812906149">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="192" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588051590593" />
+    <state width="670" height="279" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586602110732" />
+    <state width="1063" height="287" key="GridCell.Tab.2.bottom" timestamp="1588042042492">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="237" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
-    <state width="1504" height="279" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587812906149" />
-    <state width="1504" height="279" key="GridCell.Tab.2.center" timestamp="1587812906149">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="287" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588042042492" />
+    <state width="1063" height="287" key="GridCell.Tab.2.center" timestamp="1588042042492">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="237" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
-    <state width="1504" height="279" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587812906149" />
-    <state width="1504" height="279" key="GridCell.Tab.2.left" timestamp="1587812906149">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="287" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1588042042492" />
+    <state width="1063" height="287" key="GridCell.Tab.2.left" timestamp="1588042042492">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="237" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
-    <state width="1504" height="279" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587812906149" />
-    <state width="1504" height="279" key="GridCell.Tab.2.right" timestamp="1587812906149">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="287" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1588042042492" />
+    <state width="1063" height="287" key="GridCell.Tab.2.right" timestamp="1588042042492">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1071" height="237" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1587006264062" />
-    <state width="1504" height="279" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587812906149" />
-    <state x="154" y="20" key="MergeDialog" timestamp="1587731814644">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1063" height="287" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1588042042492" />
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog" timestamp="1587637857900">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="154" y="20" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587731814644" />
-    <state x="581" y="163" key="MultipleFileMergeDialog" timestamp="1587985179721">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1587637857900" />
+    <state x="465" y="129" key="MultipleFileMergeDialog" timestamp="1588052010641">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1586916187404" />
-    <state x="581" y="163" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587985179721" />
-    <state x="689" y="233" key="RollbackChangesDialog" timestamp="1587120548180">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="465" y="129" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1588052010641" />
+    <state x="284" y="82" key="Registry" timestamp="1587181613996">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="689" y="233" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587120548180" />
-    <state x="484" y="128" key="SettingsEditor" timestamp="1588051309782">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="284" y="82" key="Registry/0.0.1536.824@0.0.1536.824" timestamp="1587181613996" />
+    <state x="387" y="101" key="SettingsEditor" timestamp="1587985104078">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="387" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586922664049" />
-    <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588051309782" />
-    <state x="727" y="238" key="VCS.ChangeListViewerDialog" timestamp="1587731472038">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="387" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587985104078" />
+    <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586600753791" />
+    <state x="459" y="130" key="VCS.ChangeListViewerDialog" timestamp="1587895905224">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="727" y="238" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587731472038" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1588050952558">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="459" y="130" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1587895905224" />
+    <state x="435" y="182" key="Vcs.Push.Dialog.v2" timestamp="1587985121437">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586928765365" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588050952558" />
+    <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587985121437" />
+    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586600922622" />
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586739983680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1586739983680" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588051316386">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588051988162">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1586916162443" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588051316386" />
-    <state x="480" y="270" key="git4idea.merge.GitPullDialog" timestamp="1587120558164">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1588051988162" />
+    <state x="384" y="214" key="git4idea.merge.GitPullDialog" timestamp="1586696585730">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="384" y="214" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1586696585730" />
-    <state x="480" y="270" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587120558164" />
-    <state x="669" y="224" key="new project wizard" timestamp="1586598650663">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="414" y="104" width="1122" height="584" key="new project wizard" timestamp="1587123135989">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="414" y="104" width="1122" height="584" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1587123135989" />
     <state x="669" y="224" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1586598650663" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1587887424079">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587991280258">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587887424079" />
-    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1587734346232">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586999680203" />
-    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587734346232" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587991280258" />
   </component>
 </project>
