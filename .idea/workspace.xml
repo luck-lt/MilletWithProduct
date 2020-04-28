@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="" />
+    <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +194,7 @@
       <workItem from="1587651986969" duration="20000" />
       <workItem from="1587688562622" duration="31402000" />
       <workItem from="1587733136242" duration="87846000" />
-      <workItem from="1587970480406" duration="32804000" />
+      <workItem from="1587970480406" duration="33306000" />
     </task>
     <task id="LOCAL-00001" summary="GitHub">
       <created>1586600920843</created>
@@ -348,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588050666343</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="细节未处理2">
+      <created>1588050940854</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1588050940854</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +371,8 @@
     <MESSAGE value="购物车" />
     <MESSAGE value="订单" />
     <MESSAGE value="细节未处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="细节未处理" />
+    <MESSAGE value="细节未处理2" />
+    <option name="LAST_COMMIT_MESSAGE" value="细节未处理2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="182" key="#Notifications" timestamp="1587121110529">
@@ -396,11 +406,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="270" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587126710221" />
-    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1588050646993">
+    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1588051351346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587039976000" />
-    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588050646993" />
+    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588051351346" />
     <state width="478" height="438" key="DebuggerActiveHint" timestamp="1587003363563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -495,29 +505,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="233" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587120548180" />
-    <state x="484" y="128" key="SettingsEditor" timestamp="1587895679195">
+    <state x="484" y="128" key="SettingsEditor" timestamp="1588051309782">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="387" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586922664049" />
-    <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587895679195" />
+    <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588051309782" />
     <state x="727" y="238" key="VCS.ChangeListViewerDialog" timestamp="1587731472038">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="727" y="238" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587731472038" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1588050877830">
+    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1588050952558">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586928765365" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588050877830" />
+    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588050952558" />
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586739983680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1586739983680" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588050892736">
+    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588051316386">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1586916162443" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588050892736" />
+    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588051316386" />
     <state x="480" y="270" key="git4idea.merge.GitPullDialog" timestamp="1587120558164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
