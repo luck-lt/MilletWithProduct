@@ -11,6 +11,7 @@ public class Order {
     public String order_number;
     public Integer user_id;
     public double order_amount;
+    public String address;
     public Integer order_status;
     public Date create_time;
     public List<OrderDetail> orderDetailList;
