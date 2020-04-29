@@ -15,4 +15,5 @@ public interface ProductMapper extends SuperMapper<Product> {
     public int UpdateProduct(Product product);
 
     public int DeleteProduct(Integer id);
+
 }

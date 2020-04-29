@@ -68,9 +68,9 @@ public class UsersController {
         session.setAttribute("user", username);
 
         Map<String, Object> map = new HashMap<String, Object>();
-        if (username.length() < 11) {
+        /*if (username.length() < 11) {
             map.put("user_id", username);
-        }
+        }*/
         map.put("login_name", username);
         map.put("login_password", password);
         List<User> users = (List<User>) userService.listByMap(map);

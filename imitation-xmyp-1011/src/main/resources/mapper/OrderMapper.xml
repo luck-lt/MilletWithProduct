@@ -35,7 +35,12 @@
     <delete id="DeleteCategory" parameterType="int">
           delete from category where category_id=#{category_id}
     </delete>
+
     <select id="listall" resultType="order">
           SELECT * FROM `order` WHERE user_id = #{id}
     </select>
+
+    <delete id="delete">
+        delete from `order` where order_id=#{id}
+    </delete>
 </mapper>

@@ -845,7 +845,7 @@
     height: 273px;
     padding-left: 558px;
     margin: 65px 0 130px;
-    background: url("../i/cart/cart-empty.png") no-repeat 124px 0;
+    background: url("/xmyp/img/cart-empty.png") no-repeat 124px 0;
     color: #b0b0b0;
     overflow: hidden;
     _zoom: 1
@@ -1706,10 +1706,12 @@
     margin-left: 27px;
     margin-top: 3px
 }
+
 .site-mini-header .logo {
     width: 48px;
     height: 48px;
 }
+
 .site-header .logo {
     position: relative;
     display: block;
@@ -1720,9 +1722,11 @@
     background-color: #ff6700;
     *background: url(/i/logo.png) no-repeat 50% 50%;
 }
+
 .site-mini-header a {
     color: #757575;
 }
+
 .ir {
     display: block;
     text-align: left;
@@ -1730,6 +1734,7 @@
     overflow: hidden;
     _zoom: 1;
 }
+
 a {
     color: #757575;
     text-decoration: none;

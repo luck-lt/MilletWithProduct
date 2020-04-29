@@ -38,6 +38,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     }
 
     @Override
+    public int delete(int id) {
+        return orderMapper.delete(id);
+    }
+
+    @Override
     public List<Order> listall(int id) {
         return orderMapper.listall(id);
     }

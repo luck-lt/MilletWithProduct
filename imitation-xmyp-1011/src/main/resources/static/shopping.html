@@ -15,6 +15,49 @@
     <script type="text/javascript" src="layui/layui.js"></script>
     <script type="text/javascript" src="layui/mods/layarea.js"></script>
     <script type="text/javascript">
+        function View($, laytpl, form, layer) {
+            $.post("./order", {'phone': layui.sessionData('user').name}, function (data) {
+                $.post("./OrderDetail", {'phone': layui.sessionData('user').name}, function (data1) {
+                    data.data1 = data1;
+                    var xxx = document.getElementById("show").innerHTML;
+                    var sss = document.getElementById("showView");
+                    laytpl(xxx).render(data, function (html) {
+                        sss.innerHTML = html;
+                    });
+
+                    var flag = false;
+                    $(".edit").click(function () {
+                            if (flag) {
+                                flag = false;
+                                $('span[name=btnSpan]').show();
+                                $('button[name=btn]').hide();
+                            } else {
+                                flag = true;
+                                $('span[name=btnSpan]').hide();
+                                $('button[name=btn]').show();
+                            }
+                        }
+                    );
+                    form.on('submit(btn)', function (data) {
+                        var id = $(this).prev().prev().val();
+                        layer.msg('等等你..要干嘛，删除？', {
+                            time: 0 //不自动关闭
+                            , icon: 3
+                            , btn: ['丝毫不犹豫', '我在想想']
+                            , yes: function (index) {
+                                $.post("./del", {'oid': id}, function (data) {
+                                    layer.msg('成功删除', {icon: 5});
+                                }, 'json');
+                                location.reload();
+                            }, btn2: function (index) {
+                                layer.msg('你取消了', {icon: 6});
+                            }
+                        });
+                    });
+                });
+            });
+        }
+
         $(function () {
             layui.config({
                 base: 'layui/'
@@ -32,29 +75,7 @@
                 laytpl(xxx).render(layui.sessionData('user'), function (html) {
                     sss.innerHTML = html;
                 });
-                $.post("./order", {'phone': layui.sessionData('user').name}, function (data) {
-                    $.post("./OrderDetail", {'phone': layui.sessionData('user').name}, function (data1) {
-                        data.data1 = data1;
-                        var xxx = document.getElementById("show").innerHTML;
-                        var sss = document.getElementById("showView");
-                        laytpl(xxx).render(data, function (html) {
-                            sss.innerHTML = html;
-                        });
-                        var flag = false;
-                        $(".edit").click(function () {
-                                if (flag) {
-                                    flag = false;
-                                    $('span[name=btnSpan]').show();
-                                    $('button[name=btn]').hide();
-                                } else {
-                                    flag = true;
-                                    $('span[name=btnSpan]').hide();
-                                    $('button[name=btn]').show();
-                                }
-                            }
-                        );
-                    });
-                });
+                View($, laytpl, form, layer);
             });
         });
 
@@ -79,9 +100,6 @@
         }
     </script>
 </head>
-
-<body>
-
 <script id="show" type="text/html">
     <form class="layui-form" action="">
         <div class="mzContainer">
@@ -141,12 +159,15 @@
                                     }}
                                     <!--{{item.order_status}}-->
                                 </td>
-                                <td class="goods-col-ctrl"><span name="btnSpan">- -</span>
-                                    <button type="button" name="btn" class="layui-btn layui-btn-primary layui-btn-sm"
+                                <td class="goods-col-ctrl">
+                                    <input style="display: none;" value="{{item1.order_product_id}}"></input>
+                                    <span name="btnSpan">- -</span>
+                                    <button type="button" lay-submit lay-filter="btn" name="btn"
+                                            class="layui-btn layui-btn-primary layui-btn-sm"
                                             style="display: none;">
                                         <i class="layui-icon">&#xe640;</i>
                                     </button>
-                                    </i></td>
+                                </td>
                             </tr>
                             {{#
                             }
@@ -163,27 +184,9 @@
                     }}
                 </ul>
             </div>
-            <!--     <div class="shop-cart-footer fixed">
-                     <div class="cart-foot clearfix">
-                         <div class="cart-foot-left"><input type="checkbox" name="qx" title="全选" lay-filter="menu"
-                                                            lay-skin="primary" value="{{d.length}}">
-                             <em class="goods-delete">删除选中的商品</em> <em class="goods-num"> 共<span
-                                     class="sum">{{d.length}}</span>件商品，
-                                 已选择&nbsp;<span class="sum-selected" id="couns">0</span>&nbsp;件 </em></div>
-                         <div class="cart-foot-right"><em class="total-bill"> 合计(不含运费)： <span class="bill-price"
-                                                                                              id="sums"></span>
-                         </em>
-                             <button type="button" lay-submit name="formDemo"
-                                     class="layui-btn layui-btn-warm layui-btn-disabled"
-                                     lay-filter="formDemo">结算
-                             </button>
-                         </div>
-                     </div>
-                 </div>-->
         </div>
     </form>
 </script>
-
 <script id="dl" type="text/html">
     {{#  if(d.name==null){ }}
     <a data-needlogin="true" href="Logins.html">登录</a>
@@ -194,6 +197,7 @@
     <span class="sep">|</span><a onclick="zx()">注销</a>
     {{# }}}
 </script>
+<body>
 <div class="site-header site-mini-header">
     <div class="container">
         <div class="header-logo" style="margin-left: 3.8rem;">
@@ -201,7 +205,7 @@
                 <img src="xmyp/img/milogo.png" width="50%"/>
             </a>
         </div>
-        <div class="header-title has-more" id="J_miniHeaderTitle"><h2>购物车</h2>
+        <div class="header-title has-more" id="J_miniHeaderTitle"><h2>订单详情</h2>
             <p>温馨提示：产品购买成功，等待几天哦，正在路上。。</p></div>
         <div class="topbar-info" id="J_userInfo" style="font-size: 18px">
             <div class="topbar-info J_userInfo" id="dls">

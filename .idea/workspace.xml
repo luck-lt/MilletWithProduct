@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="">
+    <list default="true" id="eac5b047-ae1b-48e8-8aa9-e50057e36157" name="Default Changelist" comment="细节未处理2">
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/cart-empty.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/tps1.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/tps2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/tps3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/tps4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/tps5.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/tps6.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/xmyp/img/tps7.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/PartticularController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/PartticularController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/controller/frontdesk/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/ProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/ProductsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/ProductsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/shoppingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/dao/shoppingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/ProductsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/ProductsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/shoppingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/impl/shoppingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/shoppingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/java/com/xm/service/shoppingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/ProductsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/ProductsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/shoppingMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/mapper/shoppingMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/Char.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/Char.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/css/car.css" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/css/car.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/particular.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/particular.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/shopping.html" beforeDir="false" afterPath="$PROJECT_DIR$/imitation-xmyp-1011/src/main/resources/static/shopping.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,11 +134,11 @@
       <recent name="com.xm" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\xmyp\img" />
+      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\java\com\xm\service\impl" />
       <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\xmyp\img\particular" />
       <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static" />
-      <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\xmyp\img" />
       <recent name="D:\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\Vue" />
-      <recent name="D:\Y2\毕业项目\MilletWithProduct\imitation-xmyp-1011\src\main\resources\static\X-admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -194,7 +224,7 @@
       <workItem from="1587651986969" duration="20000" />
       <workItem from="1587688562622" duration="31402000" />
       <workItem from="1587733136242" duration="87846000" />
-      <workItem from="1587970480406" duration="33306000" />
+      <workItem from="1587970480406" duration="65825000" />
     </task>
     <task id="LOCAL-00001" summary="GitHub">
       <created>1586600920843</created>
@@ -357,11 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1588050940854</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="细节未处理2">
+      <created>1588051356716</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1588051356716</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GitHub" />
@@ -388,11 +435,11 @@
     </state>
     <state x="413" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586940607321" />
     <state x="516" y="279" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587521694469" />
-    <state x="1060" y="183" key="#com.intellij.ide.util.MemberChooser" timestamp="1588037087752">
+    <state x="1060" y="183" key="#com.intellij.ide.util.MemberChooser" timestamp="1588142860105">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="848" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587004524627" />
-    <state x="1060" y="183" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588037087752" />
+    <state x="1060" y="183" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588142860105" />
     <state x="811" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1586599732340">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -406,11 +453,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="270" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587126710221" />
-    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1588051351346">
+    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1588149507150">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587039976000" />
-    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588051351346" />
+    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588149507150" />
     <state width="478" height="438" key="DebuggerActiveHint" timestamp="1587003363563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -432,46 +479,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1043" y="227" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586600779900" />
-    <state width="1504" height="245" key="GridCell.Tab.0.bottom" timestamp="1588046076691">
+    <state width="1504" height="245" key="GridCell.Tab.0.bottom" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1495" height="372" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
-    <state width="1504" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.0.center" timestamp="1588046076691">
+    <state width="1504" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
+    <state width="1504" height="245" key="GridCell.Tab.0.center" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1495" height="372" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
-    <state width="1504" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.0.left" timestamp="1588046076691">
+    <state width="1504" height="245" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
+    <state width="1504" height="245" key="GridCell.Tab.0.left" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1495" height="372" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587093326401" />
-    <state width="1504" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.0.right" timestamp="1588046076691">
+    <state width="1504" height="245" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
+    <state width="1504" height="245" key="GridCell.Tab.0.right" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1495" height="372" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587093326402" />
-    <state width="1504" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076691" />
-    <state width="1504" height="245" key="GridCell.Tab.1.bottom" timestamp="1588046076692">
+    <state width="1504" height="245" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
+    <state width="1504" height="245" key="GridCell.Tab.1.bottom" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1193" height="235" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
-    <state width="1504" height="245" key="GridCell.Tab.1.center" timestamp="1588046076692">
+    <state width="1504" height="245" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
+    <state width="1504" height="245" key="GridCell.Tab.1.center" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1193" height="235" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
-    <state width="1504" height="245" key="GridCell.Tab.1.left" timestamp="1588046076692">
+    <state width="1504" height="245" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
+    <state width="1504" height="245" key="GridCell.Tab.1.left" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1193" height="235" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
-    <state width="1504" height="245" key="GridCell.Tab.1.right" timestamp="1588046076692">
+    <state width="1504" height="245" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
+    <state width="1504" height="245" key="GridCell.Tab.1.right" timestamp="1588144937524">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1193" height="235" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587093290104" />
-    <state width="1504" height="245" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588046076692" />
+    <state width="1504" height="245" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588144937524" />
     <state width="1504" height="279" key="GridCell.Tab.2.bottom" timestamp="1587812906149">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -514,11 +561,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="727" y="238" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587731472038" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1588050952558">
+    <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1588051363173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="435" y="182" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1586928765365" />
-    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588050952558" />
+    <state x="991" y="259" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588051363173" />
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586739983680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -537,10 +584,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="669" y="224" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1586598650663" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1587887424079">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1588076242762">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587887424079" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588076242762" />
     <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1587734346232">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

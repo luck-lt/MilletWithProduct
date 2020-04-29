@@ -30,9 +30,10 @@
                 laytpl(xxx).render(layui.sessionData('user'), function (html) {
                     sss.innerHTML = html;
                 });
-                $.post("./show", {'phone': layui.sessionData('user').name}, function (data) {
-                    $.post("./spcx", {'id': data[0].pid}, function (data1) {
-                        data.data1 = data1;
+                if (layui.sessionData('user').name != null) {
+                    $.post("./show", {'phone': layui.sessionData('user').name}, function (data) {
+                        /*    $.post("./spcx", {'id': data[0].pid}, function (data1) {*/
+                        /*  data.data1 = data1;*/
                         var xxx = document.getElementById("show").innerHTML;
                         var sss = document.getElementById("showView");
                         laytpl(xxx).render(data, function (html) {
@@ -165,9 +166,43 @@
                             window.location.href = "checkout.html";
                             return false;
                         });
+                        var flag = false;
+                        $(".edit").click(function () {
+                                if (flag) {
+                                    flag = false;
+                                    $('span[name=btnSpan]').show();
+                                    $('button[name=btn]').hide();
+                                } else {
+                                    flag = true;
+                                    $('span[name=btnSpan]').hide();
+                                    $('button[name=btn]').show();
+                                }
+                            }
+                        );
+                        form.on('submit(btn)', function (data) {
+                            var id = $(this).prev().prev().val();
+                            layer.msg('等等你..要干嘛，删除？', {
+                                time: 0 //不自动关闭
+                                , icon: 3
+                                , btn: ['丝毫不犹豫', '我在想想']
+                                , yes: function (index) {
+                                    $.post("./delgw", {'sid': id}, function (data) {
+                                        layer.msg('成功删除', {icon: 5});
+                                    }, 'json');
+                                    location.reload();
+                                }, btn2: function (index) {
+                                    layer.msg('你取消了', {icon: 6});
+                                }
+                            });
+                        });
                         form.render();
                     }, 'json');
-                }, 'json');
+                } else {
+                    layer.msg('你还未登录哦', function () {
+                        location.href = "Logins.html";
+                    });
+                }
+                /* }, 'json');*/
             });
         })
         ;
@@ -197,6 +232,637 @@
 <body>
 
 <script id="show" type="text/html">
+    {{# if(d.length==0){
+    }}
+    <div class="page-main">
+
+        <div class="container">
+            <div class="cart-loading loading hide" id="J_cartLoading">
+                <div class="loader"></div>
+            </div>
+            <div class="cart-empty cart-empty-nologin" id="J_cartEmpty">
+                <h2>您的购物车还是空的！</h2>
+                <p class="login-desc">登录后将显示您之前加入的商品</p>
+                <a href="Logins.html" class="btn btn-primary btn-login" id="J_loginBtn"
+                   data-href="//order.mi.com/site/login?redirectUrl=https://static.mi.com/cart/"
+                   data-stat-id="2708415ff4adafd3"
+                   onclick="_msq.push(['trackEvent', '5df97b551662ffe7-2708415ff4adafd3', 'javascript:void0', 'pcpid', '']);">立即登录</a>
+                <a href="index.html" class="btn btn-primary btn-shoping J_goShoping"
+                   data-stat-id="498eb13e3ab3f287"
+                   onclick="_msq.push(['trackEvent', '5df97b551662ffe7-498eb13e3ab3f287', '//list.mi.com/0', 'pcpid', '']);">马上去购物</a>
+            </div>
+            <!--<div id="J_cartBox" class="hide">
+                <div class="addonitems-tips hide J_addonitemsTips"></div>
+                <div class="cart-goods-list">
+                    <div class="list-head clearfix">
+                        <div class="col col-check"><i class="iconfont icon-checkbox" id="J_selectAll">√</i>全选</div>
+                        <div class="col col-img">&nbsp;</div>
+                        <div class="col col-name">商品名称</div>
+                        <div class="col col-price">单价</div>
+                        <div class="col col-num">数量</div>
+                        <div class="col col-total">小计</div>
+                        <div class="col col-action">操作</div>
+                    </div>
+                    <div class="list-body" id="J_cartListBody">
+                    </div>
+                </div>
+                &lt;!&ndash; 加价购 &ndash;&gt;
+                <div class="raise-buy-box" id="J_raiseBuyBox">
+                </div>
+
+                <div class="cart-bar clearfix" id="J_cartBar">
+                    <div class="section-left">
+                        <a href="//list.mi.com/0" class="back-shopping J_goShoping" data-stat-id="c074b1625b246f31"
+                           onclick="_msq.push(['trackEvent', '5df97b551662ffe7-c074b1625b246f31', '//list.mi.com/0', 'pcpid', '']);">继续购物</a>
+                        <span class="cart-total hide">共 <i id="J_cartTotalNum"></i> 件商品，已选择 <i id="J_selTotalNum"></i> 件</span>
+                        <span class="cart-coudan hide" id="J_coudanTip">
+                        ，还需 <i id="J_postFreeBalance"></i> 元即可免邮费  <a href="javascript:void(0);" id="J_showCoudan"
+                                                                      data-stat-id="cfc8337d6cbfdef7"
+                                                                      onclick="_msq.push(['trackEvent', '5df97b551662ffe7-cfc8337d6cbfdef7', 'javascript:void0', 'pcpid', '']);">立即凑单</a>
+                    </span>
+                    </div>
+                    <span class="activity-money hide">
+                    活动优惠：减 <i id="J_cartActivityMoney">0</i> 元
+                </span>
+                    <span class="total-price">
+                    合计：<em id="J_cartTotalPrice">00.00</em>元
+                </span>
+                    <a href="javascript:void(0);" class="btn btn-a btn btn-primary" id="J_goCheckout"
+                       data-stat-id="9bd56b7232f4ef1a"
+                       onclick="_msq.push(['trackEvent', '5df97b551662ffe7-9bd56b7232f4ef1a', 'javascript:void0', 'pcpid', '']);">去结算</a>
+
+                    <div class="no-select-tip hide" id="J_noSelectTip">
+                        请勾选需要结算的商品
+                        <i class="arrow arrow-a"></i>
+                        <i class="arrow arrow-b"></i>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="cart-recommend container" id="J_historyRecommend"
+                 data-log_codes="reccom_Cart_1_0#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9736&amp;bid=3038457.0&amp;page=cartbuy;reccom_Cart_1_1#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9659&amp;bid=3038457.1&amp;page=cartbuy;reccom_Cart_1_2#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5828&amp;bid=3038457.2&amp;page=cartbuy;reccom_Cart_1_3#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5831&amp;bid=3038457.3&amp;page=cartbuy;reccom_Cart_1_4#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10585&amp;bid=3038457.4&amp;page=cartbuy;reccom_Cart_1_5#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10869&amp;bid=3038457.5&amp;page=cartbuy;reccom_Cart_1_6#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10592&amp;bid=3038457.6&amp;page=cartbuy;reccom_Cart_1_7#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5500&amp;bid=3038457.7&amp;page=cartbuy;reccom_Cart_1_8#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9734&amp;bid=3038457.8&amp;page=cartbuy;reccom_Cart_1_9#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9840&amp;bid=3038457.9&amp;page=cartbuy;reccom_Cart_1_10#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7913&amp;bid=3038457.10&amp;page=cartbuy;reccom_Cart_1_11#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9990&amp;bid=3038457.11&amp;page=cartbuy;reccom_Cart_1_12#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7115&amp;bid=3038457.12&amp;page=cartbuy;reccom_Cart_1_13#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9963&amp;bid=3038457.13&amp;page=cartbuy;reccom_Cart_1_14#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9561&amp;bid=3038457.14&amp;page=cartbuy;reccom_Cart_1_15#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9526&amp;bid=3038457.15&amp;page=cartbuy;reccom_Cart_1_16#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9107&amp;bid=3038457.16&amp;page=cartbuy;reccom_Cart_1_17#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9836&amp;bid=3038457.17&amp;page=cartbuy;reccom_Cart_1_18#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9825&amp;bid=3038457.18&amp;page=cartbuy;reccom_Cart_1_19#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7530&amp;bid=3038457.19&amp;page=cartbuy">
+                <h2 class="xm-recommend-title"><span>为您推荐</span></h2>
+                <div class="xm-recommend">
+                    <ul class="row clearfix">
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1191800017.html"
+                                       data-log_code="reccom_Cart_1_0#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9736&amp;bid=3038457.0&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="0" data-stat-text="米家驱蚊器智能版"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_0_1_13" data-stat-aid="米家驱蚊器智能版">
+                                    <img src="//i1.mifile.cn/a1/pms_1557977821.03156568!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1557977821.03156568!280x280.jpg  2x"
+                                         alt="米家驱蚊器智能版"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1191800017.html"
+                                                                 data-log_code="reccom_Cart_1_0#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9736&amp;bid=3038457.0&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="0"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_0_1_13">
+                                    米家驱蚊器智能版 </a></dd>
+                                <dd class="xm-recommend-price">59元</dd>
+                                <dd class="xm-recommend-tips"> 2656人好评 <a href="//item.mi.com/cart/add/2191800017-0-1"
+                                                                          data-log_code="reccom_Cart_1_0#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9736&amp;bid=3038457.0&amp;page=cartbuy"
+                                                                          data-stat-gid="2191800017"
+                                                                          data-stat-method="1_13" data-stat-index="0"
+                                                                          data-stat-text="米家驱蚊器智能版"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_0_1_13"
+                                                                          data-stat-aid="米家驱蚊器智能版">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1191600021.html"
+                                       data-log_code="reccom_Cart_1_1#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9659&amp;bid=3038457.1&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="1" data-stat-text="米家直流变频落地扇1X"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_1_1_13" data-stat-aid="米家直流变频落地扇1X">
+                                    <img src="//i1.mifile.cn/a1/pms_1555985714.86057204!140x140.png"
+                                         srcset="//i1.mifile.cn/a1/pms_1555985714.86057204!280x280.png  2x"
+                                         alt="米家直流变频落地扇1X"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1191600021.html"
+                                                                 data-log_code="reccom_Cart_1_1#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9659&amp;bid=3038457.1&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="1"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_1_1_13">
+                                    米家直流变频落地扇1X </a></dd>
+                                <dd class="xm-recommend-price">289元</dd>
+                                <dd class="xm-recommend-tips"> 5879人好评 <a href="//item.mi.com/cart/add/2191600010-0-1"
+                                                                          data-log_code="reccom_Cart_1_1#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9659&amp;bid=3038457.1&amp;page=cartbuy"
+                                                                          data-stat-gid="2191600010"
+                                                                          data-stat-method="1_13" data-stat-index="1"
+                                                                          data-stat-text="米家直流变频落地扇1X"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_1_1_13"
+                                                                          data-stat-aid="米家直流变频落地扇1X">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1171900017.html"
+                                       data-log_code="reccom_Cart_1_2#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5828&amp;bid=3038457.2&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="2" data-stat-text="手机USB micro 数据线"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_2_1_13"
+                                       data-stat-aid="手机USBmicro数据线"> <img
+                                        src="//i1.mifile.cn/a1/pms_1496833357.9528722!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1496833357.9528722!280x280.jpg  2x"
+                                        alt="手机USB micro 数据线"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1171900017.html"
+                                                                 data-log_code="reccom_Cart_1_2#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5828&amp;bid=3038457.2&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="2"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_2_1_13">
+                                    手机USB micro 数据线 </a></dd>
+                                <dd class="xm-recommend-price">9.9元</dd>
+                                <dd class="xm-recommend-tips"> 2.1万人好评 <a href="//item.mi.com/cart/add/2171900028-0-1"
+                                                                          data-log_code="reccom_Cart_1_2#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5828&amp;bid=3038457.2&amp;page=cartbuy"
+                                                                          data-stat-gid="2171900028"
+                                                                          data-stat-method="1_13" data-stat-index="2"
+                                                                          data-stat-text="手机USB micro 数据线"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_2_1_13"
+                                                                          data-stat-aid="手机USBmicro数据线">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1171900022.html"
+                                       data-log_code="reccom_Cart_1_3#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5831&amp;bid=3038457.3&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="3" data-stat-text="小米学院休闲双肩包"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_3_1_13" data-stat-aid="小米学院休闲双肩包">
+                                    <img src="//i1.mifile.cn/a1/pms_1497672770.48873760!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1497672770.48873760!280x280.jpg  2x"
+                                         alt="小米学院休闲双肩包"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1171900022.html"
+                                                                 data-log_code="reccom_Cart_1_3#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5831&amp;bid=3038457.3&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="3"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_3_1_13">
+                                    小米学院休闲双肩包 </a></dd>
+                                <dd class="xm-recommend-price">69元</dd>
+                                <dd class="xm-recommend-tips"> 1.3万人好评 <a href="//item.mi.com/cart/add/2171900033-0-1"
+                                                                          data-log_code="reccom_Cart_1_3#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5831&amp;bid=3038457.3&amp;page=cartbuy"
+                                                                          data-stat-gid="2171900033"
+                                                                          data-stat-method="1_13" data-stat-index="3"
+                                                                          data-stat-text="小米学院休闲双肩包"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_3_1_13"
+                                                                          data-stat-aid="小米学院休闲双肩包">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1193400007.html"
+                                       data-log_code="reccom_Cart_1_4#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10585&amp;bid=3038457.4&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="4"
+                                       data-stat-text="Redmi Note 8 Pro 8GB+128GB 全网通版" target="_blank"
+                                       data-stat-pid="stat_Cart.购物车_4_1_13" data-stat-aid="RedmiNote8Pro8GB+128GB全网通版">
+                                    <img src="//i1.mifile.cn/a1/pms_1583492887.63183384!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1583492887.63183384!280x280.jpg  2x"
+                                         alt="Redmi Note 8 Pro 8GB+128GB 全网通版"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1193400007.html"
+                                                                 data-log_code="reccom_Cart_1_4#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10585&amp;bid=3038457.4&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="4"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_4_1_13">
+                                    Redmi Note 8 Pro 8GB+128GB 全网通版 </a></dd>
+                                <dd class="xm-recommend-price">1599元</dd>
+                                <dd class="xm-recommend-tips"> 35人好评 <a href="//item.mi.com/cart/add/2193400005-0-1"
+                                                                        data-log_code="reccom_Cart_1_4#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10585&amp;bid=3038457.4&amp;page=cartbuy"
+                                                                        data-stat-gid="2193400005"
+                                                                        data-stat-method="1_13" data-stat-index="4"
+                                                                        data-stat-text="Redmi Note 8 Pro 8GB+128GB 全网通版"
+                                                                        data-stat-addcart="加购"
+                                                                        class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                        data-stat-pid="stat_Cart加购.购物车_4_1_13"
+                                                                        data-stat-aid="RedmiNote8Pro8GB+128GB全网通版">加入购物车</a>
+                                </dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1193800053.html"
+                                       data-log_code="reccom_Cart_1_5#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10869&amp;bid=3038457.5&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="5" data-stat-text="Redmi 8 3GB+32GB"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_5_1_13"
+                                       data-stat-aid="Redmi83GB+32GB"> <img
+                                        src="//i1.mifile.cn/a1/pms_1570878880.65599134!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1570878880.65599134!280x280.jpg  2x"
+                                        alt="Redmi 8 3GB+32GB"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1193800053.html"
+                                                                 data-log_code="reccom_Cart_1_5#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10869&amp;bid=3038457.5&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="5"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_5_1_13">
+                                    Redmi 8 3GB+32GB </a></dd>
+                                <dd class="xm-recommend-price">749元</dd>
+                                <dd class="xm-recommend-tips"><a href="//item.mi.com/cart/add/2193800034-0-1"
+                                                                 data-log_code="reccom_Cart_1_5#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10869&amp;bid=3038457.5&amp;page=cartbuy"
+                                                                 data-stat-gid="2193800034" data-stat-method="1_13"
+                                                                 data-stat-index="5" data-stat-text="Redmi 8 3GB+32GB"
+                                                                 data-stat-addcart="加购"
+                                                                 class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                 data-stat-pid="stat_Cart加购.购物车_5_1_13"
+                                                                 data-stat-aid="Redmi83GB+32GB">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1194600011.html"
+                                       data-log_code="reccom_Cart_1_6#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10592&amp;bid=3038457.6&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="6"
+                                       data-stat-text="Redmi Note 8 4GB+64GB" target="_blank"
+                                       data-stat-pid="stat_Cart.购物车_6_1_13" data-stat-aid="RedmiNote84GB+64GB"> <img
+                                        src="//i1.mifile.cn/a1/pms_1573823207.49662407!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1573823207.49662407!280x280.jpg  2x"
+                                        alt="Redmi Note 8 4GB+64GB"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1194600011.html"
+                                                                 data-log_code="reccom_Cart_1_6#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10592&amp;bid=3038457.6&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="6"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_6_1_13">
+                                    Redmi Note 8 4GB+64GB </a></dd>
+                                <dd class="xm-recommend-price">999元</dd>
+                                <dd class="xm-recommend-tips"><a href="//item.mi.com/cart/add/2194600003-0-1"
+                                                                 data-log_code="reccom_Cart_1_6#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=10592&amp;bid=3038457.6&amp;page=cartbuy"
+                                                                 data-stat-gid="2194600003" data-stat-method="1_13"
+                                                                 data-stat-index="6"
+                                                                 data-stat-text="Redmi Note 8 4GB+64GB"
+                                                                 data-stat-addcart="加购"
+                                                                 class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                 data-stat-pid="stat_Cart加购.购物车_6_1_13"
+                                                                 data-stat-aid="RedmiNote84GB+64GB">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1201400007.html"
+                                       data-log_code="reccom_Cart_1_7#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5500&amp;bid=3038457.7&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="7" data-stat-text="米家IH电饭煲 4L"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_7_1_13" data-stat-aid="米家IH电饭煲4L">
+                                    <img src="//i1.mifile.cn/a1/pms_1586850609.02975060!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1586850609.02975060!280x280.jpg  2x"
+                                         alt="米家IH电饭煲 4L"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1201400007.html"
+                                                                 data-log_code="reccom_Cart_1_7#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5500&amp;bid=3038457.7&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="7"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_7_1_13">
+                                    米家IH电饭煲 4L </a></dd>
+                                <dd class="xm-recommend-price">499元</dd>
+                                <dd class="xm-recommend-tips"> 6756人好评 <a href="//item.mi.com/cart/add/2201400003-0-1"
+                                                                          data-log_code="reccom_Cart_1_7#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=5500&amp;bid=3038457.7&amp;page=cartbuy"
+                                                                          data-stat-gid="2201400003"
+                                                                          data-stat-method="1_13" data-stat-index="7"
+                                                                          data-stat-text="米家IH电饭煲 4L"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_7_1_13"
+                                                                          data-stat-aid="米家IH电饭煲4L">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1191800015.html"
+                                       data-log_code="reccom_Cart_1_8#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9734&amp;bid=3038457.8&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="8" data-stat-text="90分框体旅行箱 24英寸"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_8_1_13"
+                                       data-stat-aid="90分框体旅行箱24英寸"> <img
+                                        src="//i1.mifile.cn/a1/pms_1558060690.26641951!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1558060690.26641951!280x280.jpg  2x"
+                                        alt="90分框体旅行箱 24英寸"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1191800015.html"
+                                                                 data-log_code="reccom_Cart_1_8#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9734&amp;bid=3038457.8&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="8"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_8_1_13">
+                                    90分框体旅行箱 24英寸 </a></dd>
+                                <dd class="xm-recommend-price">599元</dd>
+                                <dd class="xm-recommend-tips"> 68人好评 <a href="//item.mi.com/cart/add/2191800015-0-1"
+                                                                        data-log_code="reccom_Cart_1_8#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9734&amp;bid=3038457.8&amp;page=cartbuy"
+                                                                        data-stat-gid="2191800015"
+                                                                        data-stat-method="1_13" data-stat-index="8"
+                                                                        data-stat-text="90分框体旅行箱 24英寸"
+                                                                        data-stat-addcart="加购"
+                                                                        class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                        data-stat-pid="stat_Cart加购.购物车_8_1_13"
+                                                                        data-stat-aid="90分框体旅行箱24英寸">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1192100009.html"
+                                       data-log_code="reccom_Cart_1_9#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9840&amp;bid=3038457.9&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="9" data-stat-text="Redmi7A 全网通版 3GB"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_9_1_13"
+                                       data-stat-aid="Redmi7A全网通版3GB"> <img
+                                        src="//i1.mifile.cn/a1/pms_1558861745.85758071!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1558861745.85758071!280x280.jpg  2x"
+                                        alt="Redmi7A 全网通版 3GB"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1192100009.html"
+                                                                 data-log_code="reccom_Cart_1_9#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9840&amp;bid=3038457.9&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="9"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_9_1_13">
+                                    Redmi7A 全网通版 3GB </a></dd>
+                                <dd class="xm-recommend-price">599元</dd>
+                                <dd class="xm-recommend-tips"> 778人好评 <a href="//item.mi.com/cart/add/2192100009-0-1"
+                                                                         data-log_code="reccom_Cart_1_9#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9840&amp;bid=3038457.9&amp;page=cartbuy"
+                                                                         data-stat-gid="2192100009"
+                                                                         data-stat-method="1_13" data-stat-index="9"
+                                                                         data-stat-text="Redmi7A 全网通版 3GB"
+                                                                         data-stat-addcart="加购"
+                                                                         class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                         data-stat-pid="stat_Cart加购.购物车_9_1_13"
+                                                                         data-stat-aid="Redmi7A全网通版3GB">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1181600014.html"
+                                       data-log_code="reccom_Cart_1_10#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7913&amp;bid=3038457.10&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="10" data-stat-text="小米电视4A 50英寸影院版"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_10_1_13"
+                                       data-stat-aid="小米电视4A50英寸影院版"> <img
+                                        src="//i1.mifile.cn/a1/pms_1524223442.33418864!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1524223442.33418864!280x280.jpg  2x"
+                                        alt="小米电视4A 50英寸影院版"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1181600014.html"
+                                                                 data-log_code="reccom_Cart_1_10#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7913&amp;bid=3038457.10&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="10"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_10_1_13">
+                                    小米电视4A 50英寸影院版 </a></dd>
+                                <dd class="xm-recommend-price">1798元</dd>
+                                <dd class="xm-recommend-tips"><a href="//item.mi.com/cart/add/1181600014-0-1"
+                                                                 data-log_code="reccom_Cart_1_10#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7913&amp;bid=3038457.10&amp;page=cartbuy"
+                                                                 data-stat-gid="1181600014" data-stat-method="1_13"
+                                                                 data-stat-index="10" data-stat-text="小米电视4A 50英寸影院版"
+                                                                 data-stat-addcart="加购"
+                                                                 class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                 data-stat-pid="stat_Cart加购.购物车_10_1_13"
+                                                                 data-stat-aid="小米电视4A50英寸影院版">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1192300032.html"
+                                       data-log_code="reccom_Cart_1_11#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9990&amp;bid=3038457.11&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="11" data-stat-text="米家电饭煲4L"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_11_1_13" data-stat-aid="米家电饭煲4L">
+                                    <img src="//i1.mifile.cn/a1/pms_1559728396.2634058!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1559728396.2634058!280x280.jpg  2x"
+                                         alt="米家电饭煲4L"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1192300032.html"
+                                                                 data-log_code="reccom_Cart_1_11#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9990&amp;bid=3038457.11&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="11"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_11_1_13">
+                                    米家电饭煲4L </a></dd>
+                                <dd class="xm-recommend-price">249元</dd>
+                                <dd class="xm-recommend-tips"> 914人好评 <a href="//item.mi.com/cart/add/2192300015-0-1"
+                                                                         data-log_code="reccom_Cart_1_11#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9990&amp;bid=3038457.11&amp;page=cartbuy"
+                                                                         data-stat-gid="2192300015"
+                                                                         data-stat-method="1_13" data-stat-index="11"
+                                                                         data-stat-text="米家电饭煲4L" data-stat-addcart="加购"
+                                                                         class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                         data-stat-pid="stat_Cart加购.购物车_11_1_13"
+                                                                         data-stat-aid="米家电饭煲4L">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1174200018.html"
+                                       data-log_code="reccom_Cart_1_12#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7115&amp;bid=3038457.12&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="12" data-stat-text="8H多功能青春床垫X1"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_12_1_13"
+                                       data-stat-aid="8H多功能青春床垫X1"> <img
+                                        src="//i1.mifile.cn/a1/pms_1509330056.27762473!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1509330056.27762473!280x280.jpg  2x"
+                                        alt="8H多功能青春床垫X1"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1174200018.html"
+                                                                 data-log_code="reccom_Cart_1_12#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7115&amp;bid=3038457.12&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="12"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_12_1_13">
+                                    8H多功能青春床垫X1 </a></dd>
+                                <dd class="xm-recommend-price">349元</dd>
+                                <dd class="xm-recommend-tips"> 1115人好评 <a href="//item.mi.com/cart/add/2174300004-0-1"
+                                                                          data-log_code="reccom_Cart_1_12#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7115&amp;bid=3038457.12&amp;page=cartbuy"
+                                                                          data-stat-gid="2174300004"
+                                                                          data-stat-method="1_13" data-stat-index="12"
+                                                                          data-stat-text="8H多功能青春床垫X1"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_12_1_13"
+                                                                          data-stat-aid="8H多功能青春床垫X1">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1192300008.html"
+                                       data-log_code="reccom_Cart_1_13#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9963&amp;bid=3038457.13&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="13" data-stat-text="米家互联网洗烘一体机 Pro 10kg"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_13_1_13"
+                                       data-stat-aid="米家互联网洗烘一体机Pro10kg"> <img
+                                        src="//i1.mifile.cn/a1/pms_1560161251.21862332!140x140.jpg"
+                                        srcset="//i1.mifile.cn/a1/pms_1560161251.21862332!280x280.jpg  2x"
+                                        alt="米家互联网洗烘一体机 Pro 10kg"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1192300008.html"
+                                                                 data-log_code="reccom_Cart_1_13#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9963&amp;bid=3038457.13&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="13"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_13_1_13">
+                                    米家互联网洗烘一体机 Pro 10kg </a></dd>
+                                <dd class="xm-recommend-price">2999元</dd>
+                                <dd class="xm-recommend-tips"> 264人好评 <a href="//item.mi.com/cart/add/2192300008-0-1"
+                                                                         data-log_code="reccom_Cart_1_13#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9963&amp;bid=3038457.13&amp;page=cartbuy"
+                                                                         data-stat-gid="2192300008"
+                                                                         data-stat-method="1_13" data-stat-index="13"
+                                                                         data-stat-text="米家互联网洗烘一体机 Pro 10kg"
+                                                                         data-stat-addcart="加购"
+                                                                         class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                         data-stat-pid="stat_Cart加购.购物车_13_1_13"
+                                                                         data-stat-aid="米家互联网洗烘一体机Pro10kg">加入购物车</a>
+                                </dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1191300032.html"
+                                       data-log_code="reccom_Cart_1_14#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9561&amp;bid=3038457.14&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="14" data-stat-text="小米旅行箱 24英寸"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_14_1_13" data-stat-aid="小米旅行箱24英寸">
+                                    <img src="//i1.mifile.cn/a1/pms_1553778518.87814930!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1553778518.87814930!280x280.jpg  2x"
+                                         alt="小米旅行箱 24英寸"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1191300032.html"
+                                                                 data-log_code="reccom_Cart_1_14#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9561&amp;bid=3038457.14&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="14"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_14_1_13">
+                                    小米旅行箱 24英寸 </a></dd>
+                                <dd class="xm-recommend-price">379元</dd>
+                                <dd class="xm-recommend-tips"> 968人好评 <a href="//item.mi.com/cart/add/2191300026-0-1"
+                                                                         data-log_code="reccom_Cart_1_14#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9561&amp;bid=3038457.14&amp;page=cartbuy"
+                                                                         data-stat-gid="2191300026"
+                                                                         data-stat-method="1_13" data-stat-index="14"
+                                                                         data-stat-text="小米旅行箱 24英寸"
+                                                                         data-stat-addcart="加购"
+                                                                         class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                         data-stat-pid="stat_Cart加购.购物车_14_1_13"
+                                                                         data-stat-aid="小米旅行箱24英寸">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1191200015.html"
+                                       data-log_code="reccom_Cart_1_15#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9526&amp;bid=3038457.15&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="15" data-stat-text="米家手持无线吸尘器"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_15_1_13" data-stat-aid="米家手持无线吸尘器">
+                                    <img src="//i1.mifile.cn/a1/pms_1553825094.62581252!140x140.png"
+                                         srcset="//i1.mifile.cn/a1/pms_1553825094.62581252!280x280.png  2x"
+                                         alt="米家手持无线吸尘器"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1191200015.html"
+                                                                 data-log_code="reccom_Cart_1_15#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9526&amp;bid=3038457.15&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="15"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_15_1_13">
+                                    米家手持无线吸尘器 </a></dd>
+                                <dd class="xm-recommend-price">899元</dd>
+                                <dd class="xm-recommend-tips"> 2761人好评 <a href="//item.mi.com/cart/add/2191200014-0-1"
+                                                                          data-log_code="reccom_Cart_1_15#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9526&amp;bid=3038457.15&amp;page=cartbuy"
+                                                                          data-stat-gid="2191200014"
+                                                                          data-stat-method="1_13" data-stat-index="15"
+                                                                          data-stat-text="米家手持无线吸尘器"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_15_1_13"
+                                                                          data-stat-aid="米家手持无线吸尘器">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1184800001.html"
+                                       data-log_code="reccom_Cart_1_16#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9107&amp;bid=3038457.16&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="16" data-stat-text="小米米家照片打印机"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_16_1_13" data-stat-aid="小米米家照片打印机">
+                                    <img src="//i1.mifile.cn/a1/pms_1545303051.38414485!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1545303051.38414485!280x280.jpg  2x"
+                                         alt="小米米家照片打印机"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1184800001.html"
+                                                                 data-log_code="reccom_Cart_1_16#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9107&amp;bid=3038457.16&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="16"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_16_1_13">
+                                    小米米家照片打印机 </a></dd>
+                                <dd class="xm-recommend-price">499元</dd>
+                                <dd class="xm-recommend-tips"> 6647人好评 <a href="//item.mi.com/cart/add/2184800001-0-1"
+                                                                          data-log_code="reccom_Cart_1_16#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9107&amp;bid=3038457.16&amp;page=cartbuy"
+                                                                          data-stat-gid="2184800001"
+                                                                          data-stat-method="1_13" data-stat-index="16"
+                                                                          data-stat-text="小米米家照片打印机"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_16_1_13"
+                                                                          data-stat-aid="小米米家照片打印机">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1192100011.html"
+                                       data-log_code="reccom_Cart_1_17#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9836&amp;bid=3038457.17&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="17" data-stat-text="小米巨能写中性笔"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_17_1_13" data-stat-aid="小米巨能写中性笔">
+                                    <img src="//i1.mifile.cn/a1/pms_1559616366.16874615!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1559616366.16874615!280x280.jpg  2x"
+                                         alt="小米巨能写中性笔"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1192100011.html"
+                                                                 data-log_code="reccom_Cart_1_17#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9836&amp;bid=3038457.17&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="17"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_17_1_13">
+                                    小米巨能写中性笔 </a></dd>
+                                <dd class="xm-recommend-price">9.99元</dd>
+                                <dd class="xm-recommend-tips"> 2068人好评 <a href="//item.mi.com/cart/add/2192100011-0-1"
+                                                                          data-log_code="reccom_Cart_1_17#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9836&amp;bid=3038457.17&amp;page=cartbuy"
+                                                                          data-stat-gid="2192100011"
+                                                                          data-stat-method="1_13" data-stat-index="17"
+                                                                          data-stat-text="小米巨能写中性笔"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_17_1_13"
+                                                                          data-stat-aid="小米巨能写中性笔">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1192000017.html"
+                                       data-log_code="reccom_Cart_1_18#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9825&amp;bid=3038457.18&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="18" data-stat-text="米家互联网燃气灶"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_18_1_13" data-stat-aid="米家互联网燃气灶">
+                                    <img src="//i1.mifile.cn/a1/pms_1563253827.55074855!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1563253827.55074855!280x280.jpg  2x"
+                                         alt="米家互联网燃气灶"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1192000017.html"
+                                                                 data-log_code="reccom_Cart_1_18#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9825&amp;bid=3038457.18&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="18"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_18_1_13">
+                                    米家互联网燃气灶 </a></dd>
+                                <dd class="xm-recommend-price">600元</dd>
+                                <dd class="xm-recommend-tips"> 618人好评 <a href="//item.mi.com/cart/add/2192000013-0-1"
+                                                                         data-log_code="reccom_Cart_1_18#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=9825&amp;bid=3038457.18&amp;page=cartbuy"
+                                                                         data-stat-gid="2192000013"
+                                                                         data-stat-method="1_13" data-stat-index="18"
+                                                                         data-stat-text="米家互联网燃气灶"
+                                                                         data-stat-addcart="加购"
+                                                                         class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                         data-stat-pid="stat_Cart加购.购物车_18_1_13"
+                                                                         data-stat-aid="米家互联网燃气灶">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                        <li class="J_xm-recommend-list span4">
+                            <dl>
+                                <dt><a href="//item.mi.com/1175100002.html"
+                                       data-log_code="reccom_Cart_1_19#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7530&amp;bid=3038457.19&amp;page=cartbuy"
+                                       data-stat-method="1_13" data-stat-index="19" data-stat-text="知吾煮汤锅 米家定制"
+                                       target="_blank" data-stat-pid="stat_Cart.购物车_19_1_13" data-stat-aid="知吾煮汤锅米家定制">
+                                    <img src="//i1.mifile.cn/a1/pms_1513864376.45999722!140x140.jpg"
+                                         srcset="//i1.mifile.cn/a1/pms_1513864376.45999722!280x280.jpg  2x"
+                                         alt="知吾煮汤锅 米家定制"> </a></dt>
+                                <dd class="xm-recommend-name"><a href="//item.mi.com/1175100002.html"
+                                                                 data-log_code="reccom_Cart_1_19#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7530&amp;bid=3038457.19&amp;page=cartbuy"
+                                                                 data-stat-method="1_13" data-stat-index="19"
+                                                                 target="_blank" data-stat-pid="stat_Cart.购物车_19_1_13">
+                                    知吾煮汤锅 米家定制 </a></dd>
+                                <dd class="xm-recommend-price">99元</dd>
+                                <dd class="xm-recommend-tips"> 7561人好评 <a href="//item.mi.com/cart/add/2175100001-0-1"
+                                                                          data-log_code="reccom_Cart_1_19#eid=185:12:0:0:0:0:0:0:0:0&amp;traceId=BlankRec-jR9+VBHvY/be6fJg1XQPsg==&amp;pid=7530&amp;bid=3038457.19&amp;page=cartbuy"
+                                                                          data-stat-gid="2175100001"
+                                                                          data-stat-method="1_13" data-stat-index="19"
+                                                                          data-stat-text="知吾煮汤锅 米家定制"
+                                                                          data-stat-addcart="加购"
+                                                                          class="btn btn-small btn-line-primary J_xm-recommend-btn"
+                                                                          data-stat-pid="stat_Cart加购.购物车_19_1_13"
+                                                                          data-stat-aid="知吾煮汤锅米家定制">加入购物车</a></dd>
+                                <dd class="xm-recommend-notice"></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cart-recommend hide" id="J_miRecommendBox"></div>
+
+            <!-- <div class="cart-recommend" id="J_miHistoryBox"></div> -->
+        </div>
+    </div>
+    {{#}else{
+
+    }}
     <form class="layui-form" action="">
         <div class="mzContainer">
             <div class="check-container">
@@ -229,9 +895,9 @@
                                            value="{{item.sid}}">
                                     <a href="javascript:;"
                                        class="goods-img"> <img
-                                            src="{{d.data1.pic_img}}" alt=""> </a> <a href="javascript:;"
-                                                                                      class="goods-info"><h4
-                                        class="goods-info-title">{{d.data1.pname}}</h4>
+                                            src="{{item.pic_img}}" alt=""> </a> <a href="javascript:;"
+                                                                                   class="goods-info"><h4
+                                        class="goods-info-title">{{item.pname}}</h4>
                                     <p class="goods-info-tips">{{item.text}}</p></a></td>
                                 <td class="goods-col-price"><span>{{item.money}}</span></td>
                                 <td class="goods-col-volumes">
@@ -251,8 +917,16 @@
                                             name="money" value="{{item.money*item.count}}"
                                             required lay-verify="money">
                                 </td>
-                                <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
-                                        class="line-left"></span> <span class="line-right"></span> </i></td>
+                                <td class="goods-col-ctrl">
+                                    <input style="display: none;"
+                                           value="{{item.sid}}"></input>
+                                    <span name="btnSpan">- -</span>
+                                    <button type="button" lay-submit lay-filter="btn" name="btn"
+                                            class="layui-btn layui-btn-primary layui-btn-sm"
+                                            style="display: none;">
+                                        <i class="layui-icon">&#xe640;</i>
+                                    </button>
+                                </td>
                             </tr>
                         </table>
                     </li>
@@ -280,6 +954,9 @@
             </div>
         </div>
     </form>
+    {{#
+    }
+    }}
 </script>
 <script id="dl" type="text/html">
     {{#  if(d.name==null){ }}
@@ -308,73 +985,9 @@
         </div>
     </div>
 </div>
-<!--<div class="float-box">
-    <div class="confirm-box">
-        <h4 class="confirm-title">
-            <span></span>
-            <i class="close-btn">
-                <span class="line-left"></span>
-                <span class="line-right"></span>
 
-            </i>
-        </h4>
-        <div class="confirm-content">
-            请选择您要删除的商品？
-        </div>
-        <div class="confirm-btn">
-            <a href="javascript:;" class="delete">删除</a>
-            <a href="javascript:;" class="cancel">取消</a>
-        </div>
-    </div>
-</div>-->
 <div id="showView">
-    <div class="mzContainer">
-        <div class="check-container">
-            <div class="shop-cart-nav">
-                <table>
-                    <tbody>
-                    <tr>
-                        <td class="check-area">
-                            <input type="checkbox" name="" title="全选" lay-skin="primary">
-                        <td class="singal-price"> 单价(元)</td>
-                        <td class="volumes"> 数量</td>
-                        <td class="small-total"> 小计(元)</td>
-                        <td class="edit-area"><span class="edit">编辑</span></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <ul class="goods-ul">
-                <!--<div id="showView"></div>-->
-                <!--<li class="goods-list">
-                    <table class="goods-body layui-form" action="">
-                        <tr>
-                            <td class="goods-col-select"><a href="javascript:;" class="check-label check-product"> <i
-                                    class="checkbox"> <span class="check-mark"></span> </i> </a> <a href="javascript:;"
-                                                                                                    class="goods-img"> <img
-                                    src="img/p2.png" alt=""> </a> <a href="javascript:;" class="goods-info"><h4
-                                    class="goods-info-title">魅族 16Xs</h4>
-                                <p class="goods-info-tips">全网通公开版 珊瑚橙 6+64GB</p></a></td>
-                            <td class="goods-col-price"><span>￥1499.00</span></td>
-                            <td class="goods-col-volumes">
-                                <div class="num-ctrl-area clearfix">
-                                    <button class="minus forbid">-</button>
-                                    <input type="text" value="1" class="input">
-                                    <button class="plus">+</button>
-                                    <em class="hint">限购10件</em></div>
-                            </td>
-                            <td class="goods-col-total"><span>￥1499.00</span></td>
-                            <td class="goods-col-ctrl"><span>- -</span> <i class="del-product"> <span
-                                    class="line-left"></span> <span class="line-right"></span> </i></td>
-                        </tr>
-                    </table>
-                </li>-->
-            </ul>
-        </div>
-        <div class="shop-cart-footer fixed">
-            <div id="jsView"></div>
-        </div>
-    </div>
+
 </div>
 <div class="mz-foot"></div>
 <script src="js/jquery.min.js"></script>

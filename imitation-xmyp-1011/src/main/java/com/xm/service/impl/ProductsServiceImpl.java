@@ -21,4 +21,13 @@ public class ProductsServiceImpl extends ServiceImpl<ProductsMapper, Products> i
     @Autowired
     public ProductsMapper productsMapper;
 
+    @Override
+    public int updatecount(int pid, int count) {
+        return productsMapper.updatecount(pid, count);
+    }
+
+    @Override
+    public List<Products> listTop10() {
+        return productsMapper.listTop10();
+    }
 }

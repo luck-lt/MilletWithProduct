@@ -9,4 +9,8 @@
     <update id="updatecount">
             UPDATE `shopping` SET `count`=#{count} WHERE sid=#{sid}
     </update>
+
+    <select id="mapList" resultType="map">
+         SELECT * FROM shopping AS a INNER JOIN `product` AS b ON a.`pid`=b.`product_id` WHERE uid=#{id}
+    </select>
 </mapper>

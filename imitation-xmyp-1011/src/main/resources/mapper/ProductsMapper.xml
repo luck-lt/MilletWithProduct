@@ -3,5 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xm.dao.ProductsMapper">
+    <update id="updatecount">
+        UPDATE `product` SET stock=stock-#{count} WHERE product_id=#{pid}
+    </update>
 
+    <select id="listTop10" resultType="products">
+        SELECT * FROM `product` a WHERE (a.`product_id`) IN (
+            SELECT b.product_id FROM
+            (SELECT a.`product_id`,a.`pname`,a.`category_id`,COUNT(*) AS num FROM `product` AS a
+            INNER JOIN `product` AS b ON a.`category_id`=b.category_id WHERE a.`product_id`>=b.product_id
+            GROUP BY a.product_id HAVING num &lt;= 8 ORDER BY a.category_id ASC,a.product_id ASC) b
+            ) AND a.`category_id` &lt;= 10
+    </select>
 </mapper>

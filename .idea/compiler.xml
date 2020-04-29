@@ -13,7 +13,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="consumer-xmyp-1022" target="1.5" />
+      <module name="consumer-xmyp-1022" target="1.8" />
       <module name="imitation-xmyp-1011" target="1.8" />
       <module name="PublicEntityClass" target="1.5" />
     </bytecodeTargetLevel>

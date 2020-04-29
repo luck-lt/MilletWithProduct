@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description
@@ -33,5 +34,10 @@ public class shoppingServiceImpl extends ServiceImpl<shoppingMapper, shopping> i
     @Override
     public int updatecount(shopping shopping) {
         return shoppingMapper.updatecount(shopping);
+    }
+
+    @Override
+    public List<Map<String, Object>> mapList(int id) {
+        return shoppingMapper.mapList(id);
     }
 }

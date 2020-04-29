@@ -44,8 +44,13 @@ public class IndexController {
     @RequestMapping("/cd2")
     @ResponseBody
     public List<Products> cd2() {
-        List<Products> list = productsService.list();
+        List<Products> list = productsService.list();   //下面cd2s升级
         return list;
+    }
+
+    @RequestMapping("cd2s")
+    public List<Products> cd2s() {
+        return productsService.listTop10();
     }
 
     @RequestMapping("/xfcx")

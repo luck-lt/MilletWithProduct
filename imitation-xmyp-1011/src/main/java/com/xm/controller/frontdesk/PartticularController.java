@@ -76,14 +76,15 @@ public class PartticularController {
     }
 
     @RequestMapping("/show")
-    public List<shopping> add(String phone) {
+    public List<Map<String, Object>> add(String phone) {
         Map map = new HashMap();
         map.put("login_name", phone);
         List<User> user = (List<User>) userService.listByMap(map);
-        Map map2 = new HashMap();
+       /* Map map2 = new HashMap();
         map2.put("uid", user.get(0).getUser_id());
-        List<shopping> shoppings = (List<shopping>) shoppingService.listByMap(map2);
-        return shoppings;
+        List<shopping> shoppings = (List<shopping>) shoppingService.listByMap(map2);*/
+        List<Map<String, Object>> orders = shoppingService.mapList(user.get(0).getUser_id());
+        return orders;
     }
 
     @RequestMapping("/updata")
@@ -135,7 +136,34 @@ public class PartticularController {
             QueryWrapper<shopping> wrapper = new QueryWrapper<>();
             wrapper.eq("sid", sid[i]);
             shoppingService.remove(wrapper);   //删除购物车里面的记录
+            //库存没做判断
         }
+        return 0;
+    }
+
+    @RequestMapping("/del")
+    public int delete(int oid) {
+        QueryWrapper<OrderDetail> wrapper = new QueryWrapper<>();
+        wrapper.eq("order_product_id", oid);
+        List<OrderDetail> listid = orderDetailService.list(wrapper);
+        QueryWrapper<OrderDetail> wrapper1 = new QueryWrapper<>();
+        wrapper1.eq("order_id", listid.get(0).getOrder_id());
+        List<OrderDetail> listall = orderDetailService.list(wrapper1);
+
+        if (listall.size() == 1) {
+            orderDetailService.remove(wrapper);
+            orderServicel.delete(listid.get(0).getOrder_id());
+        } else {
+            orderDetailService.remove(wrapper);
+        }
+        return 0;
+    }
+
+    @RequestMapping("/delgw")
+    public int deletegw(int sid) {
+        QueryWrapper<shopping> wrapper = new QueryWrapper<>();
+        wrapper.eq("sid", sid);
+        shoppingService.remove(wrapper);
         return 0;
     }
 

@@ -40,10 +40,11 @@
                 , arrow: 'hover' //始终显示箭头
                 , anim: 'fade' //切换动画方式
             });
+
             $.post('./cd', function (data) {
                 layui.sessionData("index", {key: 'category', value: data});
             }, 'json');
-            $.post('./cd2', function (data) {
+            $.post('./cd2s', function (data) {
                 layui.sessionData("index", {key: 'product', value: data});
                 var list = document.getElementById("listsp").innerHTML;
                 var lists = document.getElementById("listspView");
@@ -122,6 +123,12 @@
 <script id="listsp" type="text/html">
     {{#
     layui.each(d.category,function(index,item){
+    }}
+    {{#if(index<=6){
+    }}
+    <div><img style="width: 1240px; margin: 20px 0px 10px 0px;" src="xmyp/img/tps{{index+1}}.webp"></div>
+    {{#
+    }
     }}
     <div class="types">
         <div class="sj">
