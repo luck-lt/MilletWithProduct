@@ -453,11 +453,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="270" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587126710221" />
-    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1588149507150">
+    <state x="625" y="0" key="CommitChangelistDialog2" timestamp="1588149556283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="69" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1587039976000" />
-    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588149507150" />
+    <state x="625" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588149556283" />
     <state width="478" height="438" key="DebuggerActiveHint" timestamp="1587003363563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -557,10 +557,10 @@
     </state>
     <state x="387" y="101" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586922664049" />
     <state x="484" y="128" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588051309782" />
-    <state x="727" y="238" key="VCS.ChangeListViewerDialog" timestamp="1587731472038">
+    <state x="727" y="238" key="VCS.ChangeListViewerDialog" timestamp="1588149623828">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="727" y="238" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587731472038" />
+    <state x="727" y="238" key="VCS.ChangeListViewerDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588149623828" />
     <state x="991" y="259" key="Vcs.Push.Dialog.v2" timestamp="1588051363173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -570,11 +570,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="251" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1586739983680" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588051316386">
+    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588149569188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="511" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1586916162443" />
-    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588051316386" />
+    <state x="639" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588149569188" />
     <state x="480" y="270" key="git4idea.merge.GitPullDialog" timestamp="1587120558164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
