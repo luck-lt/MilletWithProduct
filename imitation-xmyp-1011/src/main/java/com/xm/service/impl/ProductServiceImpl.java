@@ -32,4 +32,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     public int DeleteProduct(Integer id) {
         return productMapper.DeleteProduct(id);
     }
+
+
+
 }

@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface ProductService extends IService<Product> {
     public List<Product> ProductFindAll(Product product);
+
     public int UpdateProduct(Product product);
+
     public int DeleteProduct(Integer id);
+
 }

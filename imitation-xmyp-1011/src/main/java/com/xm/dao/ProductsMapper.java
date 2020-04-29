@@ -12,4 +12,6 @@ public interface ProductsMapper extends SuperMapper<Products> {
     public int updatecount(int pid, int count);
 
     public List<Products> listTop10();
+
+
 }

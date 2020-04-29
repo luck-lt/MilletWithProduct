@@ -22,6 +22,8 @@ public class PartticularController {
     @Autowired
     private ProductsService productsService;
     @Autowired
+    private ProductService productService;
+    @Autowired
     private UserService userService;
     @Autowired
     private shoppingService shoppingService;
@@ -36,6 +38,12 @@ public class PartticularController {
         map.put("product_id", id);
         List<Products> list = (List<Products>) productsService.listByMap(map);
         return list.get(0);
+    }
+
+    @RequestMapping("/shows")
+    public List<Products> lists() {
+        List<Products> list = (List<Products>) productsService.list();
+        return list;
     }
 
     @RequestMapping("/add")
@@ -123,16 +131,19 @@ public class PartticularController {
         Order orders = orderServicel.select(ddid);
 
         for (int i = 0; i < sid.length; i++) {
-            OrderDetail ooid = new OrderDetail();
+
             Map map1 = new HashMap();
             map1.put("sid", sid[i]);
             List<shopping> list = (List<shopping>) shoppingService.listByMap(map);
+            System.out.println("--------------------------------------------");
+            OrderDetail ooid = new OrderDetail();
             ooid.setBuy_number(list.get(0).getCount());
             ooid.setOrder_id(orders.getOrder_id());
             ooid.setProduct_id(list.get(0).getPid());
             ooid.setLists(list.get(0).getText());
             ooid.setProduct_amount((list.get(0).getCount()) * (list.get(0).getMoney()));
             orderDetailService.save(ooid);              //添加商品的记录
+            System.out.println("++++++++++++++++++++++++++++++++");
             QueryWrapper<shopping> wrapper = new QueryWrapper<>();
             wrapper.eq("sid", sid[i]);
             shoppingService.remove(wrapper);   //删除购物车里面的记录

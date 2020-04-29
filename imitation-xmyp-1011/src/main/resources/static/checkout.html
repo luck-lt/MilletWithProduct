@@ -34,63 +34,63 @@
                 });
 
                 $.post("./show", {'phone': layui.sessionData('user').name}, function (data) {
-                    $.post("./spcx", {'id': data[0].pid}, function (data1) {
-                        data.data1 = data1;
-                        data.sids = layui.sessionData('spcount').id;
-                        var xxx = document.getElementById("sp").innerHTML;
-                        var sss = document.getElementById("spView");
-                        laytpl(xxx).render(data, function (html) {
-                            sss.innerHTML = html;
-                        });
-                        var sum = 0;
-                        for (var i = 0; i < $("div[name=sum]").length; i++) {
-                            sum += parseFloat($("div[name=sum]")[i].innerHTML);
+                    /*      $.post("./spcx", {'id': data[0].pid}, function (data1) {
+                              data.data1 = data1;*/
+                    data.sids = layui.sessionData('spcount').id;
+                    var xxx = document.getElementById("sp").innerHTML;
+                    var sss = document.getElementById("spView");
+                    laytpl(xxx).render(data, function (html) {
+                        sss.innerHTML = html;
+                    });
+                    var sum = 0;
+                    for (var i = 0; i < $("div[name=sum]").length; i++) {
+                        sum += parseFloat($("div[name=sum]")[i].innerHTML);
+                    }
+                    $('#sums').text(sum);
+                    layarea.render({
+                        elem: '#area-picker',
+                        change: function (res) {
+                            if (res.province != '--选择省--') {
+                                if (res.province == res.city) {
+                                    layui.sessionData("product", {key: 'dz', value: res.province + res.county});
+                                }
+                                layui.sessionData("product", {
+                                    key: 'dz',
+                                    value: res.province + res.city + res.county
+                                });
+                            }
+                            return '请选择';
+                            //选择结果
+                            console.log(res);
                         }
-                        $('#sums').text(sum);
-                        layarea.render({
-                            elem: '#area-picker',
-                            change: function (res) {
-                                if (res.province != '--选择省--') {
-                                    if (res.province == res.city) {
-                                        layui.sessionData("product", {key: 'dz', value: res.province + res.county});
-                                    }
-                                    layui.sessionData("product", {
-                                        key: 'dz',
-                                        value: res.province + res.city + res.county
-                                    });
-                                }
-                                return '请选择';
-                                //选择结果
-                                console.log(res);
+                    });
+
+                    form.on('submit(formDemo2)', function (data) {
+                        if (layui.sessionData("product").dz == null) {
+                            layer.msg('请先选择地址！！！')
+                        } else {
+                            var sid = [];
+                            for (var i = 0; i < layui.sessionData('spcount').id.length; i++) {
+                                sid.push(layui.sessionData('spcount').id[i]);
                             }
-                        });
 
-                        form.on('submit(formDemo2)', function (data) {
-                            if (layui.sessionData("product").dz == null) {
-                                layer.msg('请先选择地址！！！')
-                            } else {
-                                var sid = [];
-                                for (var i = 0; i < layui.sessionData('spcount').id.length; i++) {
-                                    sid.push(layui.sessionData('spcount').id[i]);
+                            var dz = layui.sessionData("product").dz + " " + data.field.title;
+
+                            $.post('./adddd', {
+                                sid: sid,
+                                'phone': layui.sessionData('user').name,
+                                'dz': dz,
+                                'sum': sum
+                            }, function (data) {
+                                if (i > 0) {
+                                    layer.msg('下单成功')
                                 }
-
-                                var dz = layui.sessionData("product").dz + " " + data.field.title;
-
-                                $.post('./adddd', {
-                                    sid: sid,
-                                    'phone': layui.sessionData('user').name,
-                                    'dz': dz,
-                                    'sum': sum
-                                }, function (data) {
-                                    if (i > 0) {
-                                        layer.msg('下单成功')
-                                    }
-                                }, 'json');
-                                window.location.href = "shopping.html";
-                            }
-                            return false;
-                        });
-                    })
+                            }, 'json');
+                            window.location.href = "shopping.html";
+                        }
+                        return false;
+                    });
+                    /* })*/
                 });
             });
         });
@@ -207,11 +207,12 @@
                                 {{# if(item1==item.sid){
                                 }}
                                 <div data-v-73ddf45a="" class="good-item">
-                                    <div data-v-73ddf45a="" class="item-desc good-img"><img data-v-73ddf45a=""
-                                                                                            src="{{d.data1.pic_img}}">
+                                    <div data-v-73ddf45a="" class="item-desc good-img"><img style="width: 30px;"
+                                                                                            data-v-73ddf45a=""
+                                                                                            src="{{item.pic_img}}">
                                     </div>
                                     <div data-v-73ddf45a="" class="item-desc good-name"><a data-v-73ddf45a=""
-                                                                                           data-v-73ddf45a="">{{d.data1.pname}}
+                                                                                           data-v-73ddf45a="">{{item.pname}}
                                         {{item.text}}</span></a>
                                     </div>
                                     <div data-v-73ddf45a="" class="item-desc">
