@@ -55,7 +55,7 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-input-inline layui-show-xs-block">
-                            <select name="contrller" id="select">
+                            <select name="contrller">
                                 <option value="0">订单状态</option>
                                 <option value="1">待确认</option>
                                 <option value="2">已确认</option>
@@ -101,10 +101,9 @@
             table.render({
                 elem: '#Products'
                 , url: '/OrderFindAll'
-                , cellMinWidth: 90
                 , cols: [[
                     {type: 'checkbox', fixed: 'left'}
-                    , {field: 'order_id', title: 'ID', fixed: 'left', sort: true, align: 'center'}
+                    , {field: 'order_id', title: 'ID', width: 90, fixed: 'left', sort: true, align: 'center'}
                     , {field: 'order_number', title: '订单编号', sort: true, align: 'center'}
                     , {
                         title: '收货人',
@@ -113,9 +112,10 @@
                             return '<span">' + d.user_name + '</span>&nbsp;:<span">' + d.telephone + '</span>';
                         }
                     }
-                    , {field: 'order_number', title: '订单编号', sort: true, align: 'center'}
+                    , {field: 'user_adress', title: '收货地址', sort: true, align: 'center'}
                     , {field: 'list', title: '商品', sort: true, templet: "#product"}
-                    , {field: 'order_status', title: '订单状态', sort: true, align: 'center'}
+                    , {field: 'order_amount', title: '总金额', width: 90, sort: true,}
+                    , {field: 'order_status', title: '订单状态', width: 90, sort: true, align: 'center'}
                     , {
                         field: 'create_time',
                         title: '下单时间',
@@ -134,7 +134,7 @@
                             $(this).text("已确认")
                         } else if ($(this).text() == '3') {
                             $(this).text("已取消")
-                        } else {
+                        } else if ($(this).text() == '4') {
                             $(this).text("已完成")
                         }
                     });
@@ -142,6 +142,7 @@
             });
         }
         table.on('tool(test)', function (obj) {
+            var data = obj.data;
             layer.open({
                 type: 1,
                 offset: '10px',
@@ -150,17 +151,18 @@
                 content: $("#order-add"),
             });
             form.val("myfm", {
-                product_id: data.product_id,
-                pname: data.pname,
-                introduce: data.introduce,
-                stock: data.stock,
-                show_price: data.show_price,
-                attribute_list: data.attribute_list,
-                pic_img: data.pic_img,
+                user_id: data.user_id,
+                order_id: data.order_id,
+                order_number: data.order_number,
+                real_name: data.real_name,
+                user_adress: data.user_adress,
+                telephone: data.telephone
             });
-        });
-        tableInfo();
+            $("#se").find("option[value=" + data.order_status + "]").prop("selected", true);
+            form.render();
 
+        });
+        form.render();
         //查询
         $('#queryRole').click(function () {
             var find = document.getElementById("find").value;
@@ -177,50 +179,86 @@
         });
         tableInfo();
 
+        form.on('submit(formDemo)', function (data) {
+            table.reload('Products');//重新加载
+            $.post("/OrderUpdate", data.field, function (res) {
+                if (res == 1) {
+                    layer.msg("修改成功", {icon: 1});
+                    layer.close();
+                    tableInfo();
+                } else {
+                    layer.msg("修改失败", {icon: 2});
+                    $("#reset").trigger("click");
+                    return false;
+                }
+            })
+            return false;
+        })
     });
 
 </script>
 <table class="layui-hide" id="Products" lay-filter="test"></table>
 <div class="layui-row" id="order-add" style="display:none;">
     <div class="layui-col-md10">
-        <form class="layui-form">
+        <form class="layui-form" lay-filter="myfm">
             <div class="layui-form-item" hidden="hidden">
-                <label for="username" class="layui-form-label">
+                <label class="layui-form-label">
                     <span class="x-red">*</span>用户id</label>
                 <div class="layui-input-inline">
-                    <input type="text" id="userd_id" name="userd_id" required="" lay-verify="required"
+                    <input type="text" id="userd_id" name="userd_id"
+                           autocomplete="off"
+                           class="layui-input"></div>
+            </div>
+            <div class="layui-form-item" hidden="hidden">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>订单id</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="order_id" name="order_id"
                            autocomplete="off"
                            class="layui-input"></div>
             </div>
             <div class="layui-form-item">
-                <label for="username" class="layui-form-label">
-                    <span class="x-red">*</span>收货人</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="usere" name="username" required="" lay-verify="required" autocomplete="off"
-                           class="layui-input"></div>
+                <label class="layui-form-label">订单编号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="order_number" id="order_number"
+                           autocomplete="off"
+                           class="layui-input" readonly="readonly">
+                </div>
             </div>
             <div class="layui-form-item">
-                <label for="phone" class="layui-form-label">
-                    <span class="x-red">*</span>手机</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="phone" name="phone" required="" lay-verify="phone" autocomplete="off"
-                           class="layui-input"></div>
+                <label class="layui-form-label">收货人</label>
+                <div class="layui-input-block">
+                    <input type="text" name="real_name" id="real_name" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
             </div>
+
+
             <div class="layui-form-item">
-                <label for="username" class="layui-form-label">
-                    <span class="x-red">*</span>收货地址</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="username" name="username" required="" lay-verify="required"
-                           autocomplete="off" class="layui-input"></div>
+                <label class="layui-form-label">手机</label>
+                <div class="layui-input-block">
+                    <input type="text" name="telephone" id="telephone" required lay-verify="required" autocomplete="off"
+                           class="layui-input">
+                </div>
             </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">收货地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="user_adress" id="user_adress" required lay-verify="required"
+                           autocomplete="off"
+                           class="layui-input">
+                </div>
+            </div>
+
             <div class="layui-form-item">
                 <label class="layui-form-label">订单详情</label>
                 <div class="layui-input-inline select">
-                    <select name="contrller">
-                        <option value="">订单状态</option>
-                        <option value="0">待确认</option>
-                        <option value="1">已确认</option>
-                        <option value="2">已收货</option>
+                    <select name="contrller" id="se">
+                        <option value="0">订单状态</option>
+                        <option value="1">待确认</option>
+                        <option value="2">已确认</option>
                         <option value="3">已取消</option>
                         <option value="4">已完成</option>
                     </select>

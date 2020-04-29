@@ -15,7 +15,8 @@
     </sql>
     <select id="OrderFindAll" resultType="map">
         SELECT
-        `address_id`,`user_name`,`user_adress`,`order_id`,`order_number`,`order_status`,`create_time`,u.`user_id`,`login_name`,`login_password`,`real_name`,`sex`,`status`,`telephone`,`regeist_time`
+        `address_id`,`user_name`,`user_adress`,`order_id`,`order_number`,`order_status`,`create_time`
+        ,u.`user_id`,`login_name`,`login_password`,`real_name`,`sex`,`status`,`telephone`,`regeist_time`,`order_amount`
         FROM `order` o
         INNER JOIN `user` u ON o.`user_id`=u.`user_id`
         INNER JOIN address a ON a.`user_id`=u.`user_id`
