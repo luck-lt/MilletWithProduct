@@ -15,13 +15,6 @@ spring:
     cache: false
     #prefix: classpath:/templates/
     suffix: .html
-  #ccl:
-  #  sms:
-  #    accessKeyId: LTAI4FumTFVrUjgqyLZ5AMcV         # accessKeyId
-  #    accessKeySecret: q6IfjQGLLfROaPqzgYWpzJOjGnbuwW  # AccessKeySecret
-  #    signName: 小米有品                  # 签名名称
-  #    verifyCodeTemplate: SMS_187755835  # 模板编号
-  #logging.level.org.springframework.boot.autoconfigure: ERROR
 
   datasource:
     #    type: com.alibaba.druid.pool.DruidDataSource
